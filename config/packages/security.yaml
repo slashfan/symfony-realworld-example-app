@@ -1,0 +1,43 @@
+security:
+
+    encoders:
+
+        App\Entity\User:
+            algorithm: bcrypt
+
+    providers:
+
+        db_users:
+            entity:
+                class: App\Entity\User
+                property: email
+
+    firewalls:
+
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        api_login:
+            pattern: ^/api/users/login
+            stateless: true
+            anonymous: true
+            json_login:
+                check_path: api_users_login
+                username_path: user.email
+                password_path: user.password
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+        api:
+            pattern: ^/api
+            stateless: true
+            anonymous: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+
+    access_control:
+        - { path: ^/api/users, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/articles, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api, roles: ROLE_USER }

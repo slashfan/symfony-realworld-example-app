@@ -1,0 +1,58 @@
+start:
+	docker-compose up --build
+
+stop:
+	docker-compose stop
+
+##########################################################################
+
+ci: cs lint test security
+
+cs:
+	vendor/bin/php-cs-fixer fix --verbose
+
+lint:
+	bin/console lint:yaml config/
+
+security:
+	bin/console security:check
+
+test:
+	rm -rf var/cache/test/* var/logs/test/*
+	bin/console cache:clear --env=test
+	bin/phpunit
+
+test-coverage:
+	bin/console cache:clear --env=test
+	php -dzend_extension=xdebug.so bin/phpunit --coverage-html=var/coverage/
+
+##########################################################################
+
+reload: clear doctrine_schema doctrine_fixtures
+
+clear:
+	rm -rf var/cache/dev/* var/logs/dev/*
+	bin/console cache:clear
+
+doctrine_schema:
+	bin/console doctrine:database:drop --force
+	bin/console doctrine:database:create
+	bin/console doctrine:schema:create
+
+doctrine_fixtures:
+	bin/console doctrine:fixtures:load --no-interaction
+
+##########################################################################
+
+build:
+	composer install -o
+	bin/console doctrine:cache:clear-metadata
+	bin/console doctrine:cache:clear-query
+	bin/console doctrine:cache:clear-result
+
+build-prod:
+	SYMFONY_ENV=prod composer install -o
+	bin/console cache:clear --env=prod
+	bin/console doctrine:cache:clear-metadata --env=prod
+	bin/console doctrine:cache:clear-query --env=prod
+	bin/console doctrine:cache:clear-result --env=prod
