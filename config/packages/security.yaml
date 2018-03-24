@@ -35,7 +35,7 @@ security:
             anonymous: true
             guard:
                 authenticators:
-                    - lexik_jwt_authentication.jwt_token_authenticator
+                    - App\Security\JWTAuthenticator
 
     access_control:
         - { path: ^/api/users, roles: IS_AUTHENTICATED_ANONYMOUSLY }

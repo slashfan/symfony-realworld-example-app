@@ -2,3 +2,4 @@ lexik_jwt_authentication:
     private_key_path: '%kernel.project_dir%/config/jwt/test/private.pem'
     public_key_path: '%kernel.project_dir%/config/jwt/test/public.pem'
     pass_phrase: 'passphrase'
+    user_identity_field: 'email'
