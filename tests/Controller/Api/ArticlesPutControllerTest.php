@@ -10,7 +10,16 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ArticlesPutControllerTest extends WebTestCase
 {
-    public function testResponse()
+    public function testNotOK()
+    {
+        $client = $this->createAuthenticatedApiClient();
+        $client->request('PUT', '/api/articles/article-2');
+
+        $response = $client->getResponse();
+        $this->assertSame(Response::HTTP_FORBIDDEN, $response->getStatusCode());
+    }
+
+    public function testOK()
     {
         $client = $this->createAuthenticatedApiClient();
         $client->request('PUT', '/api/articles/article-1', [], [], [], json_encode([
