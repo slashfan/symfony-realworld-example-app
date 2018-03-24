@@ -95,7 +95,7 @@ class User implements UserInterface
     /**
      * @var ArrayCollection|Article[]
      *
-     * @ORM\ManyToMany(targetEntity="App\Entity\Article")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Article", inversedBy="favoritedBy")
      * @ORM\JoinTable(name="rw_user_favorite")
      */
     private $favorites;
@@ -276,6 +276,16 @@ class User implements UserInterface
     public function getFavorites()
     {
         return $this->favorites;
+    }
+
+    /**
+     * @param Article $article
+     *
+     * @return bool
+     */
+    public function hasFavorite(Article $article)
+    {
+        return $this->favorites->contains($article);
     }
 
     /**

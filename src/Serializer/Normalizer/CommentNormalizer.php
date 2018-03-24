@@ -24,8 +24,8 @@ class CommentNormalizer implements NormalizerInterface, NormalizerAwareInterface
 
         $data = [
             'id' => $object->getId(),
-            'createdAt' => $object->getCreatedAt(),
-            'updatedAt' => $object->getCreatedAt(),
+            'createdAt' => $this->normalizer->normalize($object->getCreatedAt()),
+            'updatedAt' => $this->normalizer->normalize($object->getCreatedAt()),
             'body' => $object->getBody(),
             'author' => $this->normalizer->normalize($object->getAuthor()),
         ];
