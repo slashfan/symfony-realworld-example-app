@@ -3,6 +3,7 @@
 namespace App\Serializer\Normalizer;
 
 use App\Entity\Article;
+use App\Entity\Tag;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
@@ -41,7 +42,9 @@ class ArticleNormalizer implements NormalizerInterface, NormalizerAwareInterface
             'title' => $object->getTitle(),
             'description' => $object->getDescription(),
             'body' => $object->getBody(),
-            'tagList' => [],
+            'tagList' => array_map(function (Tag $tag) {
+                return $this->normalizer->normalize($tag);
+            }, $object->getTags()->toArray()),
             'createdAt' => $this->normalizer->normalize($object->getCreatedAt()),
             'updatedAt' => $this->normalizer->normalize($object->getCreatedAt()),
             'favorited' => false,
