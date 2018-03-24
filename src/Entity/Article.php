@@ -76,11 +76,19 @@ class Article
     private $tags;
 
     /**
+     * @var ArrayCollection|User[]
+     *
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="favorites", fetch="EXTRA_LAZY")
+     */
+    private $favoritedBy;
+
+    /**
      * __construct.
      */
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->favoritedBy = new ArrayCollection();
     }
 
     /**
@@ -193,5 +201,21 @@ class Article
     public function setTags($tags): void
     {
         $this->tags = $tags;
+    }
+
+    /**
+     * @return ArrayCollection|User[]
+     */
+    public function getFavoritedBy()
+    {
+        return $this->favoritedBy;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFavoritedByCount()
+    {
+        return $this->favoritedBy->count();
     }
 }

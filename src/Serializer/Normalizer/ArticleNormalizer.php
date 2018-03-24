@@ -3,6 +3,8 @@
 namespace App\Serializer\Normalizer;
 
 use App\Entity\Article;
+use App\Entity\User;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
@@ -13,6 +15,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 class ArticleNormalizer implements NormalizerInterface, NormalizerAwareInterface
 {
     use NormalizerAwareTrait;
+
+    /**
+     * @var TokenStorageInterface
+     */
+    private $tokenStorage;
+
+    /**
+     * @param TokenStorageInterface $tokenStorage
+     */
+    public function __construct(TokenStorageInterface $tokenStorage)
+    {
+        $this->tokenStorage = $tokenStorage;
+    }
 
     /**
      * {@inheritdoc}
@@ -27,12 +42,19 @@ class ArticleNormalizer implements NormalizerInterface, NormalizerAwareInterface
             'description' => $object->getDescription(),
             'body' => $object->getBody(),
             'tagList' => [],
-            'createdAt' => $object->getCreatedAt(),
-            'updatedAt' => $object->getCreatedAt(),
+            'createdAt' => $this->normalizer->normalize($object->getCreatedAt()),
+            'updatedAt' => $this->normalizer->normalize($object->getCreatedAt()),
             'favorited' => false,
-            'favoritesCount' => 0,
+            'favoritesCount' => $object->getFavoritedByCount(),
             'author' => $this->normalizer->normalize($object->getAuthor()),
         ];
+
+        $token = $this->tokenStorage->getToken();
+        $user = $token ? $token->getUser() : null;
+
+        if ($user instanceof User) {
+            $data['favorited'] = $user->hasFavorite($object);
+        }
 
         return $data;
     }

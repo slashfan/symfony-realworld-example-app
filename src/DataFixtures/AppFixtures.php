@@ -69,13 +69,16 @@ class AppFixtures extends Fixture
 
     private function loadArticles(ObjectManager $manager): void
     {
-        foreach ($this->getArticleData() as [$reference, $title, $description, $body, $author, $tag]) {
+        foreach ($this->getArticleData() as [$reference, $title, $description, $body, $author, $tag, $favor]) {
             $article = new Article();
             $article->setAuthor($this->getReference($author));
             $article->setTitle($title);
             $article->setDescription($description);
             $article->setBody($body);
             $article->setTags([$this->getReference($tag)]);
+            if ($favor && ($favor = $this->getReference($favor))) {
+                $favor->addToFavorites($article);
+            }
             $manager->persist($article);
             $this->addReference($reference, $article);
         }
@@ -116,8 +119,8 @@ class AppFixtures extends Fixture
     private function getArticleData(): array
     {
         return [
-            ['article-1', 'Article #1', 'Description #1', 'Body #1', 'user-1', 'tag-1'],
-            ['article-2', 'Article #2', 'Description #2', 'Body #2', 'user-2', 'tag-2'],
+            ['article-1', 'Article #1', 'Description #1', 'Body #1', 'user-1', 'tag-1', null],
+            ['article-2', 'Article #2', 'Description #2', 'Body #2', 'user-2', 'tag-2', 'user-1'],
         ];
     }
 
