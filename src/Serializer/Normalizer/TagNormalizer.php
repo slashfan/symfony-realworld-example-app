@@ -2,21 +2,22 @@
 
 namespace App\Serializer\Normalizer;
 
+use App\Entity\Tag;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
- * DateTimeNormalizer.
+ * TagNormalizer.
  */
-class DateTimeNormalizer implements NormalizerInterface
+class TagNormalizer implements NormalizerInterface
 {
     /**
      * {@inheritdoc}
      */
     public function normalize($object, $format = null, array $context = [])
     {
-        /* @var \DateTime $object */
+        /* @var Tag $object */
 
-        return $object->format(\DateTime::ATOM);
+        return $object->getName();
     }
 
     /**
@@ -24,6 +25,6 @@ class DateTimeNormalizer implements NormalizerInterface
      */
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \DateTime;
+        return $data instanceof Tag;
     }
 }
