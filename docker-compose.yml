@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+
+    php:
+        build: docker/php
+        volumes:
+            - "./:/symfony:cached"
+        depends_on:
+            - mysql
+
+    nginx:
+        build: docker/nginx
+        volumes:
+            - "./:/symfony:cached"
+        depends_on:
+            - php
+
+    mysql:
+        build: docker/mysql

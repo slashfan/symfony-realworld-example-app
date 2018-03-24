@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Serializer\Normalizer;
+
+use App\Entity\Article;
+use App\Entity\Comment;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
+/**
+ * CommentNormalizer.
+ */
+class CommentNormalizer implements NormalizerInterface, NormalizerAwareInterface
+{
+    use NormalizerAwareTrait;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function normalize($object, $format = null, array $context = [])
+    {
+        /* @var Article $object */
+
+        $data = [
+            'id' => $object->getId(),
+            'createdAt' => $object->getCreatedAt(),
+            'updatedAt' => $object->getCreatedAt(),
+            'body' => $object->getBody(),
+            'author' => $this->normalizer->normalize($object->getAuthor()),
+        ];
+
+        return $data;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function supportsNormalization($data, $format = null)
+    {
+        return $data instanceof Comment;
+    }
+}

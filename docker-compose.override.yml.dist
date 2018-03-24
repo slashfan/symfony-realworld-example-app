@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+
+    nginx:
+        ports:
+            - "80:80"
+
+    mysql:
+        ports:
+            - "3306:3306"
+        environment:
+          - "MYSQL_ROOT_PASSWORD=root"
+          - "MYSQL_USER=symfony"
+          - "MYSQL_PASSWORD=symfony"
+          - "MYSQL_DATABASE=symfony"
