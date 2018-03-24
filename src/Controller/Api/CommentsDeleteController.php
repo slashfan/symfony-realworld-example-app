@@ -5,6 +5,7 @@ namespace App\Controller\Api;
 use App\Entity\Comment;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -14,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/api/articles/{slug}/comments/{id}", name="api_comments_delete")
  * @Method("DELETE")
  * @View(statusCode=204)
+ * @IsGranted("OWNER", subject="comment")
  */
 class CommentsDeleteController
 {

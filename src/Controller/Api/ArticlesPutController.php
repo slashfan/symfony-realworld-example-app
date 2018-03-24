@@ -5,6 +5,7 @@ namespace App\Controller\Api;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
@@ -16,6 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @Route("/api/articles/{slug}", name="api_articles_put")
  * @Method("PUT")
+ * @IsGranted("OWNER", subject="article")
  */
 class ArticlesPutController
 {

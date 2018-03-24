@@ -5,6 +5,7 @@ namespace App\Controller\Api;
 use App\Entity\Article;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -15,6 +16,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @Route("/api/articles/{slug}", name="api_articles_delete")
  * @Method("DELETE")
  * @View(statusCode=204)
+ * @IsGranted("OWNER", subject="article")
  */
 class ArticlesDeleteController
 {

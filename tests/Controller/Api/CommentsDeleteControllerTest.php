@@ -10,7 +10,16 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class CommentsDeleteControllerTest extends WebTestCase
 {
-    public function testResponse()
+    public function testNotOK()
+    {
+        $client = $this->createAuthenticatedApiClient();
+        $client->request('DELETE', '/api/articles/article-2/comments/1');
+
+        $response = $client->getResponse();
+        $this->assertSame(Response::HTTP_FORBIDDEN, $response->getStatusCode());
+    }
+
+    public function testOK()
     {
         $client = $this->createAuthenticatedApiClient();
         $client->request('DELETE', '/api/articles/article-1/comments/2');

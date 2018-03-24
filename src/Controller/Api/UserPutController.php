@@ -2,16 +2,14 @@
 
 namespace App\Controller\Api;
 
-use App\Entity\User;
 use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
-use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -19,11 +17,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @Route("/api/user", name="api_users_put")
  * @Method("PUT")
- *
- * @Rest\View(
- *     statusCode=200,
- *     serializerGroups={"me"}
- * )
+ * @View(statusCode=200, serializerGroups={"me"})
  */
 class UserPutController
 {
@@ -33,27 +27,19 @@ class UserPutController
     protected $factory;
 
     /**
-     * @var UserPasswordEncoderInterface
-     */
-    protected $encoder;
-
-    /**
      * @var EntityManagerInterface
      */
     protected $manager;
 
     /**
-     * @param FormFactoryInterface         $factory
-     * @param UserPasswordEncoderInterface $encoder
-     * @param EntityManagerInterface       $manager
+     * @param FormFactoryInterface   $factory
+     * @param EntityManagerInterface $manager
      */
     public function __construct(
         FormFactoryInterface $factory,
-        UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $manager
     ) {
         $this->factory = $factory;
-        $this->encoder = $encoder;
         $this->manager = $manager;
     }
 
