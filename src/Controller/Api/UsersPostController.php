@@ -14,28 +14,27 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * UsersPostController.
- *
  * @Route("/api/users", name="api_users_post")
  * @Method("POST")
+ *
  * @View(statusCode=201, serializerGroups={"me"})
  */
-class UsersPostController
+final class UsersPostController
 {
     /**
      * @var FormFactoryInterface
      */
-    protected $factory;
+    private $formFactory;
 
     /**
      * @var UserPasswordEncoderInterface
      */
-    protected $encoder;
+    private $passwordEncoder;
 
     /**
      * @var EntityManagerInterface
      */
-    protected $manager;
+    private $entityManager;
 
     /**
      * @param FormFactoryInterface         $factory
@@ -47,9 +46,9 @@ class UsersPostController
         UserPasswordEncoderInterface $encoder,
         EntityManagerInterface $manager
     ) {
-        $this->factory = $factory;
-        $this->encoder = $encoder;
-        $this->manager = $manager;
+        $this->formFactory = $factory;
+        $this->passwordEncoder = $encoder;
+        $this->entityManager = $manager;
     }
 
     /**
@@ -61,13 +60,13 @@ class UsersPostController
     {
         $user = new User();
 
-        $form = $this->factory->createNamed('user', UserType::class, $user);
+        $form = $this->formFactory->createNamed('user', UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
-            $this->manager->persist($user);
-            $this->manager->flush();
+            $user->setPassword($this->passwordEncoder->encodePassword($user, $user->getPassword()));
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
 
             return ['user' => $user];
         }

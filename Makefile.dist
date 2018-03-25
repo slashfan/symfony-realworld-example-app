@@ -20,10 +20,19 @@ security:
 test:
 	rm -rf var/cache/test/* var/logs/test/*
 	bin/console cache:clear --env=test
+	bin/console doctrine:database:drop --force --env=test
+	bin/console doctrine:database:create --env=test
+	bin/console doctrine:schema:create --env=test
+	bin/console doctrine:fixtures:load --no-interaction --env=test
 	bin/phpunit
 
 test-coverage:
+	rm -rf var/cache/test/* var/logs/test/*
 	bin/console cache:clear --env=test
+	bin/console doctrine:database:drop --force --env=test
+	bin/console doctrine:database:create --env=test
+	bin/console doctrine:schema:create --env=test
+	bin/console doctrine:fixtures:load --no-interaction --env=test
 	php -dzend_extension=xdebug.so bin/phpunit --coverage-html=var/coverage/
 
 ##########################################################################

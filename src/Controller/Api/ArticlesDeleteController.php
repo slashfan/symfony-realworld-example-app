@@ -4,42 +4,37 @@ namespace App\Controller\Api;
 
 use App\Entity\Article;
 use Doctrine\ORM\EntityManagerInterface;
-use FOS\RestBundle\Controller\Annotations\View;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * ArticlesDeleteController.
- *
  * @Route("/api/articles/{slug}", name="api_articles_delete")
  * @Method("DELETE")
- * @View(statusCode=204)
- * @IsGranted("OWNER", subject="article")
+ *
+ * @Security("is_granted('ROLE_USER') and is_granted('OWNER', article)")
  */
-class ArticlesDeleteController
+final class ArticlesDeleteController
 {
     /**
      * @var EntityManagerInterface
      */
-    protected $manager;
+    private $entityManager;
 
     /**
      * @param EntityManagerInterface $manager
      */
     public function __construct(EntityManagerInterface $manager)
     {
-        $this->manager = $manager;
+        $this->entityManager = $manager;
     }
 
     /**
-     * @param UserInterface $user
-     * @param Article       $article
+     * @param Article $article
      */
-    public function __invoke(UserInterface $user, Article $article)
+    public function __invoke(Article $article)
     {
-        $this->manager->remove($article);
-        $this->manager->flush();
+        $this->entityManager->remove($article);
+        $this->entityManager->flush();
     }
 }

@@ -12,7 +12,7 @@ class ProfilesGetControllerTest extends WebTestCase
 {
     public function testResponse()
     {
-        $client = $this->createAuthenticatedApiClient();
+        $client = $this->createAnonymousApiClient();
         $client->request('GET', '/api/profiles/user1');
 
         $response = $client->getResponse();

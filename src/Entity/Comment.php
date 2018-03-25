@@ -36,6 +36,8 @@ class Comment
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     *
+     * @Assert\NotNull()
      */
     private $author;
 

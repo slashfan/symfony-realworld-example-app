@@ -7,24 +7,22 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * TagsListController.
- *
  * @Route("/api/tags", name="api_tags_list")
  * @Method("GET")
  */
-class TagsListController
+final class TagsListController
 {
     /**
      * @var TagRepository
      */
-    private $repository;
+    private $tagRepository;
 
     /**
      * @param TagRepository $repository
      */
     public function __construct(TagRepository $repository)
     {
-        $this->repository = $repository;
+        $this->tagRepository = $repository;
     }
 
     /**
@@ -32,6 +30,6 @@ class TagsListController
      */
     public function __invoke()
     {
-        return ['tags' => $this->repository->findAll()];
+        return ['tags' => $this->tagRepository->findAll()];
     }
 }

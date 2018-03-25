@@ -37,7 +37,11 @@ security:
                 authenticators:
                     - App\Security\JWTAuthenticator
 
-    access_control:
-        - { path: ^/api/users, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/articles, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api, roles: ROLE_USER }
+#    access_control:
+#        - { path: ^/api/users/login, methods: [POST], roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/api/users, methods: [POST], roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/api/tags, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/api/articles$, methods: [GET], roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/api/articles/([A-Za-z0-9])$, methods: [GET], roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/api, roles: ROLE_USER }
+#        - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY }

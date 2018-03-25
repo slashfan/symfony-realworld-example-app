@@ -12,7 +12,7 @@ class ArticlesListControllerTest extends WebTestCase
 {
     public function testResponse()
     {
-        $client = $this->createAuthenticatedApiClient();
+        $client = $this->createAnonymousApiClient();
         $client->request('GET', '/api/articles');
 
         $response = $client->getResponse();

@@ -3,6 +3,7 @@
 namespace App\Serializer\Normalizer;
 
 use App\Entity\User;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
@@ -21,11 +22,18 @@ class UserNormalizer implements NormalizerInterface, NormalizerAwareInterface
     private $tokenStorage;
 
     /**
-     * @param TokenStorageInterface $tokenStorage
+     * @var JWTTokenManagerInterface
      */
-    public function __construct(TokenStorageInterface $tokenStorage)
+    private $jwtManager;
+
+    /**
+     * @param TokenStorageInterface    $tokenStorage
+     * @param JWTTokenManagerInterface $jwtManager
+     */
+    public function __construct(TokenStorageInterface $tokenStorage, JWTTokenManagerInterface $jwtManager)
     {
         $this->tokenStorage = $tokenStorage;
+        $this->jwtManager = $jwtManager;
     }
 
     /**
@@ -43,6 +51,7 @@ class UserNormalizer implements NormalizerInterface, NormalizerAwareInterface
 
         if (isset($context['groups']) && in_array('me', $context['groups'], true)) {
             $data['email'] = $object->getEmail();
+            $data['token'] = $this->jwtManager->create($object);
         } else {
             /** @var User $user */
             $user = $this->tokenStorage->getToken() ? $this->tokenStorage->getToken()->getUser() : null;

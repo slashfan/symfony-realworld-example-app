@@ -3,47 +3,55 @@
 namespace App\Controller\Api;
 
 use App\Entity\Article;
-use App\Entity\User;
+use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * ArticlesUnfavoriteController.
- *
  * @Route("/api/articles/{slug}/favorites", name="api_article_unfavorite")
  * @Method("DELETE")
+ *
  * @View(statusCode=200)
+ *
+ * @Security("is_granted('ROLE_USER')")
  */
-class ArticlesUnfavoriteController
+final class ArticlesUnfavoriteController
 {
     /**
      * @var EntityManagerInterface
      */
-    protected $manager;
+    private $entityManager;
 
     /**
-     * @param EntityManagerInterface $manager
+     * @var UserResolver
      */
-    public function __construct(EntityManagerInterface $manager)
+    private $userResolver;
+
+    /**
+     * @param EntityManagerInterface $entityManager
+     * @param UserResolver           $userResolver
+     */
+    public function __construct(EntityManagerInterface $entityManager, UserResolver $userResolver)
     {
-        $this->manager = $manager;
+        $this->entityManager = $entityManager;
+        $this->userResolver = $userResolver;
     }
 
     /**
-     * @param UserInterface $user
-     * @param Article       $article
+     * @param Article $article
+     *
+     * @throws \Exception
      *
      * @return array
      */
-    public function __invoke(UserInterface $user, Article $article)
+    public function __invoke(Article $article)
     {
-        /* @var User $user */
-
+        $user = $this->userResolver->getCurrentUser();
         $user->removeFromFavorites($article);
-        $this->manager->flush();
+        $this->entityManager->flush();
 
         return ['article' => $article];
     }

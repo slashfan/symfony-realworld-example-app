@@ -3,59 +3,72 @@
 namespace App\Controller\Api;
 
 use App\Form\UserType;
+use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * UserPutController.
- *
  * @Route("/api/user", name="api_users_put")
  * @Method("PUT")
+ *
  * @View(statusCode=200, serializerGroups={"me"})
+ *
+ * @Security("is_granted('ROLE_USER')")
  */
-class UserPutController
+final class UserPutController
 {
     /**
      * @var FormFactoryInterface
      */
-    protected $factory;
+    private $formFactory;
 
     /**
      * @var EntityManagerInterface
      */
-    protected $manager;
+    private $entityManager;
 
     /**
-     * @param FormFactoryInterface   $factory
-     * @param EntityManagerInterface $manager
+     * @var UserResolver
+     */
+    private $userResolver;
+
+    /**
+     * @param FormFactoryInterface   $formFactory
+     * @param EntityManagerInterface $entityManager
+     * @param UserResolver           $userResolver
      */
     public function __construct(
-        FormFactoryInterface $factory,
-        EntityManagerInterface $manager
+        FormFactoryInterface $formFactory,
+        EntityManagerInterface $entityManager,
+        UserResolver $userResolver
     ) {
-        $this->factory = $factory;
-        $this->manager = $manager;
+        $this->formFactory = $formFactory;
+        $this->entityManager = $entityManager;
+        $this->userResolver = $userResolver;
     }
 
     /**
-     * @param UserInterface $user
-     * @param Request       $request
+     * @param Request $request
+     *
+     * @throws \Exception
      *
      * @return array|FormInterface
      */
-    public function __invoke(UserInterface $user, Request $request)
+    public function __invoke(Request $request)
     {
-        $form = $this->factory->createNamed('user', UserType::class, $user);
+        $user = $this->userResolver->getCurrentUser();
+
+        $form = $this->formFactory->createNamed('user', UserType::class, $user);
         $form->submit($request->request->get('user'), false);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->manager->flush();
+            $this->entityManager->flush();
 
             return ['user' => $user];
         }

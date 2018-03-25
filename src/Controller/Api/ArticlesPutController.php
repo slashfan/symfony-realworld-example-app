@@ -5,31 +5,30 @@ namespace App\Controller\Api;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * ArticlesPutController.
- *
  * @Route("/api/articles/{slug}", name="api_articles_put")
  * @Method("PUT")
- * @IsGranted("OWNER", subject="article")
+ *
+ * @Security("is_granted('ROLE_USER') and is_granted('OWNER', article)")
  */
-class ArticlesPutController
+final class ArticlesPutController
 {
     /**
      * @var FormFactoryInterface
      */
-    protected $factory;
+    private $formFactory;
 
     /**
      * @var EntityManagerInterface
      */
-    protected $manager;
+    private $entityManager;
 
     /**
      * @param FormFactoryInterface   $factory
@@ -37,8 +36,8 @@ class ArticlesPutController
      */
     public function __construct(FormFactoryInterface $factory, EntityManagerInterface $manager)
     {
-        $this->factory = $factory;
-        $this->manager = $manager;
+        $this->formFactory = $factory;
+        $this->entityManager = $manager;
     }
 
     /**
@@ -49,11 +48,11 @@ class ArticlesPutController
      */
     public function __invoke(Request $request, Article $article)
     {
-        $form = $this->factory->createNamed('article', ArticleType::class, $article);
+        $form = $this->formFactory->createNamed('article', ArticleType::class, $article);
         $form->submit($request->request->get('article'), false);
 
         if ($form->isValid()) {
-            $this->manager->flush();
+            $this->entityManager->flush();
 
             return ['article' => $article];
         }
