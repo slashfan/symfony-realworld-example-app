@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Security;
+namespace App\Security\Guard;
 
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Guard\JWTTokenAuthenticator as BaseJWTAuthenticator;
 use Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\AuthorizationHeaderTokenExtractor;
@@ -15,9 +15,6 @@ class JWTAuthenticator extends BaseJWTAuthenticator
      */
     protected function getTokenExtractor()
     {
-        $chainExtractor = parent::getTokenExtractor();
-        $chainExtractor->addExtractor(new AuthorizationHeaderTokenExtractor('Token', 'Authorization'));
-
-        return $chainExtractor;
+        return new AuthorizationHeaderTokenExtractor('Token', 'Authorization');
     }
 }

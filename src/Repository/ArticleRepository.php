@@ -51,7 +51,7 @@ class ArticleRepository extends ServiceEntityRepository
      *
      * @return Article[]
      */
-    public function getFollowedUsersArticles(User $user, int $offset = 0, int $limit = 20)
+    public function getFollowedUsersArticles(User $user, int $offset, int $limit)
     {
         return $this
             ->createQueryBuilder('a')
