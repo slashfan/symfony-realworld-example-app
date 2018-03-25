@@ -53,7 +53,6 @@ class UserNormalizer implements NormalizerInterface, NormalizerAwareInterface
             $data['email'] = $object->getEmail();
             $data['token'] = $this->jwtManager->create($object);
         } else {
-            /** @var User $user */
             $user = $this->tokenStorage->getToken() ? $this->tokenStorage->getToken()->getUser() : null;
             $data['following'] = $user instanceof User ? $user->follows($object) : false;
         }
