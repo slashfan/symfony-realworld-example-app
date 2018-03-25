@@ -271,6 +271,14 @@ class User implements UserInterface
     }
 
     /**
+     * @return ArrayCollection|User[]
+     */
+    public function getFolloweds()
+    {
+        return $this->followed;
+    }
+
+    /**
      * @return ArrayCollection|Article[]
      */
     public function getFavorites()
