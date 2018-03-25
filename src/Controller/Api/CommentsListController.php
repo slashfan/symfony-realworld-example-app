@@ -8,24 +8,22 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * CommentsListController.
- *
  * @Route("/api/articles/{slug}/comments", name="api_comments_list")
  * @Method("GET")
  */
-class CommentsListController
+final class CommentsListController
 {
     /**
      * @var CommentRepository
      */
-    private $repository;
+    private $commentRepository;
 
     /**
      * @param CommentRepository $repository
      */
     public function __construct(CommentRepository $repository)
     {
-        $this->repository = $repository;
+        $this->commentRepository = $repository;
     }
 
     /**
@@ -35,6 +33,6 @@ class CommentsListController
      */
     public function __invoke(Article $article)
     {
-        return ['comments' => $this->repository->findBy(['article' => $article])];
+        return ['comments' => $this->commentRepository->findBy(['article' => $article])];
     }
 }

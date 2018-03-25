@@ -9,29 +9,28 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * ArticlesListController.
- *
  * @Route("/api/articles", name="api_articles_list")
  * @Method("GET")
+ *
  * @QueryParam(name="tag", requirements="[A-Za-z]+", nullable=true)
  * @QueryParam(name="author", requirements="[A-Za-z0-9]+", nullable=true)
  * @QueryParam(name="favorited", requirements="[A-Za-z0-9]+", nullable=true)
  * @QueryParam(name="limit", requirements="\d+", default="20")
  * @QueryParam(name="offset", requirements="\d+", default="0")
  */
-class ArticlesListController
+final class ArticlesListController
 {
     /**
      * @var ArticleRepository
      */
-    private $repository;
+    private $articleRepository;
 
     /**
      * @param ArticleRepository $repository
      */
     public function __construct(ArticleRepository $repository)
     {
-        $this->repository = $repository;
+        $this->articleRepository = $repository;
     }
 
     /**
@@ -41,7 +40,7 @@ class ArticlesListController
      */
     public function __invoke(ParamFetcher $paramFetcher)
     {
-        $articles = $this->repository->getArticles(
+        $articles = $this->articleRepository->getArticles(
             (int) $paramFetcher->get('offset'),
             (int) $paramFetcher->get('limit'),
             $paramFetcher->get('tag'),

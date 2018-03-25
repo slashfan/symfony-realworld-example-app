@@ -7,12 +7,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * ProfilesGetController.
- *
  * @Route("/api/profiles/{username}", name="api_profiles_get")
  * @Method("GET")
  */
-class ProfilesGetController
+final class ProfilesGetController
 {
     /**
      * @param User $profile

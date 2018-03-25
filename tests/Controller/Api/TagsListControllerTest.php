@@ -12,7 +12,7 @@ class TagsListControllerTest extends WebTestCase
 {
     public function testResponse()
     {
-        $client = $this->createAuthenticatedApiClient();
+        $client = $this->createAnonymousApiClient();
         $client->request('GET', '/api/tags');
 
         $response = $client->getResponse();

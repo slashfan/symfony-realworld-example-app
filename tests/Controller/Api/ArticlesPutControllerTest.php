@@ -10,7 +10,16 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ArticlesPutControllerTest extends WebTestCase
 {
-    public function testNotOK()
+    public function testAsAnonymous()
+    {
+        $client = $this->createAnonymousApiClient();
+        $client->request('PUT', '/api/articles/article-2');
+
+        $response = $client->getResponse();
+        $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
+    }
+
+    public function testAsNotOwner()
     {
         $client = $this->createAuthenticatedApiClient();
         $client->request('PUT', '/api/articles/article-2');
@@ -19,7 +28,7 @@ class ArticlesPutControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_FORBIDDEN, $response->getStatusCode());
     }
 
-    public function testOK()
+    public function testAsOwner()
     {
         $client = $this->createAuthenticatedApiClient();
         $client->request('PUT', '/api/articles/article-1', [], [], [], json_encode([

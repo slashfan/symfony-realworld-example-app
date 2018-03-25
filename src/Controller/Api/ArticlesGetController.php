@@ -7,12 +7,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * ArticlesGetController.
- *
  * @Route("/api/articles/{slug}", name="api_articles_get")
  * @Method("GET")
  */
-class ArticlesGetController
+final class ArticlesGetController
 {
     /**
      * @param Article $article

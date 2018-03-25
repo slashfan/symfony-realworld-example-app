@@ -10,7 +10,16 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ProfilesFollowControllerTest extends WebTestCase
 {
-    public function testResponse()
+    public function testAsAnonymous()
+    {
+        $client = $this->createAnonymousApiClient();
+        $client->request('POST', '/api/profiles/user2/follow');
+
+        $response = $client->getResponse();
+        $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
+    }
+
+    public function testAsAuthenticated()
     {
         $client = $this->createAuthenticatedApiClient();
         $client->request('POST', '/api/profiles/user2/follow');

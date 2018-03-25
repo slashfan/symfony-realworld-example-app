@@ -6,12 +6,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * UsersLoginController.
- *
  * @Route("/api/users/login", name="api_users_login")
  * @Method("POST")
  */
-class UsersLoginController
+final class UsersLoginController
 {
     /**
      * @throws \RuntimeException

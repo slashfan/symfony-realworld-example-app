@@ -4,66 +4,79 @@ namespace App\Controller\Api;
 
 use App\Entity\Article;
 use App\Entity\Comment;
-use App\Entity\User;
 use App\Form\CommentType;
+use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * CommentPostController.
- *
  * @Route("/api/articles/{slug}/comments", name="api_comment_post")
  * @Method("POST")
+ *
  * @View(statusCode=201)
+ *
+ * @Security("is_granted('ROLE_USER')")
  */
-class CommentPostController
+final class CommentPostController
 {
     /**
      * @var FormFactoryInterface
      */
-    protected $factory;
+    private $formFactory;
 
     /**
      * @var EntityManagerInterface
      */
-    protected $manager;
+    private $entityManager;
 
     /**
-     * @param FormFactoryInterface   $factory
-     * @param EntityManagerInterface $manager
+     * @var UserResolver
      */
-    public function __construct(FormFactoryInterface $factory, EntityManagerInterface $manager)
-    {
-        $this->factory = $factory;
-        $this->manager = $manager;
+    private $userResolver;
+
+    /**
+     * @param FormFactoryInterface   $formFactory
+     * @param EntityManagerInterface $entityManager
+     * @param UserResolver           $userResolver
+     */
+    public function __construct(
+        FormFactoryInterface $formFactory,
+        EntityManagerInterface $entityManager,
+        UserResolver $userResolver
+    ) {
+        $this->formFactory = $formFactory;
+        $this->entityManager = $entityManager;
+        $this->userResolver = $userResolver;
     }
 
     /**
-     * @param UserInterface $user
-     * @param Request       $request
-     * @param Article       $article
+     * @param Request $request
+     * @param Article $article
+     *
+     * @throws \Exception
      *
      * @return array|FormInterface
      */
-    public function __invoke(UserInterface $user, Request $request, Article $article)
+    public function __invoke(Request $request, Article $article)
     {
-        /** @var User $user */
+        $user = $this->userResolver->getCurrentUser();
+
         $comment = new Comment();
         $comment->setAuthor($user);
         $comment->setArticle($article);
 
-        $form = $this->factory->createNamed('comment', CommentType::class, $comment);
-        $form->handleRequest($request);
+        $form = $this->formFactory->createNamed('comment', CommentType::class, $comment);
+        $form->submit($request->request->get('comment'));
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->manager->persist($comment);
-            $this->manager->flush();
+        if ($form->isValid()) {
+            $this->entityManager->persist($comment);
+            $this->entityManager->flush();
 
             return ['comment' => $comment];
         }
