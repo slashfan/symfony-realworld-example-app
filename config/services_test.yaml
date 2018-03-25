@@ -7,10 +7,3 @@ services:
     # aliases are prefixed with test. For example:
     #
     # test.App\Service\MyService: '@App\Service\MyService'
-
-    app.fixtures.user_processor:
-        class: App\DataFixtures\Processor\UserProcessor
-        arguments:
-            - "@security.password_encoder"
-        tags:
-            - { name: hautelook_alice.alice.processor }

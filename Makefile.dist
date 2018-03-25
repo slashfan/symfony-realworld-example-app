@@ -15,7 +15,7 @@ lint:
 	bin/console lint:yaml config/
 
 security:
-	bin/console security:check
+	vendor/bin/security-checker security:check
 
 test:
 	rm -rf var/cache/test/* var/logs/test/*
@@ -41,26 +41,26 @@ reload: clear doctrine_schema doctrine_fixtures
 
 clear:
 	rm -rf var/cache/dev/* var/logs/dev/*
-	bin/console cache:clear
+	bin/console cache:clear --env=dev
 
 doctrine_schema:
-	bin/console doctrine:database:drop --force
-	bin/console doctrine:database:create
-	bin/console doctrine:schema:create
+	bin/console doctrine:database:drop --force  --env=dev
+	bin/console doctrine:database:create --env=dev
+	bin/console doctrine:schema:create --env=dev
 
 doctrine_fixtures:
-	bin/console doctrine:fixtures:load --no-interaction
+	bin/console doctrine:fixtures:load --no-interaction --env=dev
 
 ##########################################################################
 
 build:
-	composer install -o
-	bin/console doctrine:cache:clear-metadata
-	bin/console doctrine:cache:clear-query
-	bin/console doctrine:cache:clear-result
+	APP_ENV=dev composer install -o
+	bin/console doctrine:cache:clear-metadata --env=dev
+	bin/console doctrine:cache:clear-query --env=dev
+	bin/console doctrine:cache:clear-result --env=dev
 
 build-prod:
-	SYMFONY_ENV=prod composer install -o
+	APP_ENV=prod composer install -o --no-dev
 	bin/console cache:clear --env=prod
 	bin/console doctrine:cache:clear-metadata --env=prod
 	bin/console doctrine:cache:clear-query --env=prod
