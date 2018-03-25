@@ -34,14 +34,32 @@ class ArticleRepository extends ServiceEntityRepository
      */
     public function getArticles(int $offset, int $limit, ?string $tag, ?string $author, ?string $favorited)
     {
-        return $this
+        $qb = $this
             ->createQueryBuilder('a')
+            ->innerJoin('a.author', 'author')
             ->orderBy('a.id', 'desc')
             ->setFirstResult($offset)
             ->setMaxResults($limit)
-            ->getQuery()
-            ->getResult()
         ;
+
+        if ($tag) {
+            $qb->innerJoin('a.tags', 't');
+            $qb->andWhere('t.name = :tag');
+            $qb->setParameter('tag', $tag);
+        }
+
+        if ($author) {
+            $qb->andWhere('author.username = :author_username');
+            $qb->setParameter('author_username', $author);
+        }
+
+        if ($favorited) {
+            $qb->innerJoin('a.favoritedBy', 'favoritedBy');
+            $qb->andWhere('favoritedBy.username = :favoritedby_username');
+            $qb->setParameter('favoritedby_username', $favorited);
+        }
+
+        return $qb->getQuery()->getResult();
     }
 
     /**
@@ -55,11 +73,13 @@ class ArticleRepository extends ServiceEntityRepository
     {
         return $this
             ->createQueryBuilder('a')
+            ->innerJoin('a.author', 'author')
+            ->andWhere('author IN (:authors_ids)')
+            ->setParameter('authors_ids', $user->getFolloweds())
             ->orderBy('a.id', 'desc')
             ->setFirstResult($offset)
             ->setMaxResults($limit)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 }

@@ -19,9 +19,15 @@ class ArticlesFeedControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
-    public function testAsAuthenticated()
+    /**
+     * @param string $user
+     * @param int    $expectedCount
+     *
+     * @dataProvider get
+     */
+    public function testAsAuthenticated(string $user, int $expectedCount)
     {
-        $client = $this->createAuthenticatedApiClient();
+        $client = $this->createAuthenticatedApiClient($user);
         $client->request('GET', '/api/articles/feed');
 
         $response = $client->getResponse();
@@ -30,5 +36,14 @@ class ArticlesFeedControllerTest extends WebTestCase
         $data = json_decode($response->getContent(), true);
         $this->assertArrayHasKey('articles', $data);
         $this->assertArrayHasKey('articlesCount', $data);
+        $this->assertSame($expectedCount, $data['articlesCount']);
+    }
+
+    public function get(): array
+    {
+        return [
+            ['user1@realworld.tld', 0],
+            ['user2@realworld.tld', 1],
+        ];
     }
 }
