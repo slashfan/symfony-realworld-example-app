@@ -18,7 +18,6 @@ Create keys for JWT authentication
 ```bash
 openssl genrsa -out config/jwt/private.pem -aes256 4096
 openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
-# edit .env file and adapt the JWT_PASSPHRASE variable
 ```
 
 Configure environment variables (JWT_PASSPHRASE and DATABASE_URL)
