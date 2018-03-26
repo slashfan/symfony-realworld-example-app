@@ -1,10 +1,16 @@
-Symfony RealWorld example app
-=============================
+# ![RealWorld Example App](logo.png)
 
-**Unofficial** Symfony codebase containing real world examples (CRUD, auth, advanced patterns, etc) 
-that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) API spec.
+> ### Symfony codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld) spec and API.
 
-## Install project
+### [Demo](https://github.com/gothinkster/realworld)&nbsp;&nbsp;&nbsp;&nbsp;[RealWorld](https://github.com/gothinkster/realworld)
+
+This codebase was created to demonstrate a fully fledged fullstack application built with **Symfony** including CRUD operations, authentication, routing, pagination, and more.
+
+We've gone to great lengths to adhere to the **Symfony** community styleguides & best practices.
+
+For more information on how to this works with other frontends/backends, head over to the [RealWorld](https://github.com/gothinkster/realworld) repo.
+
+# Getting started
 
 Clone project
 
@@ -40,7 +46,7 @@ bin/console doctrine:schema:create --env=dev
 bin/console doctrine:fixtures:load --no-interaction --env=dev
 ```
 
-## Run project
+# Run project
 
 Use the provided docker configuration (http://localhost)
 
@@ -55,7 +61,7 @@ Or the simple symfony development webserver (http://localhost:8000)
 bin/console server:run
 ```
 
-## Run tests suite
+# Run tests suite
 
 ```bash
 bin/console cache:clear --env=test
