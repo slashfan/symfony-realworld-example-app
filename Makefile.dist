@@ -13,6 +13,7 @@ cs:
 
 lint:
 	bin/console lint:yaml config/
+	bin/console lint:yaml fixtures/
 
 security:
 	vendor/bin/security-checker security:check
@@ -35,20 +36,12 @@ test-coverage:
 	bin/console doctrine:fixtures:load --no-interaction --env=test
 	php -dzend_extension=xdebug.so bin/phpunit --coverage-html=var/coverage/
 
-##########################################################################
-
-reload: clear doctrine_schema doctrine_fixtures
-
-clear:
+reload:
 	rm -rf var/cache/dev/* var/logs/dev/*
 	bin/console cache:clear --env=dev
-
-doctrine_schema:
 	bin/console doctrine:database:drop --force  --env=dev
 	bin/console doctrine:database:create --env=dev
-	bin/console doctrine:schema:create --env=dev
-
-doctrine_fixtures:
+	bin/console doctrine:migrations:migrate --no-interaction --env=dev
 	bin/console doctrine:fixtures:load --no-interaction --env=dev
 
 ##########################################################################

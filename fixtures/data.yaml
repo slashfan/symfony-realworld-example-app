@@ -1,0 +1,43 @@
+App\Entity\Tag:
+    tag_1:
+        name: 'lorem'
+    tag_2:
+        name: 'ipsum'
+
+App\Entity\User:
+    user_1:
+        username: 'user1'
+        email: 'user1@realworld.tld'
+        password: 'password'
+        image: 'https://www.shareicon.net/male-headset-young-man-person-support-avatar-106428'
+        bio: 'Bio'
+        followers: ['@user_2']
+        favorites: ['@article_1']
+    user_2:
+        username: 'user2'
+        email: 'user2@realworld.tld'
+        password: 'password'
+
+App\Entity\Article:
+    article_1:
+        title: 'Article #1'
+        description: 'Description #1'
+        body: 'Body #1'
+        author: '@user_1'
+        tags: ['@tag_1', '@tag_2']
+    article_2:
+        title: 'Article #2'
+        description: 'Description #2'
+        body: 'Body #2'
+        author: '@user_2'
+        tags: ['@tag_2']
+
+App\Entity\Comment:
+    comment_1:
+        body: 'Comment #1'
+        article: '@article_1'
+        author: '@user_2'
+    comment_2:
+        body: 'Comment #2'
+        article: '@article_2'
+        author: '@user_1'

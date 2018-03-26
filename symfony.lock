@@ -134,8 +134,14 @@
     "monolog/monolog": {
         "version": "1.23.0"
     },
+    "myclabs/deep-copy": {
+        "version": "1.7.0"
+    },
     "namshi/jose": {
         "version": "7.2.3"
+    },
+    "nelmio/alice": {
+        "version": "v3.2.2"
     },
     "nelmio/cors-bundle": {
         "version": "1.5",
