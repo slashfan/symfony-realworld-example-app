@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\User;
 
 use App\Security\UserResolver;
 use FOS\RestBundle\Controller\Annotations\View;
@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @Security("is_granted('ROLE_USER')")
  */
-final class UserGetController
+final class GetUserController
 {
     /**
      * @var UserResolver

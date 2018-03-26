@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\Comment;
 
 use App\Entity\Article;
 use App\Repository\CommentRepository;
@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/api/articles/{slug}/comments", name="api_comments_list")
  * @Method("GET")
  */
-final class CommentsListController
+final class GetCommentsListController
 {
     /**
      * @var CommentRepository

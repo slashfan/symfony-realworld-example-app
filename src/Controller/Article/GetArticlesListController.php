@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\Article;
 
 use App\Repository\ArticleRepository;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @QueryParam(name="limit", requirements="\d+", default="20")
  * @QueryParam(name="offset", requirements="\d+", default="0")
  */
-final class ArticlesListController
+final class GetArticlesListController
 {
     /**
      * @var ArticleRepository

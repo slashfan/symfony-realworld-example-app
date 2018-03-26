@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\Article;
 
-use App\Form\UserType;
+use App\Entity\Article;
+use App\Form\ArticleType;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
@@ -14,14 +15,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/user", name="api_users_put")
- * @Method("PUT")
+ * @Route("/api/articles", name="api_articles_post")
+ * @Method("POST")
  *
- * @View(statusCode=200, serializerGroups={"me"})
+ * @View(statusCode=201)
  *
  * @Security("is_granted('ROLE_USER')")
  */
-final class UserPutController
+final class CreateArticleController
 {
     /**
      * @var FormFactoryInterface
@@ -64,13 +65,17 @@ final class UserPutController
     {
         $user = $this->userResolver->getCurrentUser();
 
-        $form = $this->formFactory->createNamed('user', UserType::class, $user);
-        $form->submit($request->request->get('user'), false);
+        $article = new Article();
+        $article->setAuthor($user);
+
+        $form = $this->formFactory->createNamed('article', ArticleType::class, $article);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->persist($article);
             $this->entityManager->flush();
 
-            return ['user' => $user];
+            return ['article' => $article];
         }
 
         return $form;

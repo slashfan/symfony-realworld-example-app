@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\Comment;
 
 use App\Entity\Article;
 use App\Entity\Comment;
@@ -23,7 +23,7 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @Security("is_granted('ROLE_USER')")
  */
-final class CommentPostController
+final class CreateCommentController
 {
     /**
      * @var FormFactoryInterface

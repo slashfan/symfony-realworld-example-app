@@ -64,6 +64,8 @@ class Article
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     *
+     * @Assert\NotNull()
      */
     private $author;
 

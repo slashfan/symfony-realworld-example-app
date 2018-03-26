@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\Article;
 
 use App\Entity\Article;
 use App\Form\ArticleType;
@@ -16,9 +16,9 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/api/articles/{slug}", name="api_articles_put")
  * @Method("PUT")
  *
- * @Security("is_granted('ROLE_USER') and is_granted('OWNER', article)")
+ * @Security("is_granted('ROLE_USER') and is_granted('AUTHOR', article)")
  */
-final class ArticlesPutController
+final class UpdateArticleController
 {
     /**
      * @var FormFactoryInterface

@@ -27,20 +27,19 @@ class ArticleRepository extends ServiceEntityRepository
      * @param int         $offset
      * @param int         $limit
      * @param null|string $tag
-     * @param null|string $author
-     * @param null|string $favorited
+     * @param null|string $authorUsername
+     * @param null|string $favoritedByUsername
      *
      * @return Article[]
      */
-    public function getArticles(int $offset, int $limit, ?string $tag, ?string $author, ?string $favorited)
+    public function getArticles(int $offset, int $limit, ?string $tag, ?string $authorUsername, ?string $favoritedByUsername)
     {
         $qb = $this
             ->createQueryBuilder('a')
             ->innerJoin('a.author', 'author')
             ->orderBy('a.id', 'desc')
             ->setFirstResult($offset)
-            ->setMaxResults($limit)
-        ;
+            ->setMaxResults($limit);
 
         if ($tag) {
             $qb->innerJoin('a.tags', 't');
@@ -48,15 +47,15 @@ class ArticleRepository extends ServiceEntityRepository
             $qb->setParameter('tag', $tag);
         }
 
-        if ($author) {
+        if ($authorUsername) {
             $qb->andWhere('author.username = :author_username');
-            $qb->setParameter('author_username', $author);
+            $qb->setParameter('author_username', $authorUsername);
         }
 
-        if ($favorited) {
+        if ($favoritedByUsername) {
             $qb->innerJoin('a.favoritedBy', 'favoritedBy');
             $qb->andWhere('favoritedBy.username = :favoritedby_username');
-            $qb->setParameter('favoritedby_username', $favorited);
+            $qb->setParameter('favoritedby_username', $favoritedByUsername);
         }
 
         return $qb->getQuery()->getResult();

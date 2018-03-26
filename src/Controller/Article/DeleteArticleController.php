@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\Article;
 
 use App\Entity\Article;
 use Doctrine\ORM\EntityManagerInterface;
@@ -12,9 +12,9 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/api/articles/{slug}", name="api_articles_delete")
  * @Method("DELETE")
  *
- * @Security("is_granted('ROLE_USER') and is_granted('OWNER', article)")
+ * @Security("is_granted('ROLE_USER') and is_granted('AUTHOR', article)")
  */
-final class ArticlesDeleteController
+final class DeleteArticleController
 {
     /**
      * @var EntityManagerInterface
