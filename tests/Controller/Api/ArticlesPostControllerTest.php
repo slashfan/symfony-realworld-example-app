@@ -27,7 +27,11 @@ class ArticlesPostControllerTest extends WebTestCase
                 'title' => 'Article #3',
                 'description' => 'Description #3',
                 'body' => 'Body #3',
-                'tags' => [],
+                'tagList' => [
+                    ' lorem',
+                    'ipsum',
+                    'dolor',
+                ],
             ],
         ]));
 
@@ -36,5 +40,16 @@ class ArticlesPostControllerTest extends WebTestCase
 
         $data = json_decode($response->getContent(), true);
         $this->assertArrayHasKey('article', $data);
+        $this->assertArrayHasKey('title', $data['article']);
+        $this->assertArrayHasKey('description', $data['article']);
+        $this->assertArrayHasKey('body', $data['article']);
+        $this->assertArrayHasKey('tagList', $data['article']);
+        $this->assertSame('Article #3', $data['article']['title']);
+        $this->assertSame('Description #3', $data['article']['description']);
+        $this->assertSame('Body #3', $data['article']['body']);
+        $this->assertCount(3, $data['article']['tagList']);
+        $this->assertContains('lorem', $data['article']['tagList']);
+        $this->assertContains('ipsum', $data['article']['tagList']);
+        $this->assertContains('dolor', $data['article']['tagList']);
     }
 }
