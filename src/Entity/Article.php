@@ -70,7 +70,7 @@ class Article
     /**
      * @var ArrayCollection|Tag[]
      *
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tag")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", cascade={"persist"})
      * @ORM\JoinTable(name="rw_article_tag")
      */
     private $tags;

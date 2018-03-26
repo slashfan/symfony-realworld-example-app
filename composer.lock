@@ -5327,16 +5327,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.0.0",
+            "version": "v4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "9c18e3db49fa469f5feffe40dbd7b1ec2b61e41f"
+                "reference": "e4a54fa90a5cd8e8dd3fb4099942681731c5cdd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/9c18e3db49fa469f5feffe40dbd7b1ec2b61e41f",
-                "reference": "9c18e3db49fa469f5feffe40dbd7b1ec2b61e41f",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/e4a54fa90a5cd8e8dd3fb4099942681731c5cdd3",
+                "reference": "e4a54fa90a5cd8e8dd3fb4099942681731c5cdd3",
                 "shasum": ""
             },
             "require": {
@@ -5374,7 +5374,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2018-02-28T20:39:30+00:00"
+            "time": "2018-03-25T17:35:16+00:00"
         },
         {
             "name": "php-cs-fixer/diff",
