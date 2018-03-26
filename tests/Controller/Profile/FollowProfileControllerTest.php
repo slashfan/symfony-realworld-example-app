@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Tests\Controller\Api;
+namespace App\Tests\Controller\Profile;
 
 use App\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * ProfilesUnfollowControllerTest.
+ * ProfilesFollowControllerTest.
  */
-class ProfilesUnfollowControllerTest extends WebTestCase
+class FollowProfileControllerTest extends WebTestCase
 {
     public function testAsAnonymous()
     {
         $client = $this->createAnonymousApiClient();
-        $client->request('DELETE', '/api/profiles/user2/follow');
+        $client->request('POST', '/api/profiles/user2/follow');
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
@@ -22,7 +22,7 @@ class ProfilesUnfollowControllerTest extends WebTestCase
     public function testAsAuthenticated()
     {
         $client = $this->createAuthenticatedApiClient();
-        $client->request('DELETE', '/api/profiles/user2/follow');
+        $client->request('POST', '/api/profiles/user2/follow');
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());

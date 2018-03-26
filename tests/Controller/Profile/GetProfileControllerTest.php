@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Controller\Api;
+namespace App\Tests\Controller\Profile;
 
 use App\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * ProfilesGetControllerTest.
  */
-class ProfilesGetControllerTest extends WebTestCase
+class GetProfileControllerTest extends WebTestCase
 {
     public function testResponse()
     {

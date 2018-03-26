@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Tests\Controller\Api;
+namespace App\Tests\Controller\User;
 
 use App\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * ArticlesUnfavoriteControllerTest.
+ * UserGetControllerTest.
  */
-class ArticlesUnfavoriteControllerTest extends WebTestCase
+class GetUserControllerTest extends WebTestCase
 {
     public function testAsAnonymous()
     {
         $client = $this->createAnonymousApiClient();
-        $client->request('DELETE', '/api/articles/article-2/favorites');
+        $client->request('GET', '/api/user');
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
@@ -22,12 +22,15 @@ class ArticlesUnfavoriteControllerTest extends WebTestCase
     public function testAsAuthenticated()
     {
         $client = $this->createAuthenticatedApiClient();
-        $client->request('DELETE', '/api/articles/article-2/favorites');
+        $client->request('GET', '/api/user');
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
         $data = json_decode($response->getContent(), true);
-        $this->assertArrayHasKey('article', $data);
+        $this->assertArrayHasKey('user', $data);
+        $this->assertArrayHasKey('email', $data['user']);
+        $this->assertSame('user1@realworld.tld', $data['user']['email']);
+        $this->assertArrayHasKey('token', $data['user']);
     }
 }

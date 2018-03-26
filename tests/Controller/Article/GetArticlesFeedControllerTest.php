@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Controller\Api;
+namespace App\Tests\Controller\Article;
 
 use App\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * ArticlesFeedControllerTest.
  */
-class ArticlesFeedControllerTest extends WebTestCase
+class GetArticlesFeedControllerTest extends WebTestCase
 {
     public function testAsAnonymous()
     {

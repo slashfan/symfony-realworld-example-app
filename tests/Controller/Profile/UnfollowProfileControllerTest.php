@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Tests\Controller\Api;
+namespace App\Tests\Controller\Profile;
 
 use App\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * UserGetControllerTest.
+ * ProfilesUnfollowControllerTest.
  */
-class UserGetControllerTest extends WebTestCase
+class UnfollowProfileControllerTest extends WebTestCase
 {
     public function testAsAnonymous()
     {
         $client = $this->createAnonymousApiClient();
-        $client->request('GET', '/api/user');
+        $client->request('DELETE', '/api/profiles/user2/follow');
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
@@ -22,15 +22,12 @@ class UserGetControllerTest extends WebTestCase
     public function testAsAuthenticated()
     {
         $client = $this->createAuthenticatedApiClient();
-        $client->request('GET', '/api/user');
+        $client->request('DELETE', '/api/profiles/user2/follow');
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
         $data = json_decode($response->getContent(), true);
-        $this->assertArrayHasKey('user', $data);
-        $this->assertArrayHasKey('email', $data['user']);
-        $this->assertSame('user1@realworld.tld', $data['user']['email']);
-        $this->assertArrayHasKey('token', $data['user']);
+        $this->assertArrayHasKey('profile', $data);
     }
 }

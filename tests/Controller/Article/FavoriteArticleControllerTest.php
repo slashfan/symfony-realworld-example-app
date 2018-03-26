@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Tests\Controller\Api;
+namespace App\Tests\Controller\Article;
 
 use App\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * ProfilesFollowControllerTest.
+ * ArticlesFavoriteControllerTest.
  */
-class ProfilesFollowControllerTest extends WebTestCase
+class FavoriteArticleControllerTest extends WebTestCase
 {
     public function testAsAnonymous()
     {
         $client = $this->createAnonymousApiClient();
-        $client->request('POST', '/api/profiles/user2/follow');
+        $client->request('POST', '/api/articles/article-2/favorites');
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
@@ -22,12 +22,12 @@ class ProfilesFollowControllerTest extends WebTestCase
     public function testAsAuthenticated()
     {
         $client = $this->createAuthenticatedApiClient();
-        $client->request('POST', '/api/profiles/user2/follow');
+        $client->request('POST', '/api/articles/article-2/favorites');
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
         $data = json_decode($response->getContent(), true);
-        $this->assertArrayHasKey('profile', $data);
+        $this->assertArrayHasKey('article', $data);
     }
 }
