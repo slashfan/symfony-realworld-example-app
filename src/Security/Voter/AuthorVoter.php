@@ -3,6 +3,7 @@
 namespace App\Security\Voter;
 
 use App\Entity\Article;
+use App\Entity\Comment;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
@@ -10,14 +11,14 @@ use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 /**
  * ArticleVoter.
  */
-class ArticleVoter extends Voter
+class AuthorVoter extends Voter
 {
     /**
      * {@inheritdoc}
      */
     protected function supports($attribute, $subject)
     {
-        return in_array($attribute, ['OWNER'], true) && $subject instanceof Article;
+        return 'AUTHOR' === $attribute && ($subject instanceof Article || $subject instanceof Comment);
     }
 
     /**
@@ -25,18 +26,13 @@ class ArticleVoter extends Voter
      */
     protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
     {
-        /** @var Article $subject */
+        /** @var Article|Comment $subject */
         $user = $token->getUser();
 
         if (!$user instanceof User) {
             return false;
         }
 
-        switch ($attribute) {
-            case 'OWNER':
-                return $subject->getAuthor()->getId() === $user->getId();
-        }
-
-        return false;
+        return $subject->getAuthor()->getId() === $user->getId();
     }
 }

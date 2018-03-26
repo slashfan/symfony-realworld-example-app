@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\Article;
 
 use App\Repository\ArticleRepository;
 use App\Security\UserResolver;
@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @Security("is_granted('ROLE_USER')")
  */
-final class ArticlesFeedController
+final class GetArticlesFeedController
 {
     /**
      * @var ArticleRepository

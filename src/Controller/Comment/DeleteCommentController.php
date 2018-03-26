@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\Comment;
 
 use App\Entity\Comment;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,9 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @View(statusCode=204)
  *
- * @Security("is_granted('ROLE_USER') and is_granted('OWNER', comment)")
+ * @Security("is_granted('ROLE_USER') and is_granted('AUTHOR', comment)")
  */
-final class CommentsDeleteController
+final class DeleteCommentController
 {
     /**
      * @var EntityManagerInterface

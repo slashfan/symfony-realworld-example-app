@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\Profile;
 
 use App\Entity\User;
 use App\Security\UserResolver;
@@ -10,12 +10,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/profiles/{username}/follow", name="api_profiles_unfollow")
- * @Method("DELETE")
+ * @Route("/api/profiles/{username}/follow", name="api_profiles_follow")
+ * @Method("POST")
  *
  * @Security("is_granted('ROLE_USER')")
  */
-final class ProfilesUnfollowController
+final class FollowProfileController
 {
     /**
      * @var EntityManagerInterface
@@ -47,7 +47,7 @@ final class ProfilesUnfollowController
     public function __invoke(User $profile)
     {
         $user = $this->userResolver->getCurrentUser();
-        $user->unfollow($profile);
+        $user->follow($profile);
         $this->entityManager->flush();
 
         return ['profile' => $profile];

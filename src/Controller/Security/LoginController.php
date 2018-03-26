@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\Security;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/api/users/login", name="api_users_login")
  * @Method("POST")
  */
-final class UsersLoginController
+final class LoginController
 {
     /**
      * @throws \RuntimeException

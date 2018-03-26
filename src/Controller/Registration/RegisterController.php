@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\Registration;
 
 use App\Entity\User;
 use App\Form\UserType;
@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  *
  * @View(statusCode=201, serializerGroups={"me"})
  */
-final class UsersPostController
+final class RegisterController
 {
     /**
      * @var FormFactoryInterface

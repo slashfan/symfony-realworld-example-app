@@ -1,24 +1,21 @@
 <?php
 
-namespace App\Controller\Api;
+namespace App\Controller\Article;
 
 use App\Entity\Article;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
-use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/articles/{slug}/favorites", name="api_article_unfavorite")
- * @Method("DELETE")
- *
- * @View(statusCode=200)
+ * @Route("/api/articles/{slug}/favorites", name="api_article_favorite")
+ * @Method("POST")
  *
  * @Security("is_granted('ROLE_USER')")
  */
-final class ArticlesUnfavoriteController
+final class FavoriteArticleController
 {
     /**
      * @var EntityManagerInterface
@@ -31,12 +28,12 @@ final class ArticlesUnfavoriteController
     private $userResolver;
 
     /**
-     * @param EntityManagerInterface $entityManager
+     * @param EntityManagerInterface $manager
      * @param UserResolver           $userResolver
      */
-    public function __construct(EntityManagerInterface $entityManager, UserResolver $userResolver)
+    public function __construct(EntityManagerInterface $manager, UserResolver $userResolver)
     {
-        $this->entityManager = $entityManager;
+        $this->entityManager = $manager;
         $this->userResolver = $userResolver;
     }
 
@@ -50,7 +47,7 @@ final class ArticlesUnfavoriteController
     public function __invoke(Article $article)
     {
         $user = $this->userResolver->getCurrentUser();
-        $user->removeFromFavorites($article);
+        $user->addToFavorites($article);
         $this->entityManager->flush();
 
         return ['article' => $article];
