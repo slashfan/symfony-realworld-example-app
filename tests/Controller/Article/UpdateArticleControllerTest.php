@@ -28,6 +28,19 @@ class UpdateArticleControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_FORBIDDEN, $response->getStatusCode());
     }
 
+    public function testBadRequestAsOwner()
+    {
+        $client = $this->createAuthenticatedApiClient();
+        $client->request('PUT', '/api/articles/article-1', [], [], [], json_encode([
+            'article' => [
+                'title' => '',
+            ],
+        ]));
+
+        $response = $client->getResponse();
+        $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
+    }
+
     public function testAsOwner()
     {
         $client = $this->createAuthenticatedApiClient();
@@ -35,7 +48,6 @@ class UpdateArticleControllerTest extends WebTestCase
             'article' => [
                 'title' => 'Article #1B',
                 'description' => 'Description #1B',
-                'body' => 'Body #1B',
             ],
         ]));
 
@@ -49,6 +61,6 @@ class UpdateArticleControllerTest extends WebTestCase
         $this->assertArrayHasKey('description', $data['article']);
         $this->assertSame('Description #1B', $data['article']['description']);
         $this->assertArrayHasKey('body', $data['article']);
-        $this->assertSame('Body #1B', $data['article']['body']);
+        $this->assertSame('Body #1', $data['article']['body']);
     }
 }

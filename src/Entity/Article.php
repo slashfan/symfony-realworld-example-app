@@ -120,7 +120,7 @@ class Article
     /**
      * @param string $title
      */
-    public function setTitle(string $title): void
+    public function setTitle(?string $title): void
     {
         $this->title = $title;
     }
@@ -136,7 +136,7 @@ class Article
     /**
      * @param string $slug
      */
-    public function setSlug(string $slug): void
+    public function setSlug(?string $slug): void
     {
         $this->slug = $slug;
     }

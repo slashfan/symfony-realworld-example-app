@@ -67,7 +67,7 @@ final class UpdateUserController
         $form = $this->formFactory->createNamed('user', UserType::class, $user);
         $form->submit($request->request->get('user'), false);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isValid()) {
             $this->entityManager->flush();
 
             return ['user' => $user];

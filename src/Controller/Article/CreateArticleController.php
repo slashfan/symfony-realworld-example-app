@@ -69,9 +69,9 @@ final class CreateArticleController
         $article->setAuthor($user);
 
         $form = $this->formFactory->createNamed('article', ArticleType::class, $article);
-        $form->handleRequest($request);
+        $form->submit($request->request->get('article'));
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isValid()) {
             $this->entityManager->persist($article);
             $this->entityManager->flush();
 

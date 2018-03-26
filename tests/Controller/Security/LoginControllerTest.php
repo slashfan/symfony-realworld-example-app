@@ -10,6 +10,15 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class LoginControllerTest extends WebTestCase
 {
+    public function testBadRequestResponse()
+    {
+        $client = $this->createAnonymousApiClient();
+        $client->request('POST', '/api/users/login');
+
+        $response = $client->getResponse();
+        $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
+    }
+
     public function testResponse()
     {
         $client = $this->createAnonymousApiClient();

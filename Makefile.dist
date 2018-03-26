@@ -28,7 +28,7 @@ test:
 	bin/phpunit
 
 test-coverage:
-	rm -rf var/cache/test/* var/logs/test/*
+	rm -rf var/cache/test/* var/logs/test/* var/coverage/*
 	bin/console cache:clear --env=test
 	bin/console doctrine:database:drop --force --env=test
 	bin/console doctrine:database:create --env=test
