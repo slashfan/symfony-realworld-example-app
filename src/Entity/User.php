@@ -271,6 +271,14 @@ class User implements UserInterface
     }
 
     /**
+     * @param ArrayCollection|User[] $followers
+     */
+    public function setFollowers($followers): void
+    {
+        $this->followers = $followers;
+    }
+
+    /**
      * @return ArrayCollection|User[]
      */
     public function getFolloweds()
@@ -284,6 +292,14 @@ class User implements UserInterface
     public function getFavorites()
     {
         return $this->favorites;
+    }
+
+    /**
+     * @param ArrayCollection|Article[] $favorites
+     */
+    public function setFavorites($favorites): void
+    {
+        $this->favorites = $favorites;
     }
 
     /**

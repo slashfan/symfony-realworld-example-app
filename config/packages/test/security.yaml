@@ -1,4 +1,7 @@
 security:
+    encoders:
+        App\Entity\User:
+            algorithm: plaintext
     firewalls:
         api:
             http_basic: true

@@ -38,6 +38,7 @@
         "easycorp/easy-log-handler": "^1.0.2",
         "friendsofphp/php-cs-fixer": "^2.11",
         "fzaninotto/faker": "^1.7",
+        "nelmio/alice": "^3.2",
         "sensiolabs/security-checker": "^4.1",
         "symfony/browser-kit": "^3.3|^4.0",
         "symfony/css-selector": "^3.3|^4.0",
