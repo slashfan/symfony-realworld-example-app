@@ -61,9 +61,9 @@ final class RegisterController
         $user = new User();
 
         $form = $this->formFactory->createNamed('user', UserType::class, $user);
-        $form->handleRequest($request);
+        $form->submit($request->request->get('user'));
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isValid()) {
             $user->setPassword($this->passwordEncoder->encodePassword($user, $user->getPassword()));
             $this->entityManager->persist($user);
             $this->entityManager->flush();

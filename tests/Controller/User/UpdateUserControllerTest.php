@@ -19,18 +19,30 @@ class UpdateUserControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
-    public function testAsAuthenticated()
+    public function testEmptyRequestAsAuthenticated()
     {
-        // invalid request
-
         $client = $this->createAuthenticatedApiClient();
         $client->request('PUT', '/api/user');
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+    }
 
-        // valid request
+    public function testBadRequestAsAuthenticated()
+    {
+        $client = $this->createAuthenticatedApiClient();
+        $client->request('PUT', '/api/user', [], [], [], json_encode([
+            'user' => [
+                'email' => '',
+            ],
+        ]));
 
+        $response = $client->getResponse();
+        $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
+    }
+
+    public function testAsAuthenticated()
+    {
         $client = $this->createAuthenticatedApiClient();
         $client->request('PUT', '/api/user', [], [], [], json_encode([
             'user' => [

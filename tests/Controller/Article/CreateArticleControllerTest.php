@@ -19,6 +19,15 @@ class CreateArticleControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
+    public function testBadRequestAsAuthenticated()
+    {
+        $client = $this->createAuthenticatedApiClient();
+        $client->request('POST', '/api/articles');
+
+        $response = $client->getResponse();
+        $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
+    }
+
     public function testAsAuthenticated()
     {
         $client = $this->createAuthenticatedApiClient();

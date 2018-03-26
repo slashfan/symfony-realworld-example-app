@@ -49,6 +49,9 @@ RUN docker-php-ext-install zip
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer --version
 
+# Install XDEBUG
+RUN pecl install xdebug
+
 # Set SYMFONY USER
 RUN useradd -ms /bin/bash symfony
 USER symfony
