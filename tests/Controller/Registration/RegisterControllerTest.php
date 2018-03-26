@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Controller\Api;
+namespace App\Tests\Controller\Registration;
 
 use App\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * UsersPostControllerTest.
  */
-class UsersPostControllerTest extends WebTestCase
+class RegisterControllerTest extends WebTestCase
 {
     public function testResponse()
     {

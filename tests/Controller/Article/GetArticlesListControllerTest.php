@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Controller\Api;
+namespace App\Tests\Controller\Article;
 
 use App\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * ArticlesListControllerTest.
  */
-class ArticlesListControllerTest extends WebTestCase
+class GetArticlesListControllerTest extends WebTestCase
 {
     /**
      * @param string $query

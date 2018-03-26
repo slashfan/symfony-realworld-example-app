@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Controller\Api;
+namespace App\Tests\Controller\Comment;
 
 use App\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * CommentsListControllerTest.
  */
-class CommentsListControllerTest extends WebTestCase
+class GetCommentsListControllerTest extends WebTestCase
 {
     public function testResponse()
     {

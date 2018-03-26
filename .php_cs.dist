@@ -2,9 +2,13 @@
 
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
+    ->exclude('bin')
     ->exclude('config')
+    ->exclude('docker')
+    ->exclude('fixtures')
+    ->exclude('templates')
+    ->exclude('translations')
     ->exclude('var')
-    ->notPath('bin/console')
     ->notPath('public/index.php')
 ;
 

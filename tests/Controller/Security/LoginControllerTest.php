@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Controller\Api;
+namespace App\Tests\Controller\Security;
 
 use App\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * UsersLoginControllerTest.
  */
-class UsersLoginControllerTest extends WebTestCase
+class LoginControllerTest extends WebTestCase
 {
     public function testResponse()
     {
