@@ -25,7 +25,7 @@ class WebTestCase extends BaseWebTestCase
      *
      * @return \Symfony\Bundle\FrameworkBundle\Client
      */
-    protected function createAuthenticatedApiClient($user = 'user1@realworld.tld', $password = 'password')
+    protected function createAuthenticatedApiClient($user = 'user1@conduit.tld', $password = 'password')
     {
         return $this->createClient([], [
             'CONTENT_TYPE' => 'application/json',

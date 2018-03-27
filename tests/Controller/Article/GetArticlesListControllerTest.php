@@ -33,8 +33,9 @@ class GetArticlesListControllerTest extends WebTestCase
     public function getQueryParams(): array
     {
         return [
-            ['', 2],
+            ['', 25],
             ['?tag=lorem', 1],
+            ['?tag=ipsum', 24],
             ['?author=user2', 1],
             ['?favorited=user1', 1],
             ['?tag=lorem&author=user2&favorited=user1', 0],

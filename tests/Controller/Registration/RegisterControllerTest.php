@@ -25,7 +25,7 @@ class RegisterControllerTest extends WebTestCase
         $client->request('POST', '/api/users', [], [], [], json_encode([
             'user' => [
                 'username' => 'user1000',
-                'email' => 'user1000@realworld.tld',
+                'email' => 'user1000@conduit.tld',
                 'password' => 'password',
             ],
         ]));
@@ -36,7 +36,7 @@ class RegisterControllerTest extends WebTestCase
         $data = json_decode($response->getContent(), true);
         $this->assertArrayHasKey('user', $data);
         $this->assertArrayHasKey('email', $data['user']);
-        $this->assertSame('user1000@realworld.tld', $data['user']['email']);
+        $this->assertSame('user1000@conduit.tld', $data['user']['email']);
         $this->assertArrayHasKey('token', $data['user']);
     }
 }

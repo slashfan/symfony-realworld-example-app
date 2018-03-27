@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Article;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -24,22 +26,18 @@ class ArticleRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param int         $offset
-     * @param int         $limit
      * @param null|string $tag
      * @param null|string $authorUsername
      * @param null|string $favoritedByUsername
      *
-     * @return Article[]
+     * @return QueryBuilder
      */
-    public function getArticles(int $offset, int $limit, ?string $tag, ?string $authorUsername, ?string $favoritedByUsername)
+    private function getArticlesListQueryBuilder(?string $tag, ?string $authorUsername, ?string $favoritedByUsername)
     {
         $qb = $this
             ->createQueryBuilder('a')
             ->innerJoin('a.author', 'author')
-            ->orderBy('a.id', 'desc')
-            ->setFirstResult($offset)
-            ->setMaxResults($limit);
+            ->orderBy('a.id', 'desc');
 
         if ($tag) {
             $qb->innerJoin('a.tags', 't');
@@ -58,7 +56,79 @@ class ArticleRepository extends ServiceEntityRepository
             $qb->setParameter('favoritedby_username', $favoritedByUsername);
         }
 
-        return $qb->getQuery()->getResult();
+        return $qb;
+    }
+
+    /**
+     * @param null|string $tag
+     * @param null|string $authorUsername
+     * @param null|string $favoritedByUsername
+     *
+     * @return int
+     */
+    public function getArticlesListCount(?string $tag, ?string $authorUsername, ?string $favoritedByUsername)
+    {
+        try {
+            return (int) $this
+                ->getArticlesListQueryBuilder($tag, $authorUsername, $favoritedByUsername)
+                ->select('count(a.id) as total')
+                ->getQuery()
+                ->getSingleScalarResult();
+        } catch (NonUniqueResultException $e) {
+            return 0;
+        }
+    }
+
+    /**
+     * @param int         $offset
+     * @param int         $limit
+     * @param null|string $tag
+     * @param null|string $authorUsername
+     * @param null|string $favoritedByUsername
+     *
+     * @return Article[]
+     */
+    public function getArticlesList(int $offset, int $limit, ?string $tag, ?string $authorUsername, ?string $favoritedByUsername)
+    {
+        return $this
+            ->getArticlesListQueryBuilder($tag, $authorUsername, $favoritedByUsername)
+            ->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return QueryBuilder
+     */
+    private function getArticlesFeedQueryBuilder(User $user)
+    {
+        return $this
+            ->createQueryBuilder('a')
+            ->innerJoin('a.author', 'author')
+            ->andWhere('author IN (:authors_ids)')
+            ->setParameter('authors_ids', $user->getFolloweds())
+            ->orderBy('a.id', 'desc');
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return int
+     */
+    public function getArticlesFeedCount(User $user)
+    {
+        try {
+            return (int) $this
+                ->getArticlesFeedQueryBuilder($user)
+                ->select('count(a.id) as total')
+                ->getQuery()
+                ->getSingleScalarResult();
+        } catch (NonUniqueResultException $e) {
+            return 0;
+        }
     }
 
     /**
@@ -68,14 +138,10 @@ class ArticleRepository extends ServiceEntityRepository
      *
      * @return Article[]
      */
-    public function getFollowedUsersArticles(User $user, int $offset, int $limit)
+    public function getArticlesFeed(User $user, int $offset, int $limit)
     {
         return $this
-            ->createQueryBuilder('a')
-            ->innerJoin('a.author', 'author')
-            ->andWhere('author IN (:authors_ids)')
-            ->setParameter('authors_ids', $user->getFolloweds())
-            ->orderBy('a.id', 'desc')
+            ->getArticlesFeedQueryBuilder($user)
             ->setFirstResult($offset)
             ->setMaxResults($limit)
             ->getQuery()

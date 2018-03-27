@@ -13,7 +13,7 @@ class UnfavoriteArticleControllerTest extends WebTestCase
     public function testAsAnonymous()
     {
         $client = $this->createAnonymousApiClient();
-        $client->request('DELETE', '/api/articles/article-2/favorites');
+        $client->request('DELETE', '/api/articles/article-2/favorite');
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
@@ -22,7 +22,7 @@ class UnfavoriteArticleControllerTest extends WebTestCase
     public function testAsAuthenticated()
     {
         $client = $this->createAuthenticatedApiClient();
-        $client->request('DELETE', '/api/articles/article-2/favorites');
+        $client->request('DELETE', '/api/articles/article-2/favorite');
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());

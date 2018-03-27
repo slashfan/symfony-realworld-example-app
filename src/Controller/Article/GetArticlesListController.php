@@ -40,15 +40,19 @@ final class GetArticlesListController
      */
     public function __invoke(ParamFetcher $paramFetcher)
     {
-        $articles = $this->articleRepository->getArticles(
+        $articlesCount = $this->articleRepository->getArticlesListCount(
+            $paramFetcher->get('tag'),
+            $paramFetcher->get('author'),
+            $paramFetcher->get('favorited')
+        );
+
+        $articles = $this->articleRepository->getArticlesList(
             (int) $paramFetcher->get('offset'),
             (int) $paramFetcher->get('limit'),
             $paramFetcher->get('tag'),
             $paramFetcher->get('author'),
             $paramFetcher->get('favorited')
         );
-
-        $articlesCount = count($articles);
 
         return [
             'articles' => $articles,
