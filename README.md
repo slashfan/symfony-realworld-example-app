@@ -2,7 +2,9 @@
 
 > ### Symfony codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld) spec and API.
 
-### [Demo](https://github.com/gothinkster/realworld)&nbsp;&nbsp;&nbsp;&nbsp;[RealWorld](https://github.com/gothinkster/realworld)
+[![Code Coverage](https://scrutinizer-ci.com/g/slashfan/symfony-realworld-example-app/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/slashfan/symfony-realworld-example-app/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/slashfan/symfony-realworld-example-app/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/slashfan/symfony-realworld-example-app/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/slashfan/symfony-realworld-example-app/badges/build.png?b=master)](https://scrutinizer-ci.com/g/slashfan/symfony-realworld-example-app/build-status/master)
 
 This codebase was created to demonstrate a fully fledged fullstack application built with **Symfony** including CRUD operations, authentication, routing, pagination, and more.
 
