@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/articles/{slug}/favorites", name="api_article_unfavorite")
+ * @Route("/api/articles/{slug}/favorite", name="api_article_unfavorite")
  * @Method("DELETE")
  *
  * @View(statusCode=200)

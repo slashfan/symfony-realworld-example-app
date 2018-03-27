@@ -46,7 +46,7 @@ class UpdateUserControllerTest extends WebTestCase
         $client = $this->createAuthenticatedApiClient();
         $client->request('PUT', '/api/user', [], [], [], json_encode([
             'user' => [
-                'email' => 'user1001@realworld.tld',
+                'email' => 'user1001@conduit.tld',
                 'username' => 'user1001',
                 'password' => 'password',
                 'image' => 'http://user1001.tld',

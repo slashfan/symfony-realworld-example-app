@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/articles/{slug}/favorites", name="api_article_favorite")
+ * @Route("/api/articles/{slug}/favorite", name="api_article_favorite")
  * @Method("POST")
  *
  * @Security("is_granted('ROLE_USER')")

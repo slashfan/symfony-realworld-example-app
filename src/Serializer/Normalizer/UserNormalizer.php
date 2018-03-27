@@ -45,7 +45,7 @@ class UserNormalizer implements NormalizerInterface, NormalizerAwareInterface
 
         $data = [
             'username' => $object->getUsername(),
-            'image' => $object->getImage(),
+            'image' => $object->getImage() ?: 'https://static.productionready.io/images/smiley-cyrus.jpg',
             'bio' => $object->getBio(),
         ];
 

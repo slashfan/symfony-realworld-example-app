@@ -30,7 +30,7 @@ class GetUserControllerTest extends WebTestCase
         $data = json_decode($response->getContent(), true);
         $this->assertArrayHasKey('user', $data);
         $this->assertArrayHasKey('email', $data['user']);
-        $this->assertSame('user1@realworld.tld', $data['user']['email']);
+        $this->assertSame('user1@conduit.tld', $data['user']['email']);
         $this->assertArrayHasKey('token', $data['user']);
     }
 }

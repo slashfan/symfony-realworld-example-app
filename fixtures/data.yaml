@@ -7,16 +7,21 @@ App\Entity\Tag:
 App\Entity\User:
     user_1:
         username: 'user1'
-        email: 'user1@realworld.tld'
+        email: 'user1@conduit.tld'
         password: 'password'
-        image: 'https://www.shareicon.net/male-headset-young-man-person-support-avatar-106428'
-        bio: 'Bio'
+        image: 'https://randomuser.me/api/portraits/men/41.jpg'
+        bio: '<text(60)>'
         followers: ['@user_2']
-        favorites: ['@article_1']
+        favorites: ['@article_2']
     user_2:
         username: 'user2'
-        email: 'user2@realworld.tld'
+        email: 'user2@conduit.tld'
         password: 'password'
+    user_3:
+        username: 'user3'
+        email: 'user3@conduit.tld'
+        password: 'password'
+        followers: ['@user_1']
 
 App\Entity\Article:
     article_1:
@@ -30,6 +35,11 @@ App\Entity\Article:
         description: 'Description #2'
         body: 'Body #2'
         author: '@user_2'
+    article_{3..25}:
+        title: 'Article #<current()>'
+        description: 'Description #<current()>'
+        body: 'Body #<current()>'
+        author: '@user_3'
         tags: ['@tag_2']
 
 App\Entity\Comment:

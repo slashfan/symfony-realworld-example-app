@@ -42,8 +42,9 @@ class GetArticlesFeedControllerTest extends WebTestCase
     public function get(): array
     {
         return [
-            ['user1@realworld.tld', 0],
-            ['user2@realworld.tld', 1],
+            ['user1@conduit.tld', 23],
+            ['user2@conduit.tld', 1],
+            ['user3@conduit.tld', 0],
         ];
     }
 }
