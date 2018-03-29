@@ -4,6 +4,7 @@ fos_rest:
     view:
         view_response_listener: 'force'
         empty_content: 204
+        failed_validation: 422
         formats:
             json : true
     format_listener:

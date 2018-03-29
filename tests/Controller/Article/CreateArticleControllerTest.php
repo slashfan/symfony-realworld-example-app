@@ -21,11 +21,26 @@ class CreateArticleControllerTest extends WebTestCase
 
     public function testBadRequestAsAuthenticated()
     {
+        $data = [
+            'article' => [
+                'title' => '',
+                'description' => '',
+            ],
+        ];
+
         $client = $this->createAuthenticatedApiClient();
-        $client->request('POST', '/api/articles');
+        $client->request('POST', '/api/articles', [], [], [], json_encode($data));
 
         $response = $client->getResponse();
-        $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
+        $this->assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
+        $this->assertSame(
+            [
+                'title' => ['This value should not be blank.'],
+                'description' => ['This value should not be blank.'],
+                'body' => ['This value should not be blank.'],
+            ],
+            json_decode($client->getResponse()->getContent(), true)
+        );
     }
 
     public function testAsAuthenticated()
