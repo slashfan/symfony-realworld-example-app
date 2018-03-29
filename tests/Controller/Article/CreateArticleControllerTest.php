@@ -35,9 +35,9 @@ class CreateArticleControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
         $this->assertSame(
             [
-                'title' => ['This value should not be blank.'],
-                'description' => ['This value should not be blank.'],
-                'body' => ['This value should not be blank.'],
+                'title' => ['can\'t be blank'],
+                'description' => ['can\'t be blank'],
+                'body' => ['can\'t be blank'],
             ],
             json_decode($client->getResponse()->getContent(), true)
         );

@@ -39,6 +39,12 @@ class UpdateUserControllerTest extends WebTestCase
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
+        $this->assertSame(
+            [
+                'email' => ['can\'t be blank'],
+            ],
+            json_decode($response->getContent(), true)
+        );
     }
 
     public function testAsAuthenticated()
@@ -59,5 +65,7 @@ class UpdateUserControllerTest extends WebTestCase
 
         $data = json_decode($response->getContent(), true);
         $this->assertArrayHasKey('user', $data);
+        $this->assertSame('user1001@conduit.tld', $data['user']['email']);
+        $this->assertSame('user1001', $data['user']['username']);
     }
 }

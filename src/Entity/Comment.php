@@ -28,7 +28,7 @@ class Comment
      *
      * @ORM\Column(type="text")
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="comment.body.not_blank")
      */
     private $body;
 
@@ -36,8 +36,6 @@ class Comment
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     *
-     * @Assert\NotNull()
      */
     private $author;
 
@@ -45,8 +43,6 @@ class Comment
      * @var Article
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Article")
-     *
-     * @Assert\NotNull()
      */
     private $article;
 

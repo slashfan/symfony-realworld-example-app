@@ -28,16 +28,30 @@ class CreateCommentControllerTest extends WebTestCase
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
+        $this->assertSame(
+            [
+                'body' => ['can\'t be blank'],
+            ],
+            json_decode($response->getContent(), true)
+        );
 
         // invalid request
 
         $client = $this->createAuthenticatedApiClient();
         $client->request('POST', '/api/articles/article-2/comments', [], [], [], json_encode([
-            'comment' => [],
+            'comment' => [
+                'body' => '',
+            ],
         ]));
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
+        $this->assertSame(
+            [
+                'body' => ['can\'t be blank'],
+            ],
+            json_decode($response->getContent(), true)
+        );
 
         // valid request
 

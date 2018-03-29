@@ -1,0 +1,14 @@
+article.title.not_blank: can't be blank
+article.description.not_blank: can't be blank
+article.body.not_blank: can't be blank
+comment.body.not_blank: can't be blank
+user.email.not_blank: can't be blank
+user.email.email: invalid
+user.email.unique: has already been taken
+user.password.not_blank: can't be blank
+user.password.length.min: is too short (minimum is {{ limit }} characters)
+user.username.not_blank: can't be blank
+user.username.length.min: is too short (minimum is {{ limit }} character)
+user.username.length.max: is too long (maximum is {{ limit }} characters)
+user.username.unique: has already been taken
+user.image.url: is not a valid url
