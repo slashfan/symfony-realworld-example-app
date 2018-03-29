@@ -16,7 +16,7 @@ class RegisterControllerTest extends WebTestCase
         $client->request('POST', '/api/users');
 
         $response = $client->getResponse();
-        $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
+        $this->assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
     }
 
     public function testResponse()

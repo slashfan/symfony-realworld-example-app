@@ -38,7 +38,7 @@ class UpdateUserControllerTest extends WebTestCase
         ]));
 
         $response = $client->getResponse();
-        $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
+        $this->assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
     }
 
     public function testAsAuthenticated()

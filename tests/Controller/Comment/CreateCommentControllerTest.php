@@ -21,13 +21,13 @@ class CreateCommentControllerTest extends WebTestCase
 
     public function testAsAuthenticated()
     {
-        // invalid request
+        // empty request
 
         $client = $this->createAuthenticatedApiClient();
         $client->request('POST', '/api/articles/article-2/comments');
 
         $response = $client->getResponse();
-        $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
+        $this->assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
 
         // invalid request
 
@@ -37,7 +37,7 @@ class CreateCommentControllerTest extends WebTestCase
         ]));
 
         $response = $client->getResponse();
-        $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
+        $this->assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
 
         // valid request
 

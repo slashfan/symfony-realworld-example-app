@@ -49,14 +49,18 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
+     *
+     * @Assert\NotBlank()
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
+     *
+     * @Assert\NotBlank()
      */
     private $body;
 
