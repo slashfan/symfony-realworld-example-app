@@ -33,7 +33,7 @@ class Article
      *
      * @ORM\Column(type="string", length=255)
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="article.title.not_blank")
      */
     private $title;
 
@@ -51,7 +51,7 @@ class Article
      *
      * @ORM\Column(type="text")
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="article.description.not_blank")
      */
     private $description;
 
@@ -60,7 +60,7 @@ class Article
      *
      * @ORM\Column(type="text")
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="article.body.not_blank")
      */
     private $body;
 
@@ -68,8 +68,6 @@ class Article
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     *
-     * @Assert\NotNull()
      */
     private $author;
 

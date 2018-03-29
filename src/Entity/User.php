@@ -13,8 +13,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\Table(name="rw_user")
  *
- * @UniqueEntity("email")
- * @UniqueEntity("username")
+ * @UniqueEntity("email", message="user.email.unique")
+ * @UniqueEntity("username", message="user.username.unique")
  */
 class User implements UserInterface
 {
@@ -34,8 +34,8 @@ class User implements UserInterface
      *
      * @ORM\Column(type="string", length=255, unique=true)
      *
-     * @Assert\NotBlank()
-     * @Assert\Email()
+     * @Assert\NotBlank(message="user.email.not_blank")
+     * @Assert\Email(message="user.email.email")
      */
     private $email;
 
@@ -44,7 +44,8 @@ class User implements UserInterface
      *
      * @ORM\Column(type="string", length=255)
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="user.password.not_blank")
+     * @Assert\Length(min="8", minMessage="user.password.length.min")
      */
     private $password;
 
@@ -53,7 +54,13 @@ class User implements UserInterface
      *
      * @ORM\Column(type="string", length=255, unique=true)
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="user.username.not_blank")
+     * @Assert\Length(
+     *     min="1",
+     *     max="20",
+     *     minMessage="user.username.length.min",
+     *     maxMessage="user.username.length.max"
+     * )
      */
     private $username;
 
@@ -69,7 +76,7 @@ class User implements UserInterface
      *
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Assert\Url()
+     * @Assert\Url(message="user.image.url")
      */
     private $image;
 

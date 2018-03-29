@@ -37,8 +37,13 @@ class UpdateArticleControllerTest extends WebTestCase
             ],
         ]));
 
-        $response = $client->getResponse();
-        $this->assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
+        $this->assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            [
+                'title' => ['can\'t be blank'],
+            ],
+            json_decode($client->getResponse()->getContent(), true)
+        );
     }
 
     public function testAsOwner()
