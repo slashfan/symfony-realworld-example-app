@@ -26,7 +26,7 @@ test:
 	bin/console doctrine:database:create --env=test
 	bin/console doctrine:schema:create --env=test
 	bin/console doctrine:fixtures:load --no-interaction --env=test
-	bin/phpunit
+	vendor/bin/phpunit
 
 test-coverage:
 	rm -rf var/cache/test/* var/logs/test/* var/coverage/*
@@ -35,7 +35,7 @@ test-coverage:
 	bin/console doctrine:database:create --env=test
 	bin/console doctrine:schema:create --env=test
 	bin/console doctrine:fixtures:load --no-interaction --env=test
-	php -dzend_extension=xdebug.so bin/phpunit --coverage-html=var/coverage/
+	php -d zend_extension=xdebug.so vendor/bin/phpunit --coverage-html=var/coverage/
 
 reload:
 	rm -rf var/cache/dev/* var/logs/dev/*
