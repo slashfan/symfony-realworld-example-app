@@ -512,6 +512,9 @@
     "symfony/yaml": {
         "version": "v4.0.6"
     },
+    "theofidry/alice-data-fixtures": {
+        "version": "v1.0.1"
+    },
     "theseer/tokenizer": {
         "version": "1.1.0"
     },

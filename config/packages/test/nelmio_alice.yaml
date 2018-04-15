@@ -1,0 +1,7 @@
+nelmio_alice:
+    locale: 'fr_FR'
+    seed: 1234
+    functions_blacklist:
+        - 'current'
+    loading_limit: 5
+    max_unique_values_retry: 150

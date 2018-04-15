@@ -55,7 +55,7 @@ Use the provided docker configuration (http://localhost)
 ```bash
 cp docker-compose.override.yml.dist docker-compose.override.yml
 docker-compose build --pull
-docker-compose up --build
+docker-compose up
 ```
 
 Or the simple symfony development webserver (http://localhost:8000)
@@ -67,9 +67,5 @@ bin/console server:run
 # Run tests suite
 
 ```bash
-bin/console cache:clear --env=test
-bin/console doctrine:database:create --env=test
-bin/console doctrine:schema:create --env=test
-bin/console doctrine:fixtures:load --no-interaction --env=test
-bin/phpunit
+vendor/bin/phpunit
 ```

@@ -26,3 +26,11 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\DataFixtures\AppFixtures:
+        arguments: ['@fidry_alice_data_fixtures.loader.doctrine']
+        tags: [{ name: doctrine.fixture.orm  }]
+
+    App\DataFixtures\Processor\UserProcessor:
+        arguments: ['@security.password_encoder']
+        tags: [ { name: fidry_alice_data_fixtures.processor } ]

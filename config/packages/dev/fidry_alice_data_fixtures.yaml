@@ -1,0 +1,4 @@
+fidry_alice_data_fixtures:
+    default_purge_mode: delete
+    db_drivers:
+        doctrine_orm: true
