@@ -40,7 +40,7 @@ test-coverage:
 reload:
 	rm -rf var/cache/dev/* var/logs/dev/*
 	bin/console cache:clear --env=dev
-	bin/console doctrine:database:drop --force  --env=dev
+	bin/console doctrine:database:drop --force --if-exists --env=dev
 	bin/console doctrine:database:create --env=dev
 	bin/console doctrine:migrations:migrate --no-interaction --env=dev
 	bin/console doctrine:fixtures:load --no-interaction --env=dev

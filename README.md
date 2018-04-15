@@ -54,6 +54,7 @@ Use the provided docker configuration (http://localhost)
 
 ```bash
 cp docker-compose.override.yml.dist docker-compose.override.yml
+docker-compose build --pull
 docker-compose up --build
 ```
 

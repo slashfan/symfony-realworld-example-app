@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "43703ef6be9fc7eae83a3f253ff66ce9",
@@ -334,16 +334,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.7.0",
+            "version": "v2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "f76bf5ef631cec551a86c2291fc749534febebf1"
+                "reference": "11037b4352c008373561dc6fc836834eed80c3b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/f76bf5ef631cec551a86c2291fc749534febebf1",
-                "reference": "f76bf5ef631cec551a86c2291fc749534febebf1",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/11037b4352c008373561dc6fc836834eed80c3b5",
+                "reference": "11037b4352c008373561dc6fc836834eed80c3b5",
                 "shasum": ""
             },
             "require": {
@@ -405,7 +405,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2018-04-01T23:33:17+00:00"
+            "time": "2018-04-07T18:44:18+00:00"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -1546,33 +1546,34 @@
         },
         {
             "name": "ocramius/proxy-manager",
-            "version": "2.1.1",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ocramius/ProxyManager.git",
-                "reference": "e18ac876b2e4819c76349de8f78ccc8ef1554cd7"
+                "reference": "81d53b2878f1d1c40ad27270e64b51798485dfc5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/e18ac876b2e4819c76349de8f78ccc8ef1554cd7",
-                "reference": "e18ac876b2e4819c76349de8f78ccc8ef1554cd7",
+                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/81d53b2878f1d1c40ad27270e64b51798485dfc5",
+                "reference": "81d53b2878f1d1c40ad27270e64b51798485dfc5",
                 "shasum": ""
             },
             "require": {
-                "ocramius/package-versions": "^1.1.1",
-                "php": "^7.1.0",
-                "zendframework/zend-code": "^3.1.0"
+                "ocramius/package-versions": "^1.1.3",
+                "php": "^7.2.0",
+                "zendframework/zend-code": "^3.3.0"
             },
             "require-dev": {
-                "couscous/couscous": "^1.5.2",
+                "couscous/couscous": "^1.6.1",
                 "ext-phar": "*",
-                "humbug/humbug": "dev-master@DEV",
-                "nikic/php-parser": "^3.0.4",
+                "humbug/humbug": "1.0.0-RC.0@RC",
+                "nikic/php-parser": "^3.1.1",
+                "padraic/phpunit-accelerator": "dev-master@DEV",
                 "phpbench/phpbench": "^0.12.2",
-                "phpstan/phpstan": "^0.6.4",
-                "phpunit/phpunit": "^5.6.4",
-                "phpunit/phpunit-mock-objects": "^3.4.1",
-                "squizlabs/php_codesniffer": "^2.7.0"
+                "phpstan/phpstan": "dev-master#856eb10a81c1d27c701a83f167dc870fd8f4236a as 0.9.999",
+                "phpstan/phpstan-phpunit": "dev-master#5629c0a1f4a9c417cb1077cf6693ad9753895761",
+                "phpunit/phpunit": "^6.4.3",
+                "squizlabs/php_codesniffer": "^2.9.1"
             },
             "suggest": {
                 "ocramius/generated-hydrator": "To have very fast object to array to object conversion for ghost objects",
@@ -1611,7 +1612,7 @@
                 "proxy pattern",
                 "service proxies"
             ],
-            "time": "2017-05-04T11:12:50+00:00"
+            "time": "2017-11-16T23:22:31+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -5375,16 +5376,16 @@
         },
         {
             "name": "nelmio/alice",
-            "version": "v3.2.2",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nelmio/alice.git",
-                "reference": "34ee0035297903dea0bee6dbb9d88daac302f31f"
+                "reference": "ddcc459081434ac3a7a2bef2c8a78db49ba11e79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nelmio/alice/zipball/34ee0035297903dea0bee6dbb9d88daac302f31f",
-                "reference": "34ee0035297903dea0bee6dbb9d88daac302f31f",
+                "url": "https://api.github.com/repos/nelmio/alice/zipball/ddcc459081434ac3a7a2bef2c8a78db49ba11e79",
+                "reference": "ddcc459081434ac3a7a2bef2c8a78db49ba11e79",
                 "shasum": ""
             },
             "require": {
@@ -5401,8 +5402,8 @@
                 "bamarni/composer-bin-plugin": "^1.1.0",
                 "php-mock/php-mock": "^2.0",
                 "phpspec/prophecy": "^1.6",
-                "phpunit/phpunit": "^6.0",
-                "symfony/phpunit-bridge": "^3.4 || ^4.0",
+                "phpunit/phpunit": "^7.0",
+                "symfony/phpunit-bridge": "^3.4.5 || ^4.0.5",
                 "symfony/var-dumper": "^3.4 || ^4.0"
             },
             "suggest": {
@@ -5450,7 +5451,7 @@
                 "faker",
                 "test"
             ],
-            "time": "2018-03-17T22:13:13+00:00"
+            "time": "2018-04-07T09:07:10+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -5889,16 +5890,16 @@
         },
         {
             "name": "symfony/maker-bundle",
-            "version": "v1.3.1",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/maker-bundle.git",
-                "reference": "c936864823ac60508e37d8fb1d9bc6a02d03ffa7"
+                "reference": "253cee42124de11dc0a5bb7c91e5375d7197be12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/c936864823ac60508e37d8fb1d9bc6a02d03ffa7",
-                "reference": "c936864823ac60508e37d8fb1d9bc6a02d03ffa7",
+                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/253cee42124de11dc0a5bb7c91e5375d7197be12",
+                "reference": "253cee42124de11dc0a5bb7c91e5375d7197be12",
                 "shasum": ""
             },
             "require": {
@@ -5950,7 +5951,7 @@
                 "scaffold",
                 "scaffolding"
             ],
-            "time": "2018-03-21T13:40:46+00:00"
+            "time": "2018-04-11T22:44:12+00:00"
         },
         {
             "name": "symfony/phpunit-bridge",

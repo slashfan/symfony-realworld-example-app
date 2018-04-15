@@ -5,14 +5,14 @@ services:
     php:
         build: docker/php
         volumes:
-            - "./:/symfony:cached"
+            - "./:/project:cached"
         depends_on:
             - mysql
 
     nginx:
         build: docker/nginx
         volumes:
-            - "./:/symfony:cached"
+            - "./:/project:cached"
         depends_on:
             - php
 
