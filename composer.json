@@ -2,7 +2,7 @@
     "name": "slashfan/symfony-realworld-example-app",
     "description": "Exemplary real world application built with Symfony",
     "type": "project",
-    "license": "proprietary",
+    "license": "MIT",
     "require": {
         "php": "^7.2",
         "ext-iconv": "*",
