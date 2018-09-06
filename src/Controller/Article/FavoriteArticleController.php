@@ -5,13 +5,11 @@ namespace App\Controller\Article;
 use App\Entity\Article;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/articles/{slug}/favorite", name="api_article_favorite")
- * @Method("POST")
+ * @Route("/api/articles/{slug}/favorite", methods={"POST"}, name="api_article_favorite")
  *
  * @Security("is_granted('ROLE_USER')")
  */

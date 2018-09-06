@@ -6,7 +6,6 @@ use App\Form\UserType;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
@@ -14,8 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/user", name="api_users_put")
- * @Method("PUT")
+ * @Route("/api/user", methods={"PUT"}, name="api_users_put")
  *
  * @View(statusCode=200, serializerGroups={"me"})
  *

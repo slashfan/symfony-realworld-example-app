@@ -49,7 +49,7 @@ class UserNormalizer implements NormalizerInterface, NormalizerAwareInterface
             'bio' => $object->getBio(),
         ];
 
-        if (isset($context['groups']) && in_array('me', $context['groups'], true)) {
+        if (isset($context['groups']) && \in_array('me', $context['groups'], true)) {
             $data['email'] = $object->getEmail();
             $data['token'] = $this->jwtManager->create($object);
         } else {

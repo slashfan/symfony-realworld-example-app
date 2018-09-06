@@ -2,12 +2,10 @@
 
 namespace App\Controller\Security;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/users/login", name="api_users_login")
- * @Method("POST")
+ * @Route("/api/users/login", methods={"POST"}, name="api_users_login")
  */
 final class LoginController
 {

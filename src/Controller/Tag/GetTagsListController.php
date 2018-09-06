@@ -3,12 +3,10 @@
 namespace App\Controller\Tag;
 
 use App\Repository\TagRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/tags", name="api_tags_list")
- * @Method("GET")
+ * @Route("/api/tags", methods={"GET"}, name="api_tags_list")
  */
 final class GetTagsListController
 {

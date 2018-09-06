@@ -7,7 +7,6 @@ use App\Form\ArticleType;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
@@ -15,8 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/articles", name="api_articles_post")
- * @Method("POST")
+ * @Route("/api/articles", methods={"POST"}, name="api_articles_post")
  *
  * @View(statusCode=201)
  *

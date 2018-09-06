@@ -4,13 +4,11 @@ namespace App\Controller\Article;
 
 use App\Entity\Article;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/articles/{slug}", name="api_articles_delete")
- * @Method("DELETE")
+ * @Route("/api/articles/{slug}", methods={"DELETE"}, name="api_articles_delete")
  *
  * @Security("is_granted('ROLE_USER') and is_granted('AUTHOR', article)")
  */

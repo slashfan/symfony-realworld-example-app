@@ -3,12 +3,10 @@
 namespace App\Controller\Article;
 
 use App\Entity\Article;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/articles/{slug}", name="api_articles_get")
- * @Method("GET")
+ * @Route("/api/articles/{slug}", methods={"GET"}, name="api_articles_get")
  */
 final class GetOneArticleController
 {

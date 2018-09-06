@@ -5,13 +5,11 @@ namespace App\Controller\Comment;
 use App\Entity\Comment;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/articles/{slug}/comments/{id}", name="api_comments_delete")
- * @Method("DELETE")
+ * @Route("/api/articles/{slug}/comments/{id}", methods={"DELETE"}, name="api_comments_delete")
  *
  * @View(statusCode=204)
  *

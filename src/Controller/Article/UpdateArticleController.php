@@ -5,7 +5,6 @@ namespace App\Controller\Article;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
@@ -13,8 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/articles/{slug}", name="api_articles_put")
- * @Method("PUT")
+ * @Route("/api/articles/{slug}", methods={"PUT"}, name="api_articles_put")
  *
  * @Security("is_granted('ROLE_USER') and is_granted('AUTHOR', article)")
  */

@@ -4,14 +4,12 @@ namespace App\Controller\User;
 
 use App\Security\UserResolver;
 use FOS\RestBundle\Controller\Annotations\View;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @Route("/api/user", name="api_user_get")
- * @Method("GET")
+ * @Route("/api/user", methods={"GET"}, name="api_user_get")
  *
  * @View(serializerGroups={"me"})
  *

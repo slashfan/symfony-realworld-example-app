@@ -3,12 +3,10 @@
 namespace App\Controller\Profile;
 
 use App\Entity\User;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/profiles/{username}", name="api_profiles_get")
- * @Method("GET")
+ * @Route("/api/profiles/{username}", methods={"GET"}, name="api_profiles_get")
  */
 final class GetProfileController
 {

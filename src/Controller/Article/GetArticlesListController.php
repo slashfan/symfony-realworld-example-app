@@ -5,12 +5,10 @@ namespace App\Controller\Article;
 use App\Repository\ArticleRepository;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Request\ParamFetcher;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/articles", name="api_articles_list")
- * @Method("GET")
+ * @Route("/api/articles", methods={"GET"}, name="api_articles_list")
  *
  * @QueryParam(name="tag", requirements="[A-Za-z]+", nullable=true)
  * @QueryParam(name="author", requirements="[A-Za-z0-9]+", nullable=true)

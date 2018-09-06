@@ -6,13 +6,11 @@ use App\Entity\Article;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/articles/{slug}/favorite", name="api_article_unfavorite")
- * @Method("DELETE")
+ * @Route("/api/articles/{slug}/favorite", methods={"DELETE"}, name="api_article_unfavorite")
  *
  * @View(statusCode=200)
  *

@@ -6,13 +6,11 @@ use App\Repository\ArticleRepository;
 use App\Security\UserResolver;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Request\ParamFetcher;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/articles/feed", name="api_articles_feed")
- * @Method("GET")
+ * @Route("/api/articles/feed", methods={"GET"}, name="api_articles_feed")
  *
  * @QueryParam(name="limit", requirements="\d+", default="20")
  * @QueryParam(name="offset", requirements="\d+", default="0")

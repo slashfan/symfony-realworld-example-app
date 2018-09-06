@@ -5,13 +5,11 @@ namespace App\Controller\Profile;
 use App\Entity\User;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/profiles/{username}/follow", name="api_profiles_follow")
- * @Method("POST")
+ * @Route("/api/profiles/{username}/follow", methods={"POST"}, name="api_profiles_follow")
  *
  * @Security("is_granted('ROLE_USER')")
  */

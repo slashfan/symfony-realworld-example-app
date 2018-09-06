@@ -4,12 +4,10 @@ namespace App\Controller\Comment;
 
 use App\Entity\Article;
 use App\Repository\CommentRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/api/articles/{slug}/comments", name="api_comments_list")
- * @Method("GET")
+ * @Route("/api/articles/{slug}/comments", methods={"GET"}, name="api_comments_list")
  */
 final class GetCommentsListController
 {
