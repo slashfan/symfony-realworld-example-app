@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Comment;
 
 use App\Entity\Comment;
@@ -33,7 +35,7 @@ final class DeleteCommentController
     /**
      * @param Comment $comment
      */
-    public function __invoke(Comment $comment)
+    public function __invoke(Comment $comment): void
     {
         $this->entityManager->remove($comment);
         $this->entityManager->flush();

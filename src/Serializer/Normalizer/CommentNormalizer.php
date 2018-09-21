@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Serializer\Normalizer;
 
 use App\Entity\Article;
@@ -22,15 +24,13 @@ class CommentNormalizer implements NormalizerInterface, NormalizerAwareInterface
     {
         /* @var Article $object */
 
-        $data = [
+        return [
             'id' => $object->getId(),
             'createdAt' => $this->normalizer->normalize($object->getCreatedAt()),
             'updatedAt' => $this->normalizer->normalize($object->getCreatedAt()),
             'body' => $object->getBody(),
             'author' => $this->normalizer->normalize($object->getAuthor()),
         ];
-
-        return $data;
     }
 
     /**

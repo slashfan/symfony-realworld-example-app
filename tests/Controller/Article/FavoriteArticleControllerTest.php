@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Controller\Article;
 
 use App\Test\WebTestCase;
@@ -10,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class FavoriteArticleControllerTest extends WebTestCase
 {
-    public function testAsAnonymous()
+    public function testAsAnonymous(): void
     {
         $client = $this->createAnonymousApiClient();
         $client->request('POST', '/api/articles/article-2/favorite');
@@ -19,7 +21,7 @@ class FavoriteArticleControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
-    public function testAsAuthenticated()
+    public function testAsAuthenticated(): void
     {
         $client = $this->createAuthenticatedApiClient();
         $client->request('POST', '/api/articles/article-2/favorite');

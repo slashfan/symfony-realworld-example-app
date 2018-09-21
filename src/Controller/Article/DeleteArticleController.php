@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Article;
 
 use App\Entity\Article;
@@ -30,7 +32,7 @@ final class DeleteArticleController
     /**
      * @param Article $article
      */
-    public function __invoke(Article $article)
+    public function __invoke(Article $article): void
     {
         $this->entityManager->remove($article);
         $this->entityManager->flush();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Security;
 
 use App\Security\UserResolver;
@@ -18,7 +20,7 @@ class UserResolverTest extends TestCase
      *
      * @expectedException \Exception
      */
-    public function testGetCurrentUserWithNullUser()
+    public function testGetCurrentUserWithNullUser(): void
     {
         $storage = $this->getMockBuilder(TokenStorageInterface::class)->getMock();
         $storage->method('getToken')->willReturn(null);
@@ -33,7 +35,7 @@ class UserResolverTest extends TestCase
      *
      * @expectedException \Exception
      */
-    public function testGetCurrentUserWithNonAppUser()
+    public function testGetCurrentUserWithNonAppUser(): void
     {
         $user = $this->getMockBuilder(UserInterface::class)->getMock();
 
@@ -51,7 +53,7 @@ class UserResolverTest extends TestCase
     /**
      * @throws \Exception
      */
-    public function testGetCurrentUserWithAppUser()
+    public function testGetCurrentUserWithAppUser(): void
     {
         $user = $this->getMockBuilder(\App\Entity\User::class)->getMock();
 

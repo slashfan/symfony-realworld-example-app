@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Serializer\Normalizer;
 
 /**
@@ -20,7 +22,7 @@ class FormErrorNormalizer extends \FOS\RestBundle\Serializer\Normalizer\FormErro
         });
 
         $data = array_map(function ($child) {
-            return isset($child['errors']) ? $child['errors'] : [];
+            return $child['errors'] ?? [];
         }, $data);
 
         return $data;

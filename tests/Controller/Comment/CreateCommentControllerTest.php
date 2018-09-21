@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Controller\Comment;
 
 use App\Test\WebTestCase;
@@ -10,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class CreateCommentControllerTest extends WebTestCase
 {
-    public function testAsAnonymous()
+    public function testAsAnonymous(): void
     {
         $client = $this->createAnonymousApiClient();
         $client->request('POST', '/api/articles/article-2/comments');
@@ -19,7 +21,7 @@ class CreateCommentControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
-    public function testAsAuthenticated()
+    public function testAsAuthenticated(): void
     {
         // empty request
 

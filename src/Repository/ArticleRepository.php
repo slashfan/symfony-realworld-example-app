@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Entity\Article;
@@ -26,18 +28,97 @@ class ArticleRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param null|string $tag
-     * @param null|string $authorUsername
-     * @param null|string $favoritedByUsername
+     * @param string|null $tag
+     * @param string|null $authorUsername
+     * @param string|null $favoritedByUsername
+     *
+     * @return int
+     */
+    public function getArticlesListCount(?string $tag, ?string $authorUsername, ?string $favoritedByUsername): int
+    {
+        try {
+            return (int) $this
+                ->getArticlesListQueryBuilder($tag, $authorUsername, $favoritedByUsername)
+                ->select('count(a.id) as total')
+                ->getQuery()
+                ->getSingleScalarResult()
+            ;
+        } catch (NonUniqueResultException $e) {
+            return 0;
+        }
+    }
+
+    /**
+     * @param int         $offset
+     * @param int         $limit
+     * @param string|null $tag
+     * @param string|null $authorUsername
+     * @param string|null $favoritedByUsername
+     *
+     * @return Article[]
+     */
+    public function getArticlesList(int $offset, int $limit, ?string $tag, ?string $authorUsername, ?string $favoritedByUsername): array
+    {
+        return $this
+            ->getArticlesListQueryBuilder($tag, $authorUsername, $favoritedByUsername)
+            ->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return int
+     */
+    public function getArticlesFeedCount(User $user): int
+    {
+        try {
+            return (int) $this
+                ->getArticlesFeedQueryBuilder($user)
+                ->select('count(a.id) as total')
+                ->getQuery()
+                ->getSingleScalarResult()
+            ;
+        } catch (NonUniqueResultException $e) {
+            return 0;
+        }
+    }
+
+    /**
+     * @param User $user
+     * @param int  $offset
+     * @param int  $limit
+     *
+     * @return Article[]
+     */
+    public function getArticlesFeed(User $user, int $offset, int $limit): array
+    {
+        return $this
+            ->getArticlesFeedQueryBuilder($user)
+            ->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @param string|null $tag
+     * @param string|null $authorUsername
+     * @param string|null $favoritedByUsername
      *
      * @return QueryBuilder
      */
-    private function getArticlesListQueryBuilder(?string $tag, ?string $authorUsername, ?string $favoritedByUsername)
+    private function getArticlesListQueryBuilder(?string $tag, ?string $authorUsername, ?string $favoritedByUsername): QueryBuilder
     {
         $qb = $this
             ->createQueryBuilder('a')
             ->innerJoin('a.author', 'author')
-            ->orderBy('a.id', 'desc');
+            ->orderBy('a.id', 'desc')
+        ;
 
         if ($tag) {
             $qb->innerJoin('a.tags', 't');
@@ -60,91 +141,18 @@ class ArticleRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param null|string $tag
-     * @param null|string $authorUsername
-     * @param null|string $favoritedByUsername
-     *
-     * @return int
-     */
-    public function getArticlesListCount(?string $tag, ?string $authorUsername, ?string $favoritedByUsername)
-    {
-        try {
-            return (int) $this
-                ->getArticlesListQueryBuilder($tag, $authorUsername, $favoritedByUsername)
-                ->select('count(a.id) as total')
-                ->getQuery()
-                ->getSingleScalarResult();
-        } catch (NonUniqueResultException $e) {
-            return 0;
-        }
-    }
-
-    /**
-     * @param int         $offset
-     * @param int         $limit
-     * @param null|string $tag
-     * @param null|string $authorUsername
-     * @param null|string $favoritedByUsername
-     *
-     * @return Article[]
-     */
-    public function getArticlesList(int $offset, int $limit, ?string $tag, ?string $authorUsername, ?string $favoritedByUsername)
-    {
-        return $this
-            ->getArticlesListQueryBuilder($tag, $authorUsername, $favoritedByUsername)
-            ->setFirstResult($offset)
-            ->setMaxResults($limit)
-            ->getQuery()
-            ->getResult();
-    }
-
-    /**
      * @param User $user
      *
      * @return QueryBuilder
      */
-    private function getArticlesFeedQueryBuilder(User $user)
+    private function getArticlesFeedQueryBuilder(User $user): QueryBuilder
     {
         return $this
             ->createQueryBuilder('a')
             ->innerJoin('a.author', 'author')
             ->andWhere('author IN (:authors_ids)')
             ->setParameter('authors_ids', $user->getFolloweds())
-            ->orderBy('a.id', 'desc');
-    }
-
-    /**
-     * @param User $user
-     *
-     * @return int
-     */
-    public function getArticlesFeedCount(User $user)
-    {
-        try {
-            return (int) $this
-                ->getArticlesFeedQueryBuilder($user)
-                ->select('count(a.id) as total')
-                ->getQuery()
-                ->getSingleScalarResult();
-        } catch (NonUniqueResultException $e) {
-            return 0;
-        }
-    }
-
-    /**
-     * @param User $user
-     * @param int  $offset
-     * @param int  $limit
-     *
-     * @return Article[]
-     */
-    public function getArticlesFeed(User $user, int $offset, int $limit)
-    {
-        return $this
-            ->getArticlesFeedQueryBuilder($user)
-            ->setFirstResult($offset)
-            ->setMaxResults($limit)
-            ->getQuery()
-            ->getResult();
+            ->orderBy('a.id', 'desc')
+        ;
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Controller\Registration;
 
 use App\Test\WebTestCase;
@@ -10,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class RegisterControllerTest extends WebTestCase
 {
-    public function testBadRequestResponse()
+    public function testBadRequestResponse(): void
     {
         $client = $this->createAnonymousApiClient();
 
@@ -47,7 +49,7 @@ class RegisterControllerTest extends WebTestCase
         );
     }
 
-    public function testResponse()
+    public function testResponse(): void
     {
         $client = $this->createAnonymousApiClient();
         $client->request('POST', '/api/users', [], [], [], json_encode([

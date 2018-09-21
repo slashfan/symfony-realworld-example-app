@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Controller\Comment;
 
 use App\Test\WebTestCase;
@@ -10,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class GetCommentsListControllerTest extends WebTestCase
 {
-    public function testResponse()
+    public function testResponse(): void
     {
         $client = $this->createAuthenticatedApiClient();
         $client->request('GET', '/api/articles/article-1/comments');

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Controller\Article;
 
 use App\Test\WebTestCase;
@@ -16,7 +18,7 @@ class GetArticlesListControllerTest extends WebTestCase
      *
      * @dataProvider getQueryParams
      */
-    public function testResponse(string $query, int $expectedCount)
+    public function testResponse(string $query, int $expectedCount): void
     {
         $client = $this->createAnonymousApiClient();
         $client->request('GET', '/api/articles'.$query);

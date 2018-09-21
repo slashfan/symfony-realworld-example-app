@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -224,14 +226,14 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getSalt()
+    public function getSalt(): void
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
     }
 
@@ -248,7 +250,7 @@ class User implements UserInterface
     /**
      * @param User $user
      */
-    public function follow(self $user)
+    public function follow(self $user): void
     {
         if ($user->getFollowers()->contains($this)) {
             return;
@@ -260,7 +262,7 @@ class User implements UserInterface
     /**
      * @param User $user
      */
-    public function unfollow(self $user)
+    public function unfollow(self $user): void
     {
         if (!$user->getFollowers()->contains($this)) {
             return;
@@ -322,7 +324,7 @@ class User implements UserInterface
     /**
      * @param Article $article
      */
-    public function addToFavorites(Article $article)
+    public function addToFavorites(Article $article): void
     {
         if ($this->favorites->contains($article)) {
             return;
@@ -334,7 +336,7 @@ class User implements UserInterface
     /**
      * @param Article $article
      */
-    public function removeFromFavorites(Article $article)
+    public function removeFromFavorites(Article $article): void
     {
         if (!$this->favorites->contains($article)) {
             return;

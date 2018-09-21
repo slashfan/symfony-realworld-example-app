@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Controller\Article;
 
 use App\Test\WebTestCase;
@@ -10,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class DeleteArticleControllerTest extends WebTestCase
 {
-    public function testAsAnonymous()
+    public function testAsAnonymous(): void
     {
         $client = $this->createAnonymousApiClient();
         $client->request('DELETE', '/api/articles/article-1');
@@ -19,7 +21,7 @@ class DeleteArticleControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
-    public function testAsNotOwner()
+    public function testAsNotOwner(): void
     {
         $client = $this->createAuthenticatedApiClient();
         $client->request('DELETE', '/api/articles/article-2');
@@ -28,7 +30,7 @@ class DeleteArticleControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_FORBIDDEN, $response->getStatusCode());
     }
 
-    public function testAsOwner()
+    public function testAsOwner(): void
     {
         $client = $this->createAuthenticatedApiClient();
         $client->request('DELETE', '/api/articles/article-1');

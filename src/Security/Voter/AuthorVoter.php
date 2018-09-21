@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Security\Voter;
 
 use App\Entity\Article;
@@ -16,7 +18,7 @@ class AuthorVoter extends Voter
     /**
      * {@inheritdoc}
      */
-    protected function supports($attribute, $subject)
+    protected function supports($attribute, $subject): bool
     {
         return 'AUTHOR' === $attribute && ($subject instanceof Article || $subject instanceof Comment);
     }
@@ -24,7 +26,7 @@ class AuthorVoter extends Voter
     /**
      * {@inheritdoc}
      */
-    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
+    protected function voteOnAttribute($attribute, $subject, TokenInterface $token): bool
     {
         /** @var Article|Comment $subject */
         $user = $token->getUser();

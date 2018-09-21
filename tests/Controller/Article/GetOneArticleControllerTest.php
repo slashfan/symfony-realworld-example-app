@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Controller\Article;
 
 use App\Test\WebTestCase;
@@ -10,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class GetOneArticleControllerTest extends WebTestCase
 {
-    public function testResponse()
+    public function testResponse(): void
     {
         $client = $this->createAnonymousApiClient();
         $client->request('GET', '/api/articles/article-1');

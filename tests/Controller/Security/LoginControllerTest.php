@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Controller\Security;
 
 use App\Test\WebTestCase;
@@ -10,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class LoginControllerTest extends WebTestCase
 {
-    public function testBadRequestResponse()
+    public function testBadRequestResponse(): void
     {
         $client = $this->createAnonymousApiClient();
         $client->request('POST', '/api/users/login');
@@ -19,7 +21,7 @@ class LoginControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
     }
 
-    public function testResponse()
+    public function testResponse(): void
     {
         $client = $this->createAnonymousApiClient();
         $client->request('POST', '/api/users/login', [], [], [], json_encode([

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Controller\Profile;
 
 use App\Test\WebTestCase;
@@ -10,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class FollowProfileControllerTest extends WebTestCase
 {
-    public function testAsAnonymous()
+    public function testAsAnonymous(): void
     {
         $client = $this->createAnonymousApiClient();
         $client->request('POST', '/api/profiles/user2/follow');
@@ -19,7 +21,7 @@ class FollowProfileControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
-    public function testAsAuthenticated()
+    public function testAsAuthenticated(): void
     {
         $client = $this->createAuthenticatedApiClient();
         $client->request('POST', '/api/profiles/user2/follow');

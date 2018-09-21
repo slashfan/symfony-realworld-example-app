@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Test;
 
+use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
 
 /**
@@ -10,9 +13,9 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
 class WebTestCase extends BaseWebTestCase
 {
     /**
-     * @return \Symfony\Bundle\FrameworkBundle\Client
+     * @return Client
      */
-    protected function createAnonymousApiClient()
+    protected function createAnonymousApiClient(): Client
     {
         return static::createClient([], [
             'CONTENT_TYPE' => 'application/json',
@@ -23,11 +26,11 @@ class WebTestCase extends BaseWebTestCase
      * @param string $user
      * @param string $password
      *
-     * @return \Symfony\Bundle\FrameworkBundle\Client
+     * @return Client
      */
-    protected function createAuthenticatedApiClient($user = 'user1@conduit.tld', $password = 'password')
+    protected function createAuthenticatedApiClient($user = 'user1@conduit.tld', $password = 'password'): Client
     {
-        return $this->createClient([], [
+        return static::createClient([], [
             'CONTENT_TYPE' => 'application/json',
             'PHP_AUTH_USER' => $user,
             'PHP_AUTH_PW' => $password,

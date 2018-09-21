@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\EventListener;
 
 use App\Entity\User;
@@ -29,7 +31,7 @@ class JWTAuthenticationSubscriber implements EventSubscriberInterface
     /**
      * {@inheritdoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             JWTEvents::AUTHENTICATION_SUCCESS => 'onAuthenticationSuccess',
@@ -39,7 +41,7 @@ class JWTAuthenticationSubscriber implements EventSubscriberInterface
     /**
      * @param AuthenticationSuccessEvent $event
      */
-    public function onAuthenticationSuccess(AuthenticationSuccessEvent $event)
+    public function onAuthenticationSuccess(AuthenticationSuccessEvent $event): void
     {
         $data = $event->getData();
         $user = $event->getUser();

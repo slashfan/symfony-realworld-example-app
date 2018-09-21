@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Controller\User;
 
 use App\Test\WebTestCase;
@@ -10,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class UpdateUserControllerTest extends WebTestCase
 {
-    public function testAsAnonymous()
+    public function testAsAnonymous(): void
     {
         $client = $this->createAnonymousApiClient();
         $client->request('PUT', '/api/user');
@@ -19,7 +21,7 @@ class UpdateUserControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
-    public function testEmptyRequestAsAuthenticated()
+    public function testEmptyRequestAsAuthenticated(): void
     {
         $client = $this->createAuthenticatedApiClient();
         $client->request('PUT', '/api/user');
@@ -28,7 +30,7 @@ class UpdateUserControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
     }
 
-    public function testBadRequestAsAuthenticated()
+    public function testBadRequestAsAuthenticated(): void
     {
         $client = $this->createAuthenticatedApiClient();
         $client->request('PUT', '/api/user', [], [], [], json_encode([
@@ -47,7 +49,7 @@ class UpdateUserControllerTest extends WebTestCase
         );
     }
 
-    public function testAsAuthenticated()
+    public function testAsAuthenticated(): void
     {
         $client = $this->createAuthenticatedApiClient();
         $client->request('PUT', '/api/user', [], [], [], json_encode([

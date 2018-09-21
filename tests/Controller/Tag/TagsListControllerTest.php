@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Controller\Tag;
 
 use App\Test\WebTestCase;
@@ -10,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class TagsListControllerTest extends WebTestCase
 {
-    public function testResponse()
+    public function testResponse(): void
     {
         $client = $this->createAnonymousApiClient();
         $client->request('GET', '/api/tags');

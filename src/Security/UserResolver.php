@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Security;
 
 use App\Entity\User;
@@ -28,7 +30,7 @@ class UserResolver
      *
      * @return User
      */
-    public function getCurrentUser()
+    public function getCurrentUser(): User
     {
         $token = $this->tokenStorage->getToken();
 

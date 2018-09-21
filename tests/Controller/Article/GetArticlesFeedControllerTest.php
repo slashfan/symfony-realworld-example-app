@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Controller\Article;
 
 use App\Test\WebTestCase;
@@ -10,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class GetArticlesFeedControllerTest extends WebTestCase
 {
-    public function testAsAnonymous()
+    public function testAsAnonymous(): void
     {
         $client = $this->createAnonymousApiClient();
         $client->request('GET', '/api/articles/feed');
@@ -25,7 +27,7 @@ class GetArticlesFeedControllerTest extends WebTestCase
      *
      * @dataProvider get
      */
-    public function testAsAuthenticated(string $user, int $expectedCount)
+    public function testAsAuthenticated(string $user, int $expectedCount): void
     {
         $client = $this->createAuthenticatedApiClient($user);
         $client->request('GET', '/api/articles/feed');
