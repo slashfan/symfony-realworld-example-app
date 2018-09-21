@@ -98,6 +98,9 @@
             "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
         }
     },
+    "facebook/webdriver": {
+        "version": "1.6.0"
+    },
     "friendsofphp/php-cs-fixer": {
         "version": "2.2",
         "recipe": {
@@ -374,9 +377,6 @@
     "symfony/intl": {
         "version": "v4.0.6"
     },
-    "symfony/lts": {
-        "version": "4-dev"
-    },
     "symfony/maker-bundle": {
         "version": "1.0",
         "recipe": {
@@ -401,6 +401,9 @@
     "symfony/options-resolver": {
         "version": "v4.0.6"
     },
+    "symfony/panther": {
+        "version": "v0.1.0"
+    },
     "symfony/phpunit-bridge": {
         "version": "3.3",
         "recipe": {
@@ -409,9 +412,6 @@
             "version": "3.3",
             "ref": "179470cb6492db92dffee208cfdb436f175c93b4"
         }
-    },
-    "symfony/polyfill-ctype": {
-        "version": "v1.8.0"
     },
     "symfony/polyfill-intl-icu": {
         "version": "v1.7.0"
