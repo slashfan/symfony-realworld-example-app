@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Article;
 
+use App\Exception\NoCurrentUserException;
 use App\Repository\ArticleRepository;
 use App\Security\UserResolver;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
@@ -44,7 +45,7 @@ final class GetArticlesFeedController
     /**
      * @param ParamFetcher $paramFetcher
      *
-     * @throws \Exception
+     * @throws NoCurrentUserException
      *
      * @return array
      */

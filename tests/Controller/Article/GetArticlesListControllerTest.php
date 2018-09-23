@@ -32,6 +32,9 @@ class GetArticlesListControllerTest extends WebTestCase
         $this->assertSame($expectedCount, $data['articlesCount']);
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getQueryParams(): array
     {
         return [

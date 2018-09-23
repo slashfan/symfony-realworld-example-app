@@ -57,15 +57,15 @@ class Comment
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getBody(): ?string
     {
@@ -73,7 +73,7 @@ class Comment
     }
 
     /**
-     * @param string $body
+     * @param string|null $body
      */
     public function setBody(?string $body): void
     {
@@ -81,7 +81,7 @@ class Comment
     }
 
     /**
-     * @return User
+     * @return User|null
      */
     public function getAuthor(): ?User
     {
@@ -97,15 +97,15 @@ class Comment
     }
 
     /**
-     * @return Article
+     * @return Article|null
      */
-    public function getArticle(): Article
+    public function getArticle(): ?Article
     {
         return $this->article;
     }
 
     /**
-     * @param Article $article
+     * @param Article|null $article
      */
     public function setArticle(?Article $article): void
     {

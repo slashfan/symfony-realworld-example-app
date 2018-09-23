@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Article;
 
 use App\Entity\Article;
+use App\Exception\NoCurrentUserException;
 use App\Form\ArticleType;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
@@ -57,7 +58,7 @@ final class CreateArticleController
     /**
      * @param Request $request
      *
-     * @throws \Exception
+     * @throws NoCurrentUserException
      *
      * @return array|FormInterface
      */

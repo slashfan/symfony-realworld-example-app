@@ -6,7 +6,7 @@ stop:
 
 ##########################################################################
 
-ci: cs lint test security
+ci: cs lint stan test security
 
 cs:
 	vendor/bin/php-cs-fixer fix --verbose
@@ -18,6 +18,9 @@ lint:
 
 security:
 	vendor/bin/security-checker security:check
+
+stan:
+	vendor/bin/phpstan analyse
 
 test:
 	vendor/bin/phpunit

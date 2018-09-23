@@ -1,0 +1,19 @@
+includes:
+  - vendor/phpstan/phpstan-doctrine/extension.neon
+  - vendor/phpstan/phpstan-symfony/extension.neon
+  - vendor/phpstan/phpstan-phpunit/extension.neon
+  - vendor/phpstan/phpstan-phpunit/rules.neon
+  - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
+
+parameters:
+  level: 5
+  paths:
+    - src
+    - tests
+  excludes_analyse:
+    - '%rootDir%/../../../src/Migrations'
+  symfony:
+    container_xml_path: '%rootDir%/../../../var/cache/dev/srcDevDebugProjectContainer.xml'
+  ignoreErrors:
+      - '/Service "([a-zA-Z\\]+)" is private\./'
+  reportUnmatchedIgnoredErrors: false

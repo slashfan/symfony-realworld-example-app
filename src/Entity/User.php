@@ -128,15 +128,15 @@ class User implements UserInterface
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEmail(): ?string
     {
@@ -144,7 +144,7 @@ class User implements UserInterface
     }
 
     /**
-     * @param string $email
+     * @param string|null $email
      */
     public function setEmail(?string $email): void
     {
@@ -152,7 +152,7 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPassword(): ?string
     {
@@ -160,7 +160,7 @@ class User implements UserInterface
     }
 
     /**
-     * @param string $password
+     * @param string|null $password
      */
     public function setPassword(?string $password): void
     {
@@ -168,7 +168,7 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUsername(): ?string
     {
@@ -176,7 +176,7 @@ class User implements UserInterface
     }
 
     /**
-     * @param string $username
+     * @param string|null $username
      */
     public function setUsername(?string $username): void
     {
@@ -184,7 +184,7 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getBio(): ?string
     {
@@ -192,7 +192,7 @@ class User implements UserInterface
     }
 
     /**
-     * @param string $bio
+     * @param string|null $bio
      */
     public function setBio(?string $bio): void
     {
@@ -200,7 +200,7 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage(): ?string
     {
@@ -208,7 +208,7 @@ class User implements UserInterface
     }
 
     /**
-     * @param string $image
+     * @param string|null $image
      */
     public function setImage(?string $image): void
     {
@@ -218,7 +218,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getRoles()
+    public function getRoles(): array
     {
         return ['ROLE_USER'];
     }
@@ -242,7 +242,7 @@ class User implements UserInterface
      *
      * @return bool
      */
-    public function follows(self $user)
+    public function follows(self $user): bool
     {
         return $this->followed->contains($user);
     }
@@ -316,7 +316,7 @@ class User implements UserInterface
      *
      * @return bool
      */
-    public function hasFavorite(Article $article)
+    public function hasFavorite(Article $article): bool
     {
         return $this->favorites->contains($article);
     }

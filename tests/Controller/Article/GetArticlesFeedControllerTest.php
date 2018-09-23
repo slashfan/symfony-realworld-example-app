@@ -25,7 +25,7 @@ class GetArticlesFeedControllerTest extends WebTestCase
      * @param string $user
      * @param int    $expectedCount
      *
-     * @dataProvider get
+     * @dataProvider getUsers
      */
     public function testAsAuthenticated(string $user, int $expectedCount): void
     {
@@ -41,7 +41,10 @@ class GetArticlesFeedControllerTest extends WebTestCase
         $this->assertSame($expectedCount, $data['articlesCount']);
     }
 
-    public function get(): array
+    /**
+     * @return mixed[]
+     */
+    public function getUsers(): array
     {
         return [
             ['user1@conduit.tld', 23],

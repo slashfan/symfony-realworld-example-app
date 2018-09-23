@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Article;
 
 use App\Entity\Article;
+use App\Exception\NoCurrentUserException;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
@@ -43,7 +44,7 @@ final class UnfavoriteArticleController
     /**
      * @param Article $article
      *
-     * @throws \Exception
+     * @throws NoCurrentUserException
      *
      * @return array
      */

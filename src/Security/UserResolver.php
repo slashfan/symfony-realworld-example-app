@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Security;
 
 use App\Entity\User;
+use App\Exception\NoCurrentUserException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 /**
@@ -26,22 +27,17 @@ class UserResolver
     }
 
     /**
-     * @throws \Exception
+     * @throws NoCurrentUserException
      *
      * @return User
      */
     public function getCurrentUser(): User
     {
         $token = $this->tokenStorage->getToken();
+        $user = $token ? $token->getUser() : null;
 
-        if (null === $token) {
-            throw new \Exception('No token found.');
-        }
-
-        $user = $token->getUser();
-
-        if (null === $user || !$user instanceof User) {
-            throw new \Exception('No user found.');
+        if (!($user instanceof User)) {
+            throw new NoCurrentUserException();
         }
 
         return $user;

@@ -40,15 +40,15 @@ class Tag
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {

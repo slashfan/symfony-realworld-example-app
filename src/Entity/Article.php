@@ -106,15 +106,15 @@ class Article
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTitle(): ?string
     {
@@ -122,7 +122,7 @@ class Article
     }
 
     /**
-     * @param string $title
+     * @param string|null $title
      */
     public function setTitle(?string $title): void
     {
@@ -130,7 +130,7 @@ class Article
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSlug(): ?string
     {
@@ -138,7 +138,7 @@ class Article
     }
 
     /**
-     * @param string $slug
+     * @param string|null $slug
      */
     public function setSlug(?string $slug): void
     {
@@ -146,7 +146,7 @@ class Article
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -154,7 +154,7 @@ class Article
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      */
     public function setDescription(?string $description): void
     {
@@ -162,7 +162,7 @@ class Article
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getBody(): ?string
     {
@@ -170,7 +170,7 @@ class Article
     }
 
     /**
-     * @param string $body
+     * @param string|null $body
      */
     public function setBody(?string $body): void
     {
@@ -178,7 +178,7 @@ class Article
     }
 
     /**
-     * @return User
+     * @return User|null
      */
     public function getAuthor(): ?User
     {
@@ -186,7 +186,7 @@ class Article
     }
 
     /**
-     * @param User $author
+     * @param User|null $author
      */
     public function setAuthor(?User $author): void
     {
@@ -220,7 +220,7 @@ class Article
     /**
      * @return int
      */
-    public function getFavoritedByCount()
+    public function getFavoritedByCount(): int
     {
         return $this->favoritedBy->count();
     }

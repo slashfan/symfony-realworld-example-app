@@ -6,6 +6,7 @@ namespace App\Controller\Comment;
 
 use App\Entity\Article;
 use App\Entity\Comment;
+use App\Exception\NoCurrentUserException;
 use App\Form\CommentType;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
@@ -59,7 +60,7 @@ final class CreateCommentController
      * @param Request $request
      * @param Article $article
      *
-     * @throws \Exception
+     * @throws NoCurrentUserException
      *
      * @return array|FormInterface
      */

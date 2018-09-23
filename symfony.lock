@@ -128,6 +128,9 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "jean85/pretty-package-versions": {
+        "version": "1.2"
+    },
     "lcobucci/jwt": {
         "version": "3.2.4"
     },
@@ -161,6 +164,27 @@
             "ref": "7b6cbc842f8cd3d550815247d12294f6f304a8c4"
         }
     },
+    "nette/bootstrap": {
+        "version": "v2.4.6"
+    },
+    "nette/di": {
+        "version": "v2.4.14"
+    },
+    "nette/finder": {
+        "version": "v2.4.2"
+    },
+    "nette/neon": {
+        "version": "v2.4.3"
+    },
+    "nette/php-generator": {
+        "version": "v3.0.5"
+    },
+    "nette/robot-loader": {
+        "version": "v3.1.0"
+    },
+    "nette/utils": {
+        "version": "v2.5.3"
+    },
     "nikic/php-parser": {
         "version": "v4.0.0"
     },
@@ -190,6 +214,21 @@
     },
     "phpspec/prophecy": {
         "version": "1.7.5"
+    },
+    "phpstan/phpdoc-parser": {
+        "version": "0.3"
+    },
+    "phpstan/phpstan": {
+        "version": "0.10.3"
+    },
+    "phpstan/phpstan-doctrine": {
+        "version": "0.10"
+    },
+    "phpstan/phpstan-phpunit": {
+        "version": "0.10"
+    },
+    "phpstan/phpstan-symfony": {
+        "version": "0.10.1"
     },
     "phpunit/php-code-coverage": {
         "version": "6.0.3"
@@ -517,6 +556,9 @@
     },
     "symfony/yaml": {
         "version": "v4.0.6"
+    },
+    "thecodingmachine/phpstan-strict-rules": {
+        "version": "v0.10.3"
     },
     "theofidry/alice-data-fixtures": {
         "version": "v1.0.1"

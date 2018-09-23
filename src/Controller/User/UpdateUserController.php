@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\User;
 
+use App\Exception\NoCurrentUserException;
 use App\Form\UserType;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
@@ -56,7 +57,7 @@ final class UpdateUserController
     /**
      * @param Request $request
      *
-     * @throws \Exception
+     * @throws NoCurrentUserException
      *
      * @return array|FormInterface
      */

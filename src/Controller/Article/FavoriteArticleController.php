@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Article;
 
 use App\Entity\Article;
+use App\Exception\NoCurrentUserException;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -40,7 +41,7 @@ final class FavoriteArticleController
     /**
      * @param Article $article
      *
-     * @throws \Exception
+     * @throws NoCurrentUserException
      *
      * @return array
      */

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Profile;
 
 use App\Entity\User;
+use App\Exception\NoCurrentUserException;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -40,7 +41,7 @@ final class UnfollowProfileController
     /**
      * @param User $profile
      *
-     * @throws \Exception
+     * @throws NoCurrentUserException
      *
      * @return array
      */

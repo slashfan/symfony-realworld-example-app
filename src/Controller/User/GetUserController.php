@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller\User;
 
+use App\Exception\NoCurrentUserException;
 use App\Security\UserResolver;
 use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/api/user", methods={"GET"}, name="api_user_get")
@@ -33,9 +33,7 @@ final class GetUserController
     }
 
     /**
-     * @param UserInterface $user
-     *
-     * @throws \Exception
+     * @throws NoCurrentUserException
      *
      * @return array
      */

@@ -28,7 +28,7 @@ class WebTestCase extends BaseWebTestCase
      *
      * @return Client
      */
-    protected function createAuthenticatedApiClient($user = 'user1@conduit.tld', $password = 'password'): Client
+    protected function createAuthenticatedApiClient(string $user = 'user1@conduit.tld', string $password = 'password'): Client
     {
         return static::createClient([], [
             'CONTENT_TYPE' => 'application/json',
