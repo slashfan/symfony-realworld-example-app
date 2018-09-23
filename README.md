@@ -14,58 +14,23 @@ For more information on how to this works with other frontends/backends, head ov
 
 # Getting started
 
-Clone project
-
 ```bash
-git clone https://github.com/slashfan/symfony-realworld-example-app
-cd symfony-realworld-example-app
-```
-
-Create keys for JWT authentication
-
-```bash
-openssl genrsa -out config/jwt/private.pem -aes256 4096
-openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
-```
-
-Configure environment variables (JWT_PASSPHRASE and DATABASE_URL)
-
-```bash
-cp .env.dist .env
-```
-
-Install dependencies
-
-```bash
-composer install -o
-```
-
-Prepare database and load fixtures
-
-```bash
-bin/console doctrine:database:create --env=dev
-bin/console doctrine:schema:create --env=dev
-bin/console doctrine:fixtures:load --no-interaction --env=dev
+$ git clone https://github.com/slashfan/symfony-realworld-example-app
+$ cd symfony-realworld-example-app
 ```
 
 # Run project
 
-Use the provided docker configuration (http://localhost)
+Docker and Docker compose required.
 
 ```bash
-cp docker-compose.override.yml.dist docker-compose.override.yml
-docker-compose build --pull
-docker-compose up
+$ make install
 ```
 
-Or the simple symfony development webserver (http://localhost:8000)
+# Run tests
+
+Docker and Docker compose required.
 
 ```bash
-bin/console server:run
-```
-
-# Run tests suite
-
-```bash
-vendor/bin/phpunit
+$ make test
 ```

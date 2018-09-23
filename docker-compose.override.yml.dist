@@ -9,8 +9,3 @@ services:
     mysql:
         ports:
             - "3306:3306"
-        environment:
-          - "MYSQL_ROOT_PASSWORD=root"
-          - "MYSQL_USER=project"
-          - "MYSQL_PASSWORD=project"
-          - "MYSQL_DATABASE=project"
