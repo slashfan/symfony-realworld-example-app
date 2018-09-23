@@ -20,7 +20,7 @@ kill:
 	$(DOCKER_COMPOSE) down --volumes --remove-orphans
 
 install: ## Install and start the project
-install: .env build start db
+install: .env docker-compose.override.yml build start db
 
 reset: ## Stop and start a fresh install of the project
 reset: kill install
@@ -33,7 +33,7 @@ stop: ## Stop the project
 
 clean: ## Stop the project and remove generated files
 clean: kill
-	rm -rf .env vendor node_modules
+	rm -rf .env docker-compose.override.yml vendor node_modules
 
 no-docker:
 	$(eval DOCKER_COMPOSE := \#)
@@ -49,8 +49,9 @@ no-docker:
 
 db: ## Reset the database and load fixtures
 db: .env vendor
-	$(SYMFONY) doctrine:database:drop --if-exists --force
-	$(SYMFONY) doctrine:database:create --if-not-exists
+	@$(EXEC_PHP) php -r 'echo "Wait database...\n"; set_time_limit(15); require __DIR__."/vendor/autoload.php"; (new \Symfony\Component\Dotenv\Dotenv())->load(__DIR__."/.env"); $$u = parse_url(getenv("DATABASE_URL")); for(;;) { if(@fsockopen($$u["host"].":".($$u["port"] ?? 3306))) { break; }}'
+	-$(SYMFONY) doctrine:database:drop --if-exists --force
+	-$(SYMFONY) doctrine:database:create --if-not-exists
 	$(SYMFONY) doctrine:migrations:migrate --no-interaction --allow-no-migration
 	$(SYMFONY) doctrine:fixtures:load --no-interaction
 
@@ -61,19 +62,6 @@ migration: vendor
 db-validate-schema: ## Validate the doctrine ORM mapping
 db-validate-schema: .env vendor
 	$(SYMFONY) doctrine:schema:validate
-
-rsa-keys: ## Generate RSA keys need for JWT encoding / decoding
-rsa-keys:
-	@if [ -f config/jwt/private.pem ]; \
-	then\
-		rm config/jwt/private.pem;\
-	fi
-	@if [ -f config/jwt/public.pem ]; \
-	then\
-		rm config/jwt/public.pem;\
-	fi
-	$(EXEC_PHP) openssl genrsa -out config/jwt/private.pem -aes256 -passout pass:passphrase 4096
-	$(EXEC_PHP) openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem -passin pass:passphrase
 
 .PHONY: db migration watch
 
@@ -94,6 +82,30 @@ vendor: composer.lock
 		echo cp .env.dist .env;\
 		cp .env.dist .env;\
 	fi
+
+docker-compose.override.yml: docker-compose.override.yml.dist
+	@if [ -f docker-compose.override.yml ]; \
+	then\
+		echo '\033[1;41m/!\ The docker-compose.override.yml.dist file has changed. Please check your docker-compose.override.yml file (this message will not be displayed again).\033[0m';\
+		touch docker-compose.override.yml;\
+		exit 1;\
+	else\
+		echo cp docker-compose.override.yml.dist docker-compose.override.yml;\
+		cp docker-compose.override.yml.dist docker-compose.override.yml;\
+	fi
+
+rsa-keys: ## Generate RSA keys need for JWT encoding / decoding
+rsa-keys:
+	@if [ -f config/jwt/private.pem ]; \
+	then\
+		rm config/jwt/private.pem;\
+	fi
+	@if [ -f config/jwt/public.pem ]; \
+	then\
+		rm config/jwt/public.pem;\
+	fi
+	$(EXEC_PHP) openssl genrsa -out config/jwt/private.pem -aes256 -passout pass:passphrase 4096
+	$(EXEC_PHP) openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem -passin pass:passphrase
 
 ##
 ## Quality assurance

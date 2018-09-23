@@ -15,8 +15,8 @@ For more information on how to this works with other frontends/backends, head ov
 # Getting started
 
 ```bash
-git clone https://github.com/slashfan/symfony-realworld-example-app
-cd symfony-realworld-example-app
+$ git clone https://github.com/slashfan/symfony-realworld-example-app
+$ cd symfony-realworld-example-app
 ```
 
 # Run project
@@ -24,7 +24,7 @@ cd symfony-realworld-example-app
 Docker and Docker compose required.
 
 ```bash
-make install
+$ make install
 ```
 
 # Run tests
@@ -32,5 +32,5 @@ make install
 Docker and Docker compose required.
 
 ```bash
-make test
+$ make test
 ```

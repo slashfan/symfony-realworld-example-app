@@ -18,3 +18,8 @@ services:
 
     mysql:
         build: docker/mysql
+        environment:
+            - "MYSQL_ROOT_PASSWORD=root"
+            - "MYSQL_USER=project"
+            - "MYSQL_PASSWORD=project"
+            - "MYSQL_DATABASE=project"
