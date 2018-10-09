@@ -113,7 +113,7 @@ rsa-keys:
 ##
 
 ci: ## Run all quality insurance checks (tests, code styles, linting, security, static analysis...)
-ci: php-cs-fixer lint phpstan test security
+ci: php-cs-fixer lint phpstan test security validate-composer validate-mapping
 
 lint: ## Run lint check
 lint:
@@ -140,6 +140,14 @@ test:
 test-coverage: ## Run phpunit tests with code coverage
 test-coverage:
 	$(EXEC_PHP) -d zend_extension=xdebug.so vendor/bin/phpunit --coverage-html=var/coverage/
+
+validate-composer: ## Validate composer.json and composer.lock
+validate-composer:
+	$(EXEC_PHP) composer validate
+
+validate-mapping: ## Validate doctrine mapping
+validate-mapping:
+	$(SYMFONY) doctrine:schema:validate --skip-sync -vvv --no-interaction
 
 .DEFAULT_GOAL := help
 help:
