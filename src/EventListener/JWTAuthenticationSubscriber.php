@@ -50,7 +50,7 @@ class JWTAuthenticationSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $data = array_merge(
+        $data = \array_merge(
             $this->normalizer->normalize($user, null, ['groups' => ['me']]),
             $data
         );

@@ -34,13 +34,13 @@ class CreateCommentControllerTest extends WebTestCase
             [
                 'body' => ['can\'t be blank'],
             ],
-            json_decode($response->getContent(), true)
+            \json_decode($response->getContent(), true)
         );
 
         // invalid request
 
         $client = $this->createAuthenticatedApiClient();
-        $client->request('POST', '/api/articles/article-2/comments', [], [], [], json_encode([
+        $client->request('POST', '/api/articles/article-2/comments', [], [], [], \json_encode([
             'comment' => [
                 'body' => '',
             ],
@@ -52,13 +52,13 @@ class CreateCommentControllerTest extends WebTestCase
             [
                 'body' => ['can\'t be blank'],
             ],
-            json_decode($response->getContent(), true)
+            \json_decode($response->getContent(), true)
         );
 
         // valid request
 
         $client = $this->createAuthenticatedApiClient();
-        $client->request('POST', '/api/articles/article-2/comments', [], [], [], json_encode([
+        $client->request('POST', '/api/articles/article-2/comments', [], [], [], \json_encode([
             'comment' => [
                 'body' => 'Comment #3 on article #2 by user #1',
             ],
@@ -67,7 +67,7 @@ class CreateCommentControllerTest extends WebTestCase
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_CREATED, $response->getStatusCode());
 
-        $data = json_decode($response->getContent(), true);
+        $data = \json_decode($response->getContent(), true);
         $this->assertArrayHasKey('comment', $data);
         $this->assertArrayHasKey('body', $data['comment']);
         $this->assertSame('Comment #3 on article #2 by user #1', $data['comment']['body']);

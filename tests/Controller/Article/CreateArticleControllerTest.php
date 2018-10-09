@@ -31,7 +31,7 @@ class CreateArticleControllerTest extends WebTestCase
         ];
 
         $client = $this->createAuthenticatedApiClient();
-        $client->request('POST', '/api/articles', [], [], [], json_encode($data));
+        $client->request('POST', '/api/articles', [], [], [], \json_encode($data));
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_UNPROCESSABLE_ENTITY, $response->getStatusCode());
@@ -41,14 +41,14 @@ class CreateArticleControllerTest extends WebTestCase
                 'description' => ['can\'t be blank'],
                 'body' => ['can\'t be blank'],
             ],
-            json_decode($client->getResponse()->getContent(), true)
+            \json_decode($client->getResponse()->getContent(), true)
         );
     }
 
     public function testAsAuthenticated(): void
     {
         $client = $this->createAuthenticatedApiClient();
-        $client->request('POST', '/api/articles', [], [], [], json_encode([
+        $client->request('POST', '/api/articles', [], [], [], \json_encode([
             'article' => [
                 'title' => 'Article #3',
                 'description' => 'Description #3',
@@ -64,7 +64,7 @@ class CreateArticleControllerTest extends WebTestCase
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_CREATED, $response->getStatusCode());
 
-        $data = json_decode($response->getContent(), true);
+        $data = \json_decode($response->getContent(), true);
         $this->assertArrayHasKey('article', $data);
         $this->assertArrayHasKey('title', $data['article']);
         $this->assertArrayHasKey('description', $data['article']);

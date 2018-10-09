@@ -44,7 +44,7 @@ class ArticleNormalizer implements NormalizerInterface, NormalizerAwareInterface
             'title' => $object->getTitle(),
             'description' => $object->getDescription(),
             'body' => $object->getBody(),
-            'tagList' => array_map(function (Tag $tag) {
+            'tagList' => \array_map(function (Tag $tag) {
                 return $this->normalizer->normalize($tag);
             }, $object->getTags()->toArray()),
             'createdAt' => $this->normalizer->normalize($object->getCreatedAt()),
