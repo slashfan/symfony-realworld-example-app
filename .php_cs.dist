@@ -53,6 +53,7 @@ return PhpCsFixer\Config::create()
         'pow_to_exponentiation' => true,
         'random_api_migration' => true,
         'return_assignment' => true,
+        'self_accessor' => false,
         'semicolon_after_instruction' => true,
         'simplified_null_return' => true,
         'strict_comparison' => true,

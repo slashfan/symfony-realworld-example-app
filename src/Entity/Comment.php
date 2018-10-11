@@ -26,7 +26,7 @@ class Comment
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="text")
      *
@@ -35,14 +35,14 @@ class Comment
     private $body;
 
     /**
-     * @var User
+     * @var User|null
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      */
     private $author;
 
     /**
-     * @var Article
+     * @var Article|null
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Article")
      */
@@ -53,7 +53,7 @@ class Comment
      */
     public function __toString()
     {
-        return $this->body;
+        return \sprintf('%s', $this->body);
     }
 
     /**
@@ -89,9 +89,9 @@ class Comment
     }
 
     /**
-     * @param User $author
+     * @param User|null $author
      */
-    public function setAuthor(User $author): void
+    public function setAuthor(?User $author): void
     {
         $this->author = $author;
     }

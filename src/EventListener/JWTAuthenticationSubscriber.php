@@ -43,18 +43,18 @@ class JWTAuthenticationSubscriber implements EventSubscriberInterface
      */
     public function onAuthenticationSuccess(AuthenticationSuccessEvent $event): void
     {
-        $data = $event->getData();
         $user = $event->getUser();
 
-        if (!$user instanceof User) {
+        if ($user instanceof User === false) {
             return;
         }
 
-        $data = \array_merge(
-            $this->normalizer->normalize($user, null, ['groups' => ['me']]),
-            $data
-        );
+        $userData = $this->normalizer->normalize($user, null, ['groups' => ['me']]);
 
-        $event->setData(['user' => $data]);
+        if (\is_array($userData) === false) {
+            return;
+        }
+
+        $event->setData(['user' => \array_merge($userData, $event->getData())]);
     }
 }

@@ -31,7 +31,7 @@ class Article
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", length=255)
      *
@@ -40,7 +40,7 @@ class Article
     private $title;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", length=255, unique=true)
      *
@@ -49,7 +49,7 @@ class Article
     private $slug;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="text")
      *
@@ -58,7 +58,7 @@ class Article
     private $description;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="text")
      *
@@ -67,7 +67,7 @@ class Article
     private $body;
 
     /**
-     * @var User
+     * @var User|null
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      */
@@ -102,7 +102,7 @@ class Article
      */
     public function __toString()
     {
-        return $this->title;
+        return \sprintf('%s', $this->title);
     }
 
     /**

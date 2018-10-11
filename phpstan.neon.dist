@@ -6,14 +6,17 @@ includes:
   - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
 
 parameters:
-  level: 5
+  level: 7
   paths:
     - src
     - tests
   excludes_analyse:
+    - '%rootDir%/../../../src/Kernel.php'
     - '%rootDir%/../../../src/Migrations'
   symfony:
     container_xml_path: '%rootDir%/../../../var/cache/dev/srcDevDebugProjectContainer.xml'
   ignoreErrors:
       - '/Service "([a-zA-Z\\]+)" is private\./'
+      - '/Parameter #6 $content of method Symfony\Component\BrowserKit\Client::request() expects string|null, string|false given\./'
+      - '/Parameter #2 $plainPassword of method Symfony\Component\Security\Core\Encoder\\UserPasswordEncoderInterface::encodePassword() expects string, string|null given\./'
   reportUnmatchedIgnoredErrors: false

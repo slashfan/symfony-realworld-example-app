@@ -139,7 +139,7 @@ test:
 
 test-coverage: ## Run phpunit tests with code coverage
 test-coverage:
-	$(EXEC_PHP) -d zend_extension=xdebug.so vendor/bin/phpunit --coverage-html=var/coverage/
+	$(EXEC_PHP) php -d zend_extension=xdebug.so vendor/bin/phpunit --coverage-html=var/coverage/
 
 validate-composer: ## Validate composer.json and composer.lock
 validate-composer:

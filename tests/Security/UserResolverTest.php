@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Security;
 
+use App\Entity\User;
 use App\Security\UserResolver;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -55,7 +56,7 @@ class UserResolverTest extends TestCase
      */
     public function testGetCurrentUserWithAppUser(): void
     {
-        $user = $this->getMockBuilder(\App\Entity\User::class)->getMock();
+        $user = $this->getMockBuilder(User::class)->getMock();
 
         $token = $this->getMockBuilder(TokenInterface::class)->getMock();
         $token->method('getUser')->willReturn($user);

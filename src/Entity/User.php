@@ -32,7 +32,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", length=255, unique=true)
      *
@@ -42,7 +42,7 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", length=255)
      *
@@ -52,7 +52,7 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", length=255, unique=true)
      *
@@ -67,14 +67,14 @@ class User implements UserInterface
     private $username;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="text", nullable=true)
      */
     private $bio;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="text", nullable=true)
      *
@@ -124,7 +124,7 @@ class User implements UserInterface
      */
     public function __toString()
     {
-        return $this->email;
+        return \sprintf('%s', $this->email);
     }
 
     /**
@@ -242,7 +242,7 @@ class User implements UserInterface
      *
      * @return bool
      */
-    public function follows(self $user): bool
+    public function follows(User $user): bool
     {
         return $this->followed->contains($user);
     }
@@ -250,7 +250,7 @@ class User implements UserInterface
     /**
      * @param User $user
      */
-    public function follow(self $user): void
+    public function follow(User $user): void
     {
         if ($user->getFollowers()->contains($this)) {
             return;
@@ -262,7 +262,7 @@ class User implements UserInterface
     /**
      * @param User $user
      */
-    public function unfollow(self $user): void
+    public function unfollow(User $user): void
     {
         if (!$user->getFollowers()->contains($this)) {
             return;

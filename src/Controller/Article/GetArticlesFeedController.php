@@ -59,9 +59,6 @@ final class GetArticlesFeedController
             (int) $paramFetcher->get('limit')
         );
 
-        return [
-            'articles' => $articles,
-            'articlesCount' => $articlesCount,
-        ];
+        return \compact('articles', 'articlesCount');
     }
 }

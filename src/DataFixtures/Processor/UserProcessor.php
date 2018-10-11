@@ -32,7 +32,7 @@ final class UserProcessor implements ProcessorInterface
     public function preProcess(string $fixtureId, $object): void
     {
         /** @var User $object * */
-        if (false === $object instanceof User) {
+        if ($object instanceof User === false) {
             return;
         }
 

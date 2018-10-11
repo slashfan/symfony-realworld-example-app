@@ -114,30 +114,30 @@ class ArticleRepository extends ServiceEntityRepository
      */
     private function getArticlesListQueryBuilder(?string $tag, ?string $authorUsername, ?string $favoritedByUsername): QueryBuilder
     {
-        $qb = $this
+        $queryBuilder = $this
             ->createQueryBuilder('a')
             ->innerJoin('a.author', 'author')
             ->orderBy('a.id', 'desc')
         ;
 
         if ($tag) {
-            $qb->innerJoin('a.tags', 't');
-            $qb->andWhere('t.name = :tag');
-            $qb->setParameter('tag', $tag);
+            $queryBuilder->innerJoin('a.tags', 't');
+            $queryBuilder->andWhere('t.name = :tag');
+            $queryBuilder->setParameter('tag', $tag);
         }
 
         if ($authorUsername) {
-            $qb->andWhere('author.username = :author_username');
-            $qb->setParameter('author_username', $authorUsername);
+            $queryBuilder->andWhere('author.username = :author_username');
+            $queryBuilder->setParameter('author_username', $authorUsername);
         }
 
         if ($favoritedByUsername) {
-            $qb->innerJoin('a.favoritedBy', 'favoritedBy');
-            $qb->andWhere('favoritedBy.username = :favoritedby_username');
-            $qb->setParameter('favoritedby_username', $favoritedByUsername);
+            $queryBuilder->innerJoin('a.favoritedBy', 'favoritedBy');
+            $queryBuilder->andWhere('favoritedBy.username = :favoritedby_username');
+            $queryBuilder->setParameter('favoritedby_username', $favoritedByUsername);
         }
 
-        return $qb;
+        return $queryBuilder;
     }
 
     /**

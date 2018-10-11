@@ -20,7 +20,7 @@ class AuthorVoter extends Voter
      */
     protected function supports($attribute, $subject): bool
     {
-        return 'AUTHOR' === $attribute && ($subject instanceof Article || $subject instanceof Comment);
+        return $attribute === 'AUTHOR' && ($subject instanceof Article || $subject instanceof Comment);
     }
 
     /**
