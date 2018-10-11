@@ -15,10 +15,9 @@ class TagNormalizer implements NormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = []): string
     {
         /* @var Tag $object */
-
         return $object->getName();
     }
 

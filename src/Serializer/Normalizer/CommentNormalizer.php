@@ -20,7 +20,7 @@ class CommentNormalizer implements NormalizerInterface, NormalizerAwareInterface
     /**
      * {@inheritdoc}
      */
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = []): array
     {
         /* @var Article $object */
 

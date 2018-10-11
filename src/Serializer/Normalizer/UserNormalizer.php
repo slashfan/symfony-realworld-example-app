@@ -41,7 +41,7 @@ class UserNormalizer implements NormalizerInterface, NormalizerAwareInterface
     /**
      * {@inheritdoc}
      */
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = []): array
     {
         /* @var User $object */
 

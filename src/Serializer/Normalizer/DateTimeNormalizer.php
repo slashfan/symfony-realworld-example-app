@@ -14,10 +14,9 @@ class DateTimeNormalizer implements NormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = []): string
     {
         /* @var \DateTime $object */
-
         return $object->format(\DateTime::ATOM);
     }
 
