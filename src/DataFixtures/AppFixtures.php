@@ -31,6 +31,6 @@ final class AppFixtures extends Fixture
      */
     public function load(ObjectManager $manager): void
     {
-        $this->loader->load([__DIR__.'/../../fixtures/data.yaml']);
+        $this->loader->load([__DIR__ . '/../../fixtures/data.yaml']);
     }
 }

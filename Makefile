@@ -113,13 +113,20 @@ rsa-keys:
 ##
 
 ci: ## Run all quality insurance checks (tests, code styles, linting, security, static analysis...)
-ci: php-cs-fixer lint phpstan test security validate-composer validate-mapping
+ci: php-cs-fixer phpcs phpstan lint validate-composer validate-mapping security test
+
+ci.local: ## Run quality insurance checks from inside the php container
+ci.local: no-docker ci
 
 lint: ## Run lint check
 lint:
 	$(SYMFONY) lint:yaml config/
 	$(SYMFONY) lint:yaml fixtures/
 	$(SYMFONY) lint:yaml translations/
+
+phpcs: ## Run phpcode_sniffer
+phpcs:
+	$(EXEC_PHP) vendor/bin/phpcs
 
 php-cs-fixer: ## Run php-cs-fixer
 php-cs-fixer:

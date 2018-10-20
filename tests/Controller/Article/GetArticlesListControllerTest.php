@@ -21,7 +21,7 @@ class GetArticlesListControllerTest extends WebTestCase
     public function testResponse(string $query, int $expectedCount): void
     {
         $client = $this->createAnonymousApiClient();
-        $client->request('GET', '/api/articles'.$query);
+        $client->request('GET', '/api/articles' . $query);
 
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());

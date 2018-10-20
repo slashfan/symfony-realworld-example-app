@@ -57,8 +57,13 @@ class ArticleRepository extends ServiceEntityRepository
      *
      * @return Article[]
      */
-    public function getArticlesList(int $offset, int $limit, ?string $tag, ?string $authorUsername, ?string $favoritedByUsername): array
-    {
+    public function getArticlesList(
+        int $offset,
+        int $limit,
+        ?string $tag,
+        ?string $authorUsername,
+        ?string $favoritedByUsername
+    ): array {
         return $this
             ->getArticlesListQueryBuilder($tag, $authorUsername, $favoritedByUsername)
             ->setFirstResult($offset)
@@ -112,8 +117,11 @@ class ArticleRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder
      */
-    private function getArticlesListQueryBuilder(?string $tag, ?string $authorUsername, ?string $favoritedByUsername): QueryBuilder
-    {
+    private function getArticlesListQueryBuilder(
+        ?string $tag,
+        ?string $authorUsername,
+        ?string $favoritedByUsername
+    ): QueryBuilder {
         $queryBuilder = $this
             ->createQueryBuilder('a')
             ->innerJoin('a.author', 'author')
