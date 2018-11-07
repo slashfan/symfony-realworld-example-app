@@ -52,13 +52,15 @@ final class GetArticlesFeedController
     public function __invoke(ParamFetcher $paramFetcher)
     {
         $user = $this->userResolver->getCurrentUser();
-        $articlesCount = $this->articleRepository->getArticlesFeedCount($user);
-        $articles = $this->articleRepository->getArticlesFeed(
-            $user,
-            (int) $paramFetcher->get('offset'),
-            (int) $paramFetcher->get('limit')
-        );
+        $offset = (int) $paramFetcher->get('offset');
+        $limit = (int) $paramFetcher->get('limit');
 
-        return \compact('articles', 'articlesCount');
+        $articlesCount = $this->articleRepository->getArticlesFeedCount($user);
+        $articles = $this->articleRepository->getArticlesFeed($user, $offset, $limit);
+
+        return [
+            'articlesCount' => $articlesCount,
+            'articles' => $articles,
+        ];
     }
 }

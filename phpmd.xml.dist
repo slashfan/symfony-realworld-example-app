@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<ruleset name="RealWorld">
+    <!-- Unused code. -->
+    <rule ref="rulesets/unusedcode.xml"/>
+    <!-- Design. -->
+    <rule ref="rulesets/design.xml">
+        <exclude name="NumberOfChildren"/>
+    </rule>
+    <rule ref="rulesets/design.xml/NumberOfChildren">
+        <properties>
+            <property name="minimum" value="20"/>
+        </properties>
+    </rule>
+    <!-- Naming. -->
+    <rule ref="rulesets/naming.xml">
+        <exclude name="ShortVariable"/>
+        <exclude name="LongVariable"/>
+    </rule>
+    <!-- Naming - ShortVariable config -->
+    <rule ref="rulesets/naming.xml/ShortVariable">
+        <properties>
+            <property name="exceptions" value="i,id,io,e"/>
+        </properties>
+    </rule>
+    <!-- Naming - LongVariable config -->
+    <rule ref="rulesets/naming.xml/LongVariable">
+        <properties>
+            <property name="maximum" value="32"/>
+        </properties>
+    </rule>
+    <!-- Code size. -->
+    <rule ref="rulesets/codesize.xml"/>
+    <!-- Clean code. -->
+    <rule ref="rulesets/cleancode.xml">
+        <exclude name="ElseExpression"/>
+    </rule>
+    <!-- Controversial. -->
+    <rule ref="rulesets/controversial.xml"/>
+    <!-- Excluded files -->
+    <exclude-pattern>src/Migrations/*</exclude-pattern>
+    <exclude-pattern>src/DataFixtures/*</exclude-pattern>
+</ruleset>

@@ -54,6 +54,9 @@ final class GetArticlesListController
             $paramFetcher->get('favorited')
         );
 
-        return \compact('articles', 'articlesCount');
+        return [
+            'articlesCount' => $articlesCount,
+            'articles' => $articles,
+        ];
     }
 }

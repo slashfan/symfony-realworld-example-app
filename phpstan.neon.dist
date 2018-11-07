@@ -1,9 +1,11 @@
 includes:
+  - vendor/phpstan/phpstan-deprecation-rules/rules.neon
   - vendor/phpstan/phpstan-doctrine/extension.neon
   - vendor/phpstan/phpstan-symfony/extension.neon
   - vendor/phpstan/phpstan-phpunit/extension.neon
   - vendor/phpstan/phpstan-phpunit/rules.neon
   - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
+  - vendor/slam/phpstan-extensions/conf/slam-rules.neon
 
 parameters:
   level: 7

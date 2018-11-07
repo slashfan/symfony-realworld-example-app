@@ -98,6 +98,9 @@
             "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
         }
     },
+    "escapestudios/symfony2-coding-standard": {
+        "version": "3.4.1"
+    },
     "facebook/webdriver": {
         "version": "1.6.0"
     },
@@ -124,6 +127,15 @@
     },
     "gedmo/doctrine-extensions": {
         "version": "v2.4.33"
+    },
+    "geolid/phpcs": {
+        "version": "7.0.0"
+    },
+    "jakub-onderka/php-console-color": {
+        "version": "v0.2"
+    },
+    "jakub-onderka/php-console-highlighter": {
+        "version": "v0.3.2"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
@@ -188,11 +200,17 @@
     "nikic/php-parser": {
         "version": "v4.0.0"
     },
+    "object-calisthenics/phpcs-calisthenics-rules": {
+        "version": "v3.3.0"
+    },
     "ocramius/package-versions": {
         "version": "1.3.0"
     },
     "ocramius/proxy-manager": {
         "version": "2.1.1"
+    },
+    "pdepend/pdepend": {
+        "version": "2.5.2"
     },
     "phar-io/manifest": {
         "version": "1.0.1"
@@ -212,6 +230,9 @@
     "phpdocumentor/type-resolver": {
         "version": "0.4.0"
     },
+    "phpmd/phpmd": {
+        "version": "2.6.0"
+    },
     "phpspec/prophecy": {
         "version": "1.7.5"
     },
@@ -220,6 +241,9 @@
     },
     "phpstan/phpstan": {
         "version": "0.10.3"
+    },
+    "phpstan/phpstan-deprecation-rules": {
+        "version": "0.10.2"
     },
     "phpstan/phpstan-doctrine": {
         "version": "0.10"
@@ -253,6 +277,9 @@
             "version": "4.7",
             "ref": "c276fa48d4713de91eb410289b3b1834acb7e403"
         }
+    },
+    "povils/phpmnd": {
+        "version": "v2.0.0"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -316,6 +343,12 @@
             "version": "4.0",
             "ref": "e65a105bf4cd5b1b79012ba029954927f05922e8"
         }
+    },
+    "slam/phpstan-extensions": {
+        "version": "v2.0.1"
+    },
+    "slevomat/coding-standard": {
+        "version": "4.8.6"
     },
     "squizlabs/php_codesniffer": {
         "version": "3.0",
@@ -586,6 +619,9 @@
     },
     "willdurand/negotiation": {
         "version": "v2.3.1"
+    },
+    "wp-coding-standards/wpcs": {
+        "version": "1.1.0"
     },
     "zendframework/zend-code": {
         "version": "3.3.0"

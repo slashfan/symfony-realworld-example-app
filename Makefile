@@ -113,7 +113,7 @@ rsa-keys:
 ##
 
 ci: ## Run all quality insurance checks (tests, code styles, linting, security, static analysis...)
-ci: php-cs-fixer phpcs phpstan lint validate-composer validate-mapping security test
+ci: php-cs-fixer phpcs phpmd phpmnd phpstan lint validate-composer validate-mapping security test
 
 ci.local: ## Run quality insurance checks from inside the php container
 ci.local: no-docker ci
@@ -131,6 +131,15 @@ phpcs:
 php-cs-fixer: ## Run php-cs-fixer
 php-cs-fixer:
 	$(EXEC_PHP) vendor/bin/php-cs-fixer fix --verbose
+
+phpmd: ## Run PHPMD
+phpmd:
+	$(EXEC_PHP) vendor/bin/phpmd src/,tests/ text phpmd.xml.dist
+
+phpmnd: ## Run PHPMND
+phpmnd:
+	$(EXEC_PHP) vendor/bin/phpmnd src --extensions=default_parameter
+	$(EXEC_PHP) vendor/bin/phpmnd tests --extensions=default_parameter
 
 phpstan: ## Run phpstan
 phpstan:

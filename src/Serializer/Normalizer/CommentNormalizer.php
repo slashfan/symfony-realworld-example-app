@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Serializer\Normalizer;
 
-use App\Entity\Article;
 use App\Entity\Comment;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
@@ -22,7 +21,7 @@ class CommentNormalizer implements NormalizerInterface, NormalizerAwareInterface
      */
     public function normalize($object, $format = null, array $context = []): array
     {
-        /* @var Article $object */
+        /* @var Comment $object */
 
         return [
             'id' => $object->getId(),

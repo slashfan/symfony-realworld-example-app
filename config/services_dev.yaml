@@ -1,12 +1,9 @@
 services:
 
-    _defaults:
-        public: true
-
     App\DataFixtures\AppFixtures:
         arguments: ['@fidry_alice_data_fixtures.loader.doctrine']
-        tags: [{ name: doctrine.fixture.orm }]
+        tags: [{ name: doctrine.fixture.orm  }]
 
     App\DataFixtures\Processor\UserProcessor:
         arguments: ['@security.password_encoder']
-        tags: [{ name: fidry_alice_data_fixtures.processor }]
+        tags: [ { name: fidry_alice_data_fixtures.processor } ]

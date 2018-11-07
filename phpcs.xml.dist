@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ruleset name="Kalitak" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+<ruleset name="RealWorld" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+    <autoload>./vendor/wp-coding-standards/wpcs/WordPress/PHPCSAliases.php</autoload>
+    <config name="installed_paths"
+            value="vendor/object-calisthenics/phpcs-calisthenics-rules/src/,vendor/wp-coding-standards/wpcs/,vendor/escapestudios/symfony2-coding-standard/Symfony/,vendor/slevomat/coding-standard/"/>
     <config name="ignore_warnings_on_exit" value="1"/>
     <arg name="basepath" value="."/>
     <arg name="cache" value="var/.phpcs-cache"/>
@@ -8,6 +12,60 @@
     <file>src/</file>
     <file>tests/</file>
     <exclude-pattern>src/Migrations/*</exclude-pattern>
+    <rule ref="PSR1"/>
     <rule ref="PSR2"/>
     <rule ref="PSR12"/>
+    <!-- additional rules -->
+    <rule ref="Generic.PHP.ForbiddenFunctions">
+        <properties>
+            <property name="forbiddenFunctions" type="array" value="dd=>null,var_dump=>null,dump=>null,exit=>null,die=>null,eval=>null,sizeof=>count,delete=>unset,print=>echo,is_null=>null,create_function=>null"/>
+        </properties>
+    </rule>
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+    <rule ref="Generic.Formatting.SpaceAfterCast"/>
+    <rule ref="WordPress.Arrays.CommaAfterArrayItem"/>
+    <rule ref="WordPress.Classes.ClassInstantiation"/>
+    <rule ref="ObjectCalisthenics.Metrics.MaxNestingLevel">
+        <properties>
+            <property name="maxNestingLevel" value="2"/>
+        </properties>
+    </rule>
+    <rule ref="ObjectCalisthenics.NamingConventions.ElementNameMinimalLength">
+        <properties>
+            <property name="allowedShortNames" type="array" value="i,id,io,e"/>
+            <property name="minLength" value="3"/>
+        </properties>
+    </rule>
+    <rule ref="Symfony.Formatting.BlankLineBeforeReturn"/>
+    <rule ref="Symfony.NamingConventions.ValidClassName"/>
+    <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
+        <properties>
+            <property name="newlinesCountBetweenOpenTagAndDeclare" value="2"/>
+            <property name="spacesCountAroundEqualsSign" value="0"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHintSpacing"/>
+    <rule ref="SlevomatCodingStandard.TypeHints.UselessConstantTypeHint"/>
+    <rule ref="SlevomatCodingStandard.Arrays.DisallowImplicitArrayCreation"/>
+    <rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition"/>
+    <rule ref="SlevomatCodingStandard.ControlStructures.DisallowYodaComparison"/>
+    <rule ref="SlevomatCodingStandard.ControlStructures.DisallowEqualOperators"/>
+    <rule ref="SlevomatCodingStandard.ControlStructures.RequireNullCoalesceOperator"/>
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="searchAnnotations" value="true"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Classes.UnusedPrivateElements"/>
+    <rule ref="SlevomatCodingStandard.Functions.UnusedInheritedVariablePassedToClosure"/>
+    <rule ref="SlevomatCodingStandard.Functions.UselessParameterDefaultValue"/>
+    <rule ref="SlevomatCodingStandard.Namespaces.UseFromSameNamespace"/>
+    <rule ref="SlevomatCodingStandard.Namespaces.UselessAlias"/>
+    <rule ref="SlevomatCodingStandard.PHP.UselessParentheses"/>
+    <rule ref="SlevomatCodingStandard.PHP.OptimizedFunctionsWithoutUnpacking"/>
+    <rule ref="SlevomatCodingStandard.PHP.UselessSemicolon"/>
+    <rule ref="SlevomatCodingStandard.Variables.DuplicateAssignmentToVariable"/>
+    <rule ref="SlevomatCodingStandard.Variables.UnusedVariable"/>
+    <rule ref="SlevomatCodingStandard.Variables.UselessVariable"/>
+    <rule ref="SlevomatCodingStandard.Exceptions.DeadCatch"/>
 </ruleset>
