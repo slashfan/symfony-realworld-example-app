@@ -19,17 +19,21 @@ $ git clone https://github.com/slashfan/symfony-realworld-example-app
 $ cd symfony-realworld-example-app
 ```
 
-# Run project
+# Run project (Docker and Docker compose required.)
 
-Docker and Docker compose required.
+On first run :
 
 ```bash
 $ make install
 ```
 
-# Run tests
+On next runs :
 
-Docker and Docker compose required.
+```bash
+$ make start
+```
+
+# Run tests (Docker and Docker compose required.)
 
 ```bash
 $ make test

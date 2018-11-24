@@ -1,10 +1,8 @@
-DOCKER_COMPOSE  = docker-compose
-
-EXEC        = $(DOCKER_COMPOSE) exec
-EXEC_PHP    = $(DOCKER_COMPOSE) exec php
-
-SYMFONY         = $(EXEC_PHP) bin/console
-COMPOSER        = $(EXEC_PHP) composer
+DOCKER_COMPOSE = docker-compose
+EXEC = $(DOCKER_COMPOSE) exec
+EXEC_PHP = $(DOCKER_COMPOSE) exec php
+SYMFONY = $(EXEC_PHP) bin/console
+COMPOSER = $(EXEC_PHP) composer
 
 ##
 ## Project
@@ -33,7 +31,7 @@ stop: ## Stop the project
 
 clean: ## Stop the project and remove generated files
 clean: kill
-	rm -rf .env docker-compose.override.yml vendor node_modules
+	rm -rf .env docker-compose.override.yml vendor
 
 no-docker:
 	$(eval DOCKER_COMPOSE := \#)
@@ -66,8 +64,8 @@ db-validate-schema: .env vendor
 .PHONY: db migration watch
 
 # rules based on files
-composer.lock: composer.json
-	$(COMPOSER) update --lock --no-scripts --no-interaction
+#composer.lock: composer.json
+#	$(COMPOSER) update --lock --no-scripts --no-interaction
 
 vendor: composer.lock
 	$(COMPOSER) install
@@ -113,7 +111,7 @@ rsa-keys:
 ##
 
 ci: ## Run all quality insurance checks (tests, code styles, linting, security, static analysis...)
-ci: php-cs-fixer phpcs phpmd phpmnd phpstan lint validate-composer validate-mapping security test
+ci: php-cs-fixer phpcs phpmd phpmnd phpstan lint validate-composer validate-mapping security test test-coverage
 
 ci.local: ## Run quality insurance checks from inside the php container
 ci.local: no-docker ci
@@ -139,7 +137,6 @@ phpmd:
 phpmnd: ## Run PHPMND
 phpmnd:
 	$(EXEC_PHP) vendor/bin/phpmnd src --extensions=default_parameter
-	$(EXEC_PHP) vendor/bin/phpmnd tests --extensions=default_parameter
 
 phpstan: ## Run phpstan
 phpstan:
@@ -155,7 +152,7 @@ test:
 
 test-coverage: ## Run phpunit tests with code coverage
 test-coverage:
-	$(EXEC_PHP) php -d zend_extension=xdebug.so vendor/bin/phpunit --coverage-html=var/coverage/
+	$(EXEC_PHP) phpdbg -qrr ./vendor/bin/phpunit --coverage-html=var/coverage/
 
 validate-composer: ## Validate composer.json and composer.lock
 validate-composer:
