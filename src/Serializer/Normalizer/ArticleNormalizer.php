@@ -8,6 +8,7 @@ use App\Entity\Article;
 use App\Entity\Tag;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
@@ -15,7 +16,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 /**
  * ArticleNormalizer.
  */
-class ArticleNormalizer implements NormalizerInterface, NormalizerAwareInterface
+class ArticleNormalizer implements NormalizerInterface, NormalizerAwareInterface, CacheableSupportsMethodInterface
 {
     use NormalizerAwareTrait;
 
@@ -70,5 +71,13 @@ class ArticleNormalizer implements NormalizerInterface, NormalizerAwareInterface
     public function supportsNormalization($data, $format = null): bool
     {
         return $data instanceof Article;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasCacheableSupportsMethod(): bool
+    {
+        return true;
     }
 }
