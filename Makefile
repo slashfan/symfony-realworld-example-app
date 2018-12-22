@@ -18,7 +18,7 @@ kill:
 	$(DOCKER_COMPOSE) down --volumes --remove-orphans
 
 install: ## Install and start the project
-install: .env docker-compose.override.yml build start db
+install: .env docker-compose.override.yml build start vendor rsa-keys db
 
 reset: ## Stop and start a fresh install of the project
 reset: kill install
@@ -31,7 +31,7 @@ stop: ## Stop the project
 
 clean: ## Stop the project and remove generated files
 clean: kill
-	rm -rf .env docker-compose.override.yml vendor
+	rm -rf .env docker-compose.override.yml config/jwt/*.pem vendor
 
 no-docker:
 	$(eval DOCKER_COMPOSE := \#)
