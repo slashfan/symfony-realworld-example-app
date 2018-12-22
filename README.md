@@ -19,7 +19,7 @@ $ git clone https://github.com/slashfan/symfony-realworld-example-app
 $ cd symfony-realworld-example-app
 ```
 
-# Run project (Docker and Docker compose required.)
+# Run project (with docker)
 
 On first run :
 
@@ -33,8 +33,8 @@ On next runs :
 $ make start
 ```
 
-# Run tests (Docker and Docker compose required.)
+# Run phpunit tests + api spec compliance tests + qa tools (with docker)
 
 ```bash
-$ make test
+$ make ci
 ```

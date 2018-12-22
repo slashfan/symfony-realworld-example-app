@@ -185,6 +185,9 @@
             "ref": "7b6cbc842f8cd3d550815247d12294f6f304a8c4"
         }
     },
+    "nesbot/carbon": {
+        "version": "2.8.0"
+    },
     "nette/bootstrap": {
         "version": "v2.4.6"
     },

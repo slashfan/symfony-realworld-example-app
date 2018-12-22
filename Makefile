@@ -18,7 +18,7 @@ kill:
 	$(DOCKER_COMPOSE) down --volumes --remove-orphans
 
 install: ## Install and start the project
-install: .env docker-compose.override.yml build start db
+install: .env docker-compose.override.yml build start vendor rsa-keys db
 
 reset: ## Stop and start a fresh install of the project
 reset: kill install
@@ -31,7 +31,7 @@ stop: ## Stop the project
 
 clean: ## Stop the project and remove generated files
 clean: kill
-	rm -rf .env docker-compose.override.yml vendor
+	rm -rf .env docker-compose.override.yml config/jwt/*.pem vendor
 
 no-docker:
 	$(eval DOCKER_COMPOSE := \#)
@@ -111,7 +111,7 @@ rsa-keys:
 ##
 
 ci: ## Run all quality insurance checks (tests, code styles, linting, security, static analysis...)
-ci: php-cs-fixer phpcs phpmd phpmnd phpstan lint validate-composer validate-mapping security test test-coverage
+ci: php-cs-fixer phpcs phpmd phpmnd phpstan lint validate-composer validate-mapping security test test-spec test-coverage
 
 ci.local: ## Run quality insurance checks from inside the php container
 ci.local: no-docker ci
@@ -153,6 +153,10 @@ test:
 test-coverage: ## Run phpunit tests with code coverage
 test-coverage:
 	$(EXEC_PHP) phpdbg -qrr ./vendor/bin/phpunit --coverage-html=var/coverage/
+
+test-spec: ## Run postman collection tests
+test-spec:
+	$(EXEC_PHP) bash ./spec/api-spec-test-runner.sh
 
 validate-composer: ## Validate composer.json and composer.lock
 validate-composer:
