@@ -111,7 +111,7 @@ rsa-keys:
 ##
 
 ci: ## Run all quality insurance checks (tests, code styles, linting, security, static analysis...)
-ci: php-cs-fixer phpcs phpmd phpmnd phpstan lint validate-composer validate-mapping security test test-coverage
+ci: php-cs-fixer phpcs phpmd phpmnd phpstan lint validate-composer validate-mapping security test test-spec test-coverage
 
 ci.local: ## Run quality insurance checks from inside the php container
 ci.local: no-docker ci
@@ -153,6 +153,10 @@ test:
 test-coverage: ## Run phpunit tests with code coverage
 test-coverage:
 	$(EXEC_PHP) phpdbg -qrr ./vendor/bin/phpunit --coverage-html=var/coverage/
+
+test-spec: ## Run postman collection tests
+test-spec:
+	$(EXEC_PHP) bash ./spec/api-spec-test-runner.sh
 
 validate-composer: ## Validate composer.json and composer.lock
 validate-composer:

@@ -31,6 +31,12 @@ RUN apt-get install -y libzip-dev zip \
 # Install COMPOSER
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Install NODEJS
+RUN apt-get install build-essential -y \
+    && curl -L -o /tmp/nodejs.tar.gz https://nodejs.org/dist/v10.14.2/node-v10.14.2-linux-x64.tar.gz \
+    && tar xfvz /tmp/nodejs.tar.gz -C /usr/local --strip-components=1 \
+    && rm -f /tmp/nodejs.tar.gz
+
 # Set PROJECT USER
 RUN useradd -ms /bin/bash project
 USER project
