@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\DataTransformer\CollectionToArrayTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * TagsInputType.
@@ -38,6 +39,14 @@ class TagsInputType extends AbstractType
             ->addModelTransformer(new CollectionToArrayTransformer(), true)
             ->addModelTransformer(new TagArrayToStringTransformer($this->tagRepository), true)
         ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefault('multiple', true);
     }
 
     /**
