@@ -16,7 +16,7 @@ class DateTimeNormalizer implements NormalizerInterface, CacheableSupportsMethod
     /**
      * {@inheritdoc}
      */
-    public function normalize($object, $format = null, array $context = []): string
+    public function normalize($object, $format = null, array $context = []): ?string
     {
         return Carbon::instance($object)->toISOString();
     }

@@ -16,7 +16,7 @@ parameters:
     - '%rootDir%/../../../src/Kernel.php'
     - '%rootDir%/../../../src/Migrations'
   symfony:
-    container_xml_path: '%rootDir%/../../../var/cache/dev/srcApp_KernelDevDebugContainer.xml'
+    container_xml_path: '%currentWorkingDirectory%/var/cache/dev/srcApp_KernelDevDebugContainer.xml'
   ignoreErrors:
       - '/Service "([a-zA-Z\\]+)" is private\./'
       - '/Parameter #6 $content of method Symfony\Component\BrowserKit\Client::request() expects string|null, string|false given\./'

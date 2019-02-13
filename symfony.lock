@@ -149,9 +149,6 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
-    "jean85/pretty-package-versions": {
-        "version": "1.2"
-    },
     "lcobucci/jwt": {
         "version": "3.2.4"
     },
@@ -187,24 +184,6 @@
     },
     "nesbot/carbon": {
         "version": "2.8.0"
-    },
-    "nette/bootstrap": {
-        "version": "v2.4.6"
-    },
-    "nette/di": {
-        "version": "v2.4.14"
-    },
-    "nette/finder": {
-        "version": "v2.4.2"
-    },
-    "nette/neon": {
-        "version": "v2.4.3"
-    },
-    "nette/php-generator": {
-        "version": "v3.0.5"
-    },
-    "nette/robot-loader": {
-        "version": "v3.1.0"
     },
     "nette/utils": {
         "version": "v2.5.3"
@@ -248,23 +227,17 @@
     "phpspec/prophecy": {
         "version": "1.7.5"
     },
-    "phpstan/phpdoc-parser": {
-        "version": "0.3"
-    },
-    "phpstan/phpstan": {
-        "version": "0.10.3"
-    },
     "phpstan/phpstan-deprecation-rules": {
-        "version": "0.10.2"
+        "version": "0.11"
     },
     "phpstan/phpstan-doctrine": {
-        "version": "0.10"
+        "version": "0.11.1"
     },
     "phpstan/phpstan-phpunit": {
-        "version": "0.10"
+        "version": "0.11"
     },
     "phpstan/phpstan-symfony": {
-        "version": "0.10.1"
+        "version": "0.11"
     },
     "phpunit/php-code-coverage": {
         "version": "6.0.3"
@@ -357,7 +330,7 @@
         }
     },
     "slam/phpstan-extensions": {
-        "version": "v2.0.1"
+        "version": "v3.0.0"
     },
     "slevomat/coding-standard": {
         "version": "4.8.6"
@@ -618,7 +591,7 @@
         "version": "v4.0.6"
     },
     "thecodingmachine/phpstan-strict-rules": {
-        "version": "v0.10.3"
+        "version": "v0.11.0"
     },
     "theofidry/alice-data-fixtures": {
         "version": "v1.0.1"

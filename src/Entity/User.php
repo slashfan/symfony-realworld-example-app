@@ -226,8 +226,9 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getSalt(): void
+    public function getSalt(): ?string
     {
+        return null;
     }
 
     /**
