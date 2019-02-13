@@ -1,0 +1,12 @@
+imports:
+    # tests
+#    - { resource: 'vendor/rector/rector/config/level/phpunit/phpunit70.yaml' }
+#    - { resource: 'vendor/rector/rector/config/level/phpunit/phpunit-mock.yaml' }
+#    - { resource: 'vendor/rector/rector/config/level/phpunit/phpunit-specific-method.yaml' }
+#    - { resource: 'vendor/rector/rector/config/level/phpunit/phpunit-yield-data-provider.yaml' }
+    # src
+#    - { resource: 'vendor/rector/rector/config/level/symfony/symfony34.yaml' }
+#    - { resource: 'vendor/rector/rector/config/level/symfony/symfony40.yaml' }
+#    - { resource: 'vendor/rector/rector/config/level/symfony/symfony41.yaml' }
+#    - { resource: 'vendor/rector/rector/config/level/symfony/symfony42.yaml' }
+#    - { resource: 'vendor/rector/rector/config/level/php/php72.yaml' }

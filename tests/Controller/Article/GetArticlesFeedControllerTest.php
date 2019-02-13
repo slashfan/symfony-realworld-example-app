@@ -41,15 +41,10 @@ class GetArticlesFeedControllerTest extends WebTestCase
         $this->assertSame($expectedCount, $data['articlesCount']);
     }
 
-    /**
-     * @return mixed[]
-     */
-    public function getUsers(): array
+    public function getUsers(): \Iterator
     {
-        return [
-            ['user1@conduit.tld', 23],
-            ['user2@conduit.tld', 1],
-            ['user3@conduit.tld', 0],
-        ];
+        yield ['user1@conduit.tld', 23];
+        yield ['user2@conduit.tld', 1];
+        yield ['user3@conduit.tld', 0];
     }
 }

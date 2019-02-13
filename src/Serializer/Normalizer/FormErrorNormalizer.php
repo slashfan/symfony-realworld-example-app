@@ -28,10 +28,8 @@ class FormErrorNormalizer extends FOSRestFormErrorNormalizer
             return isset($child['errors']) && \count($child['errors']) > 0;
         });
 
-        $data = \array_map(function ($child) {
+        return \array_map(function ($child) {
             return $child['errors'] ?? [];
         }, $data);
-
-        return $data;
     }
 }

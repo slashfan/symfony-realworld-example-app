@@ -32,18 +32,13 @@ class GetArticlesListControllerTest extends WebTestCase
         $this->assertSame($expectedCount, $data['articlesCount']);
     }
 
-    /**
-     * @return mixed[]
-     */
-    public function getQueryParams(): array
+    public function getQueryParams(): \Iterator
     {
-        return [
-            ['', 25],
-            ['?tag=lorem', 1],
-            ['?tag=ipsum', 24],
-            ['?author=user2', 1],
-            ['?favorited=user1', 1],
-            ['?tag=lorem&author=user2&favorited=user1', 0],
-        ];
+        yield ['', 25];
+        yield ['?tag=lorem', 1];
+        yield ['?tag=ipsum', 24];
+        yield ['?author=user2', 1];
+        yield ['?favorited=user1', 1];
+        yield ['?tag=lorem&author=user2&favorited=user1', 0];
     }
 }
