@@ -245,6 +245,9 @@
     "phpstan/phpstan-phpunit": {
         "version": "0.11"
     },
+    "phpstan/phpstan-shim": {
+        "version": "0.11.2"
+    },
     "phpstan/phpstan-symfony": {
         "version": "0.11"
     },

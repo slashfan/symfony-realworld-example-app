@@ -1,6 +1,7 @@
 DOCKER_COMPOSE = docker-compose
 EXEC = $(DOCKER_COMPOSE) exec
 EXEC_PHP = $(DOCKER_COMPOSE) exec php
+EXEC_NODE = $(DOCKER_COMPOSE) exec node
 SYMFONY = $(EXEC_PHP) bin/console
 COMPOSER = $(EXEC_PHP) composer
 
@@ -156,7 +157,7 @@ test-coverage:
 
 test-spec: ## Run postman collection tests
 test-spec:
-	$(EXEC_PHP) bash ./spec/api-spec-test-runner.sh
+	$(EXEC_NODE) bash ./spec/api-spec-test-runner.sh
 
 validate-composer: ## Validate composer.json and composer.lock
 validate-composer:

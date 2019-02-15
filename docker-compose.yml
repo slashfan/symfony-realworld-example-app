@@ -23,3 +23,10 @@ services:
             - "MYSQL_USER=project"
             - "MYSQL_PASSWORD=project"
             - "MYSQL_DATABASE=project"
+
+    node:
+        build: docker/node
+        volumes:
+            - "./:/project"
+        depends_on:
+            - nginx
