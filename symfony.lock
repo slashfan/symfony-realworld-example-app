@@ -140,6 +140,12 @@
     "geolid/phpcs": {
         "version": "7.0.0"
     },
+    "illuminate/contracts": {
+        "version": "v5.8.2"
+    },
+    "illuminate/support": {
+        "version": "v5.8.2"
+    },
     "jakub-onderka/php-console-color": {
         "version": "v0.2"
     },
