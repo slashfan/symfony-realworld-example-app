@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Exception;
 
-use Throwable;
-
 /**
  * NoCurrentUserException.
  */
@@ -14,7 +12,7 @@ class NoCurrentUserException extends \RuntimeException
     /**
      * {@inheritdoc}
      */
-    public function __construct(string $message = 'No current user', int $code = 0, Throwable $previous = null)
+    public function __construct(string $message = 'No current user', int $code = 0, \Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
     }

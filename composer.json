@@ -40,6 +40,7 @@
         "friendsofphp/php-cs-fixer": "^2.11",
         "fzaninotto/faker": "^1.7",
         "geolid/phpcs": "^7.0",
+        "kubawerlos/php-cs-fixer-custom-fixers": "^1.13",
         "nelmio/alice": "^3.2",
         "phpmd/phpmd": "^2.6",
         "phpstan/phpstan-deprecation-rules": "^0.11.0",

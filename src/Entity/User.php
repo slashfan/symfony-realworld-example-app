@@ -109,9 +109,6 @@ class User implements UserInterface
      */
     private $favorites;
 
-    /**
-     * User constructor.
-     */
     public function __construct()
     {
         $this->followed = new ArrayCollection();

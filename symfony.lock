@@ -158,6 +158,9 @@
     "jean85/pretty-package-versions": {
         "version": "1.2"
     },
+    "kubawerlos/php-cs-fixer-custom-fixers": {
+        "version": "v1.13.0"
+    },
     "lcobucci/jwt": {
         "version": "3.2.4"
     },
