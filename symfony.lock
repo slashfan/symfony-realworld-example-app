@@ -140,12 +140,6 @@
     "geolid/phpcs": {
         "version": "7.0.0"
     },
-    "illuminate/contracts": {
-        "version": "v5.8.2"
-    },
-    "illuminate/support": {
-        "version": "v5.8.2"
-    },
     "jakub-onderka/php-console-color": {
         "version": "v0.2"
     },
@@ -154,9 +148,6 @@
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
-    },
-    "jean85/pretty-package-versions": {
-        "version": "1.2"
     },
     "kubawerlos/php-cs-fixer-custom-fixers": {
         "version": "v1.13.0"
@@ -196,12 +187,6 @@
     },
     "nesbot/carbon": {
         "version": "2.8.0"
-    },
-    "nette/finder": {
-        "version": "v2.4.2"
-    },
-    "nette/robot-loader": {
-        "version": "v3.1.0"
     },
     "nette/utils": {
         "version": "v2.5.3"
@@ -298,9 +283,6 @@
     },
     "psr/simple-cache": {
         "version": "1.0.1"
-    },
-    "rector/rector": {
-        "version": "v0.3.43"
     },
     "sebastian/code-unit-reverse-lookup": {
         "version": "1.0.1"
@@ -613,12 +595,6 @@
     },
     "symfony/yaml": {
         "version": "v4.0.6"
-    },
-    "symplify/better-phpdoc-parser": {
-        "version": "v5.4.5"
-    },
-    "symplify/package-builder": {
-        "version": "v5.4.5"
     },
     "thecodingmachine/phpstan-strict-rules": {
         "version": "v0.11.0"

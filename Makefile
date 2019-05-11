@@ -142,6 +142,14 @@ phpmnd:
 phpstan: ## Run phpstan
 phpstan:
 	$(EXEC_PHP) vendor/bin/phpstan analyse
+	
+rector.dry: ## Dry-run rector
+rector.dry:
+	docker run --init -it --rm -v $$PWD:/project -v $$PWD/var/phpqa:/tmp -w /project jakzal/phpqa rector process src --dry-run
+	
+rector: ## Run rector
+rector:
+	docker run --init -it --rm -v $$PWD:/project -v $$PWD/var/phpqa:/tmp -w /project jakzal/phpqa rector process src
 
 security: ## Run security-checker
 security:
