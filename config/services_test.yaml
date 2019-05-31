@@ -1,8 +1,5 @@
 services:
 
-    _defaults:
-        public: true
-
     App\DataFixtures\AppFixtures:
         arguments: ['@fidry_alice_data_fixtures.loader.doctrine']
         tags: [{ name: doctrine.fixture.orm }]

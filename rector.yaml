@@ -7,5 +7,6 @@ imports:
 #    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/symfony/symfony40.yaml' }
 #    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/symfony/symfony41.yaml' }
 #    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/symfony/symfony42.yaml' }
+#    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/symfony/symfony43.yaml' }
 #    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/php/php72.yaml' }
 #    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/php/php73.yaml' }
