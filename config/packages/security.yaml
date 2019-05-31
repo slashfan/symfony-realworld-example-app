@@ -1,23 +1,19 @@
 security:
 
     encoders:
-
         App\Entity\User:
-            algorithm: bcrypt
+            algorithm: auto
 
     providers:
-
         db_users:
             entity:
                 class: App\Entity\User
                 property: email
 
     firewalls:
-
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
         api_login:
             pattern: ^/api/users/login
             stateless: true
@@ -28,7 +24,6 @@ security:
                 password_path: user.password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
-
         api:
             pattern: ^/api
             stateless: true
