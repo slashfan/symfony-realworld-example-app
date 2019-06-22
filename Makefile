@@ -159,9 +159,22 @@ test: ## Run phpunit tests
 test:
 	$(EXEC_PHP) vendor/bin/phpunit
 
-test-coverage: ## Run phpunit tests with code coverage
+test-coverage: ## Run phpunit tests with code coverage (phpdbg)
 test-coverage:
-	$(EXEC_PHP) phpdbg -qrr ./vendor/bin/phpunit --coverage-html=var/coverage/
+	$(EXEC_PHP) phpdbg -qrr ./vendor/bin/phpunit --coverage-html=var/coverage
+
+test-coverage-pcov: ## Run phpunit tests with code coverage (pcov - uncomment extension in dockerfile)
+test-coverage-pcov:
+	$(EXEC_PHP) vendor/bin/phpunit --coverage-html=var/coverage
+
+test-coverage-xdebug: ## Run phpunit tests with code coverage (xdebug - uncomment extension in dockerfile)
+test-coverage-xdebug:
+	$(EXEC_PHP) vendor/bin/phpunit --coverage-html=var/coverage
+
+test-coverage-xdebug-filter: ## Run phpunit tests with code coverage (xdebug with filter - uncomment extension in dockerfile)
+test-coverage-xdebug-filter:
+	$(EXEC_PHP) vendor/bin/phpunit --dump-xdebug-filter var/xdebug-filter.php
+	$(EXEC_PHP) vendor/bin/phpunit --prepend var/xdebug-filter.php --coverage-html=var/coverage
 
 test-spec: ## Run postman collection tests
 test-spec:
