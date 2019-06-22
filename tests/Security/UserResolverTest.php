@@ -18,11 +18,11 @@ class UserResolverTest extends TestCase
 {
     /**
      * @throws \Exception
-     *
-     * @expectedException \Exception
      */
     public function testGetCurrentUserWithNullUser(): void
     {
+        $this->expectException(\Exception::class);
+
         $storage = $this->getMockBuilder(TokenStorageInterface::class)->getMock();
         $storage->method('getToken')->willReturn(null);
 
@@ -33,11 +33,11 @@ class UserResolverTest extends TestCase
 
     /**
      * @throws \Exception
-     *
-     * @expectedException \Exception
      */
     public function testGetCurrentUserWithNonAppUser(): void
     {
+        $this->expectException(\Exception::class);
+
         $user = $this->getMockBuilder(UserInterface::class)->getMock();
 
         $token = $this->getMockBuilder(TokenInterface::class)->getMock();

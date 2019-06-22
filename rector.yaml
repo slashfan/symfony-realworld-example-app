@@ -1,8 +1,11 @@
 imports:
 #    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/phpunit/phpunit70.yaml' }
+#    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/phpunit/phpunit80.yaml' }
 #    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/phpunit/phpunit-mock.yaml' }
 #    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/phpunit/phpunit-specific-method.yaml' }
 #    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/phpunit/phpunit-yield-data-provider.yaml' }
+#    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/phpunit/phpunit-code-quality.yaml' }
+#    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/phpunit/phpunit-exception.yaml' }
 #    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/symfony/symfony34.yaml' }
 #    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/symfony/symfony40.yaml' }
 #    - { resource: '/tools/.composer/vendor-bin/tools/vendor/rector/rector/config/level/symfony/symfony41.yaml' }

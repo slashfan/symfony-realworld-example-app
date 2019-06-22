@@ -110,9 +110,6 @@
     "escapestudios/symfony2-coding-standard": {
         "version": "3.4.1"
     },
-    "facebook/webdriver": {
-        "version": "1.6.0"
-    },
     "friendsofphp/php-cs-fixer": {
         "version": "2.2",
         "recipe": {
@@ -311,6 +308,9 @@
     "sebastian/resource-operations": {
         "version": "1.0.0"
     },
+    "sebastian/type": {
+        "version": "1.1.2"
+    },
     "sebastian/version": {
         "version": "2.0.1"
     },
@@ -440,12 +440,6 @@
             "ref": "8a2f7fa50a528f0aad1d7a87ae3730c981b367ce"
         }
     },
-    "symfony/http-client": {
-        "version": "v4.3.1"
-    },
-    "symfony/http-client-contracts": {
-        "version": "v1.1.3"
-    },
     "symfony/http-foundation": {
         "version": "v4.0.6"
     },
@@ -484,9 +478,6 @@
     },
     "symfony/options-resolver": {
         "version": "v4.0.6"
-    },
-    "symfony/panther": {
-        "version": "v0.1.0"
     },
     "symfony/phpunit-bridge": {
         "version": "3.3",
