@@ -2146,42 +2146,42 @@
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v5.3.1",
+            "version": "v5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "5f75c4658b03301cba17baa15a840b57b72b4262"
+                "reference": "646b3f2a847c1888fd518b9b9d738d3900d7e496"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/5f75c4658b03301cba17baa15a840b57b72b4262",
-                "reference": "5f75c4658b03301cba17baa15a840b57b72b4262",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/646b3f2a847c1888fd518b9b9d738d3900d7e496",
+                "reference": "646b3f2a847c1888fd518b9b9d738d3900d7e496",
                 "shasum": ""
             },
             "require": {
                 "doctrine/annotations": "^1.0",
                 "doctrine/persistence": "^1.0",
                 "php": ">=7.1.3",
-                "symfony/config": "^3.4|^4.2",
-                "symfony/dependency-injection": "^3.4|^4.2",
-                "symfony/framework-bundle": "^3.4|^4.2",
-                "symfony/http-kernel": "^3.4|^4.2"
+                "symfony/config": "^3.4|^4.3",
+                "symfony/dependency-injection": "^3.4|^4.3",
+                "symfony/framework-bundle": "^3.4|^4.3",
+                "symfony/http-kernel": "^3.4|^4.3"
             },
             "require-dev": {
                 "doctrine/doctrine-bundle": "^1.6",
                 "doctrine/orm": "^2.5",
                 "nyholm/psr7": "^1.1",
-                "symfony/browser-kit": "^3.4|^4.2",
-                "symfony/dom-crawler": "^3.4|^4.2",
-                "symfony/expression-language": "^3.4|^4.2",
-                "symfony/finder": "^3.4|^4.2",
+                "symfony/browser-kit": "^3.4|^4.3",
+                "symfony/dom-crawler": "^3.4|^4.3",
+                "symfony/expression-language": "^3.4|^4.3",
+                "symfony/finder": "^3.4|^4.3",
                 "symfony/monolog-bridge": "^3.0|^4.0",
                 "symfony/monolog-bundle": "^3.2",
                 "symfony/phpunit-bridge": "^3.4.19|^4.1.8",
                 "symfony/psr-http-message-bridge": "^1.1",
-                "symfony/security-bundle": "^3.4|^4.2",
-                "symfony/twig-bundle": "^3.4|^4.2",
-                "symfony/yaml": "^3.4|^4.2",
+                "symfony/security-bundle": "^3.4|^4.3",
+                "symfony/twig-bundle": "^3.4|^4.3",
+                "symfony/yaml": "^3.4|^4.3",
                 "twig/twig": "~1.12|~2.0"
             },
             "suggest": {
@@ -2192,7 +2192,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.3.x-dev"
+                    "dev-master": "5.4.x-dev"
                 }
             },
             "autoload": {
@@ -2215,7 +2215,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2019-04-10T06:00:20+00:00"
+            "time": "2019-07-03T19:53:49+00:00"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -5886,16 +5886,16 @@
         },
         {
             "name": "escapestudios/symfony2-coding-standard",
-            "version": "3.8.0",
+            "version": "3.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/djoos/Symfony-coding-standard.git",
-                "reference": "a00d1db4ad6f68d2cb9eb2c57170f26d3b330d82"
+                "reference": "fde073240365ac2ec8bfaffa3c8b3d316eca799e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/djoos/Symfony-coding-standard/zipball/a00d1db4ad6f68d2cb9eb2c57170f26d3b330d82",
-                "reference": "a00d1db4ad6f68d2cb9eb2c57170f26d3b330d82",
+                "url": "https://api.github.com/repos/djoos/Symfony-coding-standard/zipball/fde073240365ac2ec8bfaffa3c8b3d316eca799e",
+                "reference": "fde073240365ac2ec8bfaffa3c8b3d316eca799e",
                 "shasum": ""
             },
             "require": {
@@ -5935,7 +5935,7 @@
                 "phpcs",
                 "symfony"
             ],
-            "time": "2019-05-09T07:40:38+00:00"
+            "time": "2019-07-01T11:05:17+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
@@ -7159,16 +7159,16 @@
         },
         {
             "name": "phpstan/phpstan-shim",
-            "version": "0.11.8",
+            "version": "0.11.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-shim.git",
-                "reference": "f71f7bc73849191e1d044e69f99046b58253054e"
+                "reference": "4504ed5bbf9e626ce62e9c426e6d6ea5f3f250d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-shim/zipball/f71f7bc73849191e1d044e69f99046b58253054e",
-                "reference": "f71f7bc73849191e1d044e69f99046b58253054e",
+                "url": "https://api.github.com/repos/phpstan/phpstan-shim/zipball/4504ed5bbf9e626ce62e9c426e6d6ea5f3f250d8",
+                "reference": "4504ed5bbf9e626ce62e9c426e6d6ea5f3f250d8",
                 "shasum": ""
             },
             "require": {
@@ -7199,7 +7199,7 @@
                 "MIT"
             ],
             "description": "PHPStan Phar distribution",
-            "time": "2019-05-28T20:19:02+00:00"
+            "time": "2019-07-03T22:27:01+00:00"
         },
         {
             "name": "phpstan/phpstan-symfony",
@@ -7524,16 +7524,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.2.3",
+            "version": "8.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "f67ca36860ebca7224d4573f107f79bd8ed0ba03"
+                "reference": "25fe0b5031b24722f66a75ad479a074cccc1bb37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f67ca36860ebca7224d4573f107f79bd8ed0ba03",
-                "reference": "f67ca36860ebca7224d4573f107f79bd8ed0ba03",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/25fe0b5031b24722f66a75ad479a074cccc1bb37",
+                "reference": "25fe0b5031b24722f66a75ad479a074cccc1bb37",
                 "shasum": ""
             },
             "require": {
@@ -7560,7 +7560,7 @@
                 "sebastian/global-state": "^3.0.0",
                 "sebastian/object-enumerator": "^3.0.3",
                 "sebastian/resource-operations": "^2.0.1",
-                "sebastian/type": "^1.1.0",
+                "sebastian/type": "^1.1.3",
                 "sebastian/version": "^2.0.1"
             },
             "require-dev": {
@@ -7603,7 +7603,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-06-19T12:03:56+00:00"
+            "time": "2019-07-03T08:30:33+00:00"
         },
         {
             "name": "povils/phpmnd",
@@ -8186,16 +8186,16 @@
         },
         {
             "name": "sebastian/type",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/type.git",
-                "reference": "251ca774d58181fe1d3eda68843264eaae7e07ef"
+                "reference": "3aaaa15fa71d27650d62a948be022fe3b48541a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/251ca774d58181fe1d3eda68843264eaae7e07ef",
-                "reference": "251ca774d58181fe1d3eda68843264eaae7e07ef",
+                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/3aaaa15fa71d27650d62a948be022fe3b48541a3",
+                "reference": "3aaaa15fa71d27650d62a948be022fe3b48541a3",
                 "shasum": ""
             },
             "require": {
@@ -8228,7 +8228,7 @@
             ],
             "description": "Collection of value objects that represent the types of the PHP type system",
             "homepage": "https://github.com/sebastianbergmann/type",
-            "time": "2019-06-19T06:39:12+00:00"
+            "time": "2019-07-02T08:10:15+00:00"
         },
         {
             "name": "sebastian/version",
@@ -8321,16 +8321,16 @@
         },
         {
             "name": "slam/phpstan-extensions",
-            "version": "v3.5.0",
+            "version": "v3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Slamdunk/phpstan-extensions.git",
-                "reference": "19bbb1ea99072082cbb6c9e6081481112cf2a3a0"
+                "reference": "38502e69f0aabc4d4fb1e95bc82d0b8e93b298c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Slamdunk/phpstan-extensions/zipball/19bbb1ea99072082cbb6c9e6081481112cf2a3a0",
-                "reference": "19bbb1ea99072082cbb6c9e6081481112cf2a3a0",
+                "url": "https://api.github.com/repos/Slamdunk/phpstan-extensions/zipball/38502e69f0aabc4d4fb1e95bc82d0b8e93b298c4",
+                "reference": "38502e69f0aabc4d4fb1e95bc82d0b8e93b298c4",
                 "shasum": ""
             },
             "require": {
@@ -8373,7 +8373,7 @@
                 }
             ],
             "description": "Slam extension of phpstan",
-            "time": "2019-06-07T13:24:28+00:00"
+            "time": "2019-07-04T13:12:32+00:00"
         },
         {
             "name": "slevomat/coding-standard",
@@ -9474,12 +9474,12 @@
             "version": "1.2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git",
+                "url": "https://github.com/WordPress/WordPress-Coding-Standards.git",
                 "reference": "f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c",
+                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c",
                 "reference": "f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c",
                 "shasum": ""
             },
