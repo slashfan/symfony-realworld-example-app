@@ -31,9 +31,9 @@ RUN apt-get install -y libzip-dev zip \
 # Install COMPOSER
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-## Install PCOV extension
-#RUN pecl install pcov \
-#    && docker-php-ext-enable pcov
+# Install PCOV extension
+RUN pecl install pcov \
+    && docker-php-ext-enable pcov
 
 ## Install XDEBUG extension
 #RUN pecl install xdebug \

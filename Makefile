@@ -160,7 +160,10 @@ test:
 	$(EXEC_PHP) vendor/bin/phpunit
 
 test-coverage: ## Run phpunit tests with code coverage (phpdbg)
-test-coverage:
+test-coverage: test-coverage-pcov
+
+test-coverage-phpdbg: ## Run phpunit tests with code coverage (phpdbg)
+test-coverage-phpdbg:
 	$(EXEC_PHP) phpdbg -qrr ./vendor/bin/phpunit --coverage-html=var/coverage
 
 test-coverage-pcov: ## Run phpunit tests with code coverage (pcov - uncomment extension in dockerfile)

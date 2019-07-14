@@ -2146,16 +2146,16 @@
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v5.4.0",
+            "version": "v5.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "646b3f2a847c1888fd518b9b9d738d3900d7e496"
+                "reference": "585f4b3a1c54f24d1a8431c729fc8f5acca20c8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/646b3f2a847c1888fd518b9b9d738d3900d7e496",
-                "reference": "646b3f2a847c1888fd518b9b9d738d3900d7e496",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/585f4b3a1c54f24d1a8431c729fc8f5acca20c8a",
+                "reference": "585f4b3a1c54f24d1a8431c729fc8f5acca20c8a",
                 "shasum": ""
             },
             "require": {
@@ -2215,7 +2215,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2019-07-03T19:53:49+00:00"
+            "time": "2019-07-08T08:31:25+00:00"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -3056,16 +3056,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.4.1",
+            "version": "v1.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "a388cacccf6e3c5e5a395e020c5aa05849ea4ccc"
+                "reference": "4b5d25a5538e2dc37ff84645fe7498a9a04947b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/a388cacccf6e3c5e5a395e020c5aa05849ea4ccc",
-                "reference": "a388cacccf6e3c5e5a395e020c5aa05849ea4ccc",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/4b5d25a5538e2dc37ff84645fe7498a9a04947b3",
+                "reference": "4b5d25a5538e2dc37ff84645fe7498a9a04947b3",
                 "shasum": ""
             },
             "require": {
@@ -3101,7 +3101,7 @@
                 }
             ],
             "description": "Composer plugin for Symfony",
-            "time": "2019-06-28T18:01:09+00:00"
+            "time": "2019-07-12T06:29:25+00:00"
         },
         {
             "name": "symfony/form",
@@ -5712,16 +5712,16 @@
         },
         {
             "name": "doctrine/data-fixtures",
-            "version": "v1.3.1",
+            "version": "v1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/data-fixtures.git",
-                "reference": "3a1e2c3c600e615a2dffe56d4ca0875cc5233e0a"
+                "reference": "09b16943b27f3d80d63988d100ff256148c2f78b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/3a1e2c3c600e615a2dffe56d4ca0875cc5233e0a",
-                "reference": "3a1e2c3c600e615a2dffe56d4ca0875cc5233e0a",
+                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/09b16943b27f3d80d63988d100ff256148c2f78b",
+                "reference": "09b16943b27f3d80d63988d100ff256148c2f78b",
                 "shasum": ""
             },
             "require": {
@@ -5768,7 +5768,7 @@
             "keywords": [
                 "database"
             ],
-            "time": "2018-03-20T09:06:36+00:00"
+            "time": "2019-07-10T18:30:35+00:00"
         },
         {
             "name": "doctrine/doctrine-fixtures-bundle",
@@ -6858,16 +6858,16 @@
         },
         {
             "name": "phpmd/phpmd",
-            "version": "2.6.0",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmd/phpmd.git",
-                "reference": "4e9924b2c157a3eb64395460fcf56b31badc8374"
+                "reference": "7425e155cf22cdd2b4dd3458a7da4cf6c0201562"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/4e9924b2c157a3eb64395460fcf56b31badc8374",
-                "reference": "4e9924b2c157a3eb64395460fcf56b31badc8374",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/7425e155cf22cdd2b4dd3458a7da4cf6c0201562",
+                "reference": "7425e155cf22cdd2b4dd3458a7da4cf6c0201562",
                 "shasum": ""
             },
             "require": {
@@ -6920,7 +6920,7 @@
                 "phpmd",
                 "pmd"
             ],
-            "time": "2017-01-20T14:41:10+00:00"
+            "time": "2019-07-05T23:07:02+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -7159,16 +7159,16 @@
         },
         {
             "name": "phpstan/phpstan-shim",
-            "version": "0.11.9",
+            "version": "0.11.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-shim.git",
-                "reference": "4504ed5bbf9e626ce62e9c426e6d6ea5f3f250d8"
+                "reference": "e839cd60446dd967f5c0f7908d3b16d14bc39796"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-shim/zipball/4504ed5bbf9e626ce62e9c426e6d6ea5f3f250d8",
-                "reference": "4504ed5bbf9e626ce62e9c426e6d6ea5f3f250d8",
+                "url": "https://api.github.com/repos/phpstan/phpstan-shim/zipball/e839cd60446dd967f5c0f7908d3b16d14bc39796",
+                "reference": "e839cd60446dd967f5c0f7908d3b16d14bc39796",
                 "shasum": ""
             },
             "require": {
@@ -7199,7 +7199,7 @@
                 "MIT"
             ],
             "description": "PHPStan Phar distribution",
-            "time": "2019-07-03T22:27:01+00:00"
+            "time": "2019-07-08T07:29:02+00:00"
         },
         {
             "name": "phpstan/phpstan-symfony",
@@ -7272,16 +7272,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "7.0.5",
+            "version": "7.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "aed67b57d459dcab93e84a5c9703d3deb5025dff"
+                "reference": "d471d0d2b529a67c6a722dd446c4ec90881ac315"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/aed67b57d459dcab93e84a5c9703d3deb5025dff",
-                "reference": "aed67b57d459dcab93e84a5c9703d3deb5025dff",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/d471d0d2b529a67c6a722dd446c4ec90881ac315",
+                "reference": "d471d0d2b529a67c6a722dd446c4ec90881ac315",
                 "shasum": ""
             },
             "require": {
@@ -7290,17 +7290,17 @@
                 "php": "^7.2",
                 "phpunit/php-file-iterator": "^2.0.2",
                 "phpunit/php-text-template": "^1.2.1",
-                "phpunit/php-token-stream": "^3.0.1",
+                "phpunit/php-token-stream": "^3.0.2",
                 "sebastian/code-unit-reverse-lookup": "^1.0.1",
-                "sebastian/environment": "^4.1",
+                "sebastian/environment": "^4.2.2",
                 "sebastian/version": "^2.0.1",
-                "theseer/tokenizer": "^1.1"
+                "theseer/tokenizer": "^1.1.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.0"
+                "phpunit/phpunit": "^8.2.2"
             },
             "suggest": {
-                "ext-xdebug": "^2.6.1"
+                "ext-xdebug": "^2.7.2"
             },
             "type": "library",
             "extra": {
@@ -7331,7 +7331,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-06-06T12:28:18+00:00"
+            "time": "2019-07-08T05:29:42+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -7475,16 +7475,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "c99e3be9d3e85f60646f152f9002d46ed7770d18"
+                "reference": "c4a66b97f040e3e20b3aa2a243230a1c3a9f7c8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/c99e3be9d3e85f60646f152f9002d46ed7770d18",
-                "reference": "c99e3be9d3e85f60646f152f9002d46ed7770d18",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/c4a66b97f040e3e20b3aa2a243230a1c3a9f7c8c",
+                "reference": "c4a66b97f040e3e20b3aa2a243230a1c3a9f7c8c",
                 "shasum": ""
             },
             "require": {
@@ -7520,7 +7520,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2018-10-30T05:52:18+00:00"
+            "time": "2019-07-08T05:24:54+00:00"
         },
         {
             "name": "phpunit/phpunit",
@@ -8763,16 +8763,16 @@
         },
         {
             "name": "symfony/maker-bundle",
-            "version": "v1.11.6",
+            "version": "v1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/maker-bundle.git",
-                "reference": "d262c2cace4d9bca99137a84f6fc6ba909a17e02"
+                "reference": "201d0e050dca336c44f93657ce1f34f3b3868432"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/d262c2cace4d9bca99137a84f6fc6ba909a17e02",
-                "reference": "d262c2cace4d9bca99137a84f6fc6ba909a17e02",
+                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/201d0e050dca336c44f93657ce1f34f3b3868432",
+                "reference": "201d0e050dca336c44f93657ce1f34f3b3868432",
                 "shasum": ""
             },
             "require": {
@@ -8788,12 +8788,14 @@
                 "symfony/http-kernel": "^3.4|^4.0"
             },
             "require-dev": {
-                "allocine/twigcs": "^3.0",
                 "doctrine/doctrine-bundle": "^1.8",
                 "doctrine/orm": "^2.3",
                 "friendsofphp/php-cs-fixer": "^2.8",
-                "symfony/phpunit-bridge": "^3.4|^4.0",
+                "friendsoftwig/twigcs": "^3.1.2",
+                "symfony/http-client": "^4.3",
+                "symfony/phpunit-bridge": "^3.4.19|^4.0",
                 "symfony/process": "^3.4|^4.0",
+                "symfony/security-core": "^3.4|^4.0",
                 "symfony/yaml": "^3.4|^4.0"
             },
             "type": "symfony-bundle",
@@ -8825,7 +8827,7 @@
                 "scaffold",
                 "scaffolding"
             ],
-            "time": "2019-04-19T17:26:45+00:00"
+            "time": "2019-07-09T22:19:18+00:00"
         },
         {
             "name": "symfony/phpunit-bridge",
