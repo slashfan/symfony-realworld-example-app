@@ -10,7 +10,7 @@ use Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\AuthorizationHeaderToken
 /**
  * JWTAuthenticator.
  */
-class JWTAuthenticator extends BaseJWTAuthenticator
+final class JWTAuthenticator extends BaseJWTAuthenticator
 {
     /**
      * {@inheritdoc}

@@ -18,7 +18,6 @@ parameters:
   symfony:
     container_xml_path: '%currentWorkingDirectory%/var/cache/dev/srcApp_KernelDevDebugContainer.xml'
   ignoreErrors:
-      - '/Service "([a-zA-Z\\]+)" is private\./'
       - '/Parameter #6 $content of method Symfony\Component\BrowserKit\Client::request() expects string|null, string|false given\./'
       - '/Parameter #2 $plainPassword of method Symfony\Component\Security\Core\Encoder\\UserPasswordEncoderInterface::encodePassword() expects string, string|null given\./'
       - '/Call to method getStatusCode\(\) on an unknown class Symfony\\Component\\HttpKernel\\Response\./'

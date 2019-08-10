@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 /**
  * DateTimeNormalizer.
  */
-class DateTimeNormalizer implements NormalizerInterface, CacheableSupportsMethodInterface
+final class DateTimeNormalizer implements NormalizerInterface, CacheableSupportsMethodInterface
 {
     /**
      * {@inheritdoc}

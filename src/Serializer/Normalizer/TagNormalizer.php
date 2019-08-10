@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 /**
  * TagNormalizer.
  */
-class TagNormalizer implements NormalizerInterface, CacheableSupportsMethodInterface
+final class TagNormalizer implements NormalizerInterface, CacheableSupportsMethodInterface
 {
     /**
      * {@inheritdoc}

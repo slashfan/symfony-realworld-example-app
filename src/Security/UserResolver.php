@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 /**
  * UserResolver.
  */
-class UserResolver
+final class UserResolver
 {
     /**
      * @var TokenStorageInterface

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Article;
 
-use App\Test\WebTestCase;
+use App\Tests\TestCase\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -25,7 +25,7 @@ class GetArticlesFeedControllerTest extends WebTestCase
      * @param string $user
      * @param int    $expectedCount
      *
-     * @dataProvider getUsers
+     * @dataProvider provideAsAuthenticatedCases
      */
     public function testAsAuthenticated(string $user, int $expectedCount): void
     {
@@ -41,7 +41,7 @@ class GetArticlesFeedControllerTest extends WebTestCase
         $this->assertSame($expectedCount, $data['articlesCount']);
     }
 
-    public function getUsers(): \Iterator
+    public function provideAsAuthenticatedCases(): \Iterator
     {
         yield ['user1@conduit.tld', 23];
         yield ['user2@conduit.tld', 1];

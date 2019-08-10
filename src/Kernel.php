@@ -14,7 +14,7 @@ use Symfony\Component\Routing\RouteCollectionBuilder;
 /**
  * Kernel.
  */
-class Kernel extends BaseKernel
+final class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
 

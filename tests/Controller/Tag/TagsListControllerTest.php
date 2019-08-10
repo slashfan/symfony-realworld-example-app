@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Tag;
 
-use App\Test\WebTestCase;
+use App\Tests\TestCase\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

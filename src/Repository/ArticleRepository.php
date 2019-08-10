@@ -17,7 +17,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method Article[]    findAll()
  * @method Article[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ArticleRepository extends ServiceEntityRepository
+final class ArticleRepository extends ServiceEntityRepository
 {
     /**
      * {@inheritdoc}

@@ -9,7 +9,7 @@ use FOS\RestBundle\Serializer\Normalizer\FormErrorNormalizer as FOSRestFormError
 /**
  * FormErrorNormalizer.
  */
-class FormErrorNormalizer extends FOSRestFormErrorNormalizer
+final class FormErrorNormalizer extends FOSRestFormErrorNormalizer
 {
     /**
      * {@inheritdoc}

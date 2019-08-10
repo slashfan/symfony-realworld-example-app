@@ -13,7 +13,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * JWTAuthenticationSubscriber.
  */
-class JWTAuthenticationSubscriber implements EventSubscriberInterface
+final class JWTAuthenticationSubscriber implements EventSubscriberInterface
 {
     /**
      * @var UserNormalizer

@@ -12,7 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * UserType.
  */
-class UserType extends AbstractType
+final class UserType extends AbstractType
 {
     /**
      * {@inheritdoc}

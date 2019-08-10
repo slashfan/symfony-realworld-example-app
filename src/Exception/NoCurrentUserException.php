@@ -7,7 +7,7 @@ namespace App\Exception;
 /**
  * NoCurrentUserException.
  */
-class NoCurrentUserException extends \RuntimeException
+final class NoCurrentUserException extends \RuntimeException
 {
     /**
      * {@inheritdoc}

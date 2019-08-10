@@ -15,7 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * TagsInputType.
  */
-class TagsInputType extends AbstractType
+final class TagsInputType extends AbstractType
 {
     /**
      * @var TagRepository

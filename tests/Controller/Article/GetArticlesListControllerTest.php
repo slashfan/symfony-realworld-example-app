@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Article;
 
-use App\Test\WebTestCase;
+use App\Tests\TestCase\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -16,7 +16,7 @@ class GetArticlesListControllerTest extends WebTestCase
      * @param string $query
      * @param int    $expectedCount
      *
-     * @dataProvider getQueryParams
+     * @dataProvider provideResponseCases
      */
     public function testResponse(string $query, int $expectedCount): void
     {
@@ -32,7 +32,7 @@ class GetArticlesListControllerTest extends WebTestCase
         $this->assertSame($expectedCount, $data['articlesCount']);
     }
 
-    public function getQueryParams(): \Iterator
+    public function provideResponseCases(): \Iterator
     {
         yield ['', 25];
         yield ['?tag=lorem', 1];

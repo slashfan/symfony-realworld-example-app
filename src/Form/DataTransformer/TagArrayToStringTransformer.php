@@ -11,7 +11,7 @@ use Symfony\Component\Form\DataTransformerInterface;
 /**
  * TagArrayToStringTransformer.
  */
-class TagArrayToStringTransformer implements DataTransformerInterface
+final class TagArrayToStringTransformer implements DataTransformerInterface
 {
     /**
      * @var TagRepository

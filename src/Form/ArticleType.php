@@ -13,7 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * ArticleType.
  */
-class ArticleType extends AbstractType
+final class ArticleType extends AbstractType
 {
     /**
      * {@inheritdoc}

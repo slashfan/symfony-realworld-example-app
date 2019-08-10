@@ -13,7 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * CommentType.
  */
-class CommentType extends AbstractType
+final class CommentType extends AbstractType
 {
     /**
      * {@inheritdoc}

@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 /**
  * ArticleVoter.
  */
-class AuthorVoter extends Voter
+final class AuthorVoter extends Voter
 {
     /**
      * {@inheritdoc}

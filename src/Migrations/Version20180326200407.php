@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Initial Migration.
  */
-class Version20180326200407 extends AbstractMigration
+final class Version20180326200407 extends AbstractMigration
 {
     /**
      * {@inheritdoc}
