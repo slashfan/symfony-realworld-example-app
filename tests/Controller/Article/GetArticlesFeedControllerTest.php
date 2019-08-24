@@ -41,7 +41,10 @@ class GetArticlesFeedControllerTest extends WebTestCase
         $this->assertSame($expectedCount, $data['articlesCount']);
     }
 
-    public function provideAsAuthenticatedCases(): \Iterator
+    /**
+     * @return iterable
+     */
+    public function provideAsAuthenticatedCases(): iterable
     {
         yield ['user1@conduit.tld', 23];
         yield ['user2@conduit.tld', 1];

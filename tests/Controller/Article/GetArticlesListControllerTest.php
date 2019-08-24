@@ -32,7 +32,10 @@ class GetArticlesListControllerTest extends WebTestCase
         $this->assertSame($expectedCount, $data['articlesCount']);
     }
 
-    public function provideResponseCases(): \Iterator
+    /**
+     * @return iterable
+     */
+    public function provideResponseCases(): iterable
     {
         yield ['', 25];
         yield ['?tag=lorem', 1];
