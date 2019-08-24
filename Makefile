@@ -186,6 +186,7 @@ test-spec:
 validate-composer: ## Validate composer.json and composer.lock
 validate-composer:
 	$(EXEC_PHP) composer validate
+	$(EXEC_PHP) composer normalize --dry-run
 
 validate-mapping: ## Validate doctrine mapping
 validate-mapping:

@@ -146,6 +146,9 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "justinrainbow/json-schema": {
+        "version": "5.2.8"
+    },
     "kubawerlos/php-cs-fixer-custom-fixers": {
         "version": "v1.13.0"
     },
@@ -160,6 +163,18 @@
             "version": "2.3",
             "ref": "a66e8a7b75a1825cf2414d5dd53c7ed38c8654d1"
         }
+    },
+    "localheinz/composer-json-normalizer": {
+        "version": "1.0.2"
+    },
+    "localheinz/composer-normalize": {
+        "version": "1.3.0"
+    },
+    "localheinz/json-normalizer": {
+        "version": "0.9.0"
+    },
+    "localheinz/json-printer": {
+        "version": "2.0.1"
     },
     "monolog/monolog": {
         "version": "1.23.0"
@@ -277,6 +292,9 @@
     },
     "psr/log": {
         "version": "1.0.2"
+    },
+    "pyrech/composer-changelogs": {
+        "version": "v1.6.0"
     },
     "sebastian/code-unit-reverse-lookup": {
         "version": "1.0.1"
