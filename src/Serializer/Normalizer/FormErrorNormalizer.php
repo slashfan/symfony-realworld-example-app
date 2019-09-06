@@ -24,11 +24,11 @@ final class FormErrorNormalizer extends FOSRestFormErrorNormalizer
 
         /** @var array $data */
         $data = $data['errors']['children'];
-        $data = \array_filter($data, function ($child) {
+        $data = \array_filter($data, function (array $child) {
             return isset($child['errors']) && \count($child['errors']) > 0;
         });
 
-        return \array_map(function ($child) {
+        return \array_map(function (array $child) {
             return $child['errors'] ?? [];
         }, $data);
     }
