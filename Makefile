@@ -112,7 +112,7 @@ rsa-keys:
 ##
 
 ci: ## Run all quality insurance checks (tests, code styles, linting, security, static analysis...)
-ci: php-cs-fixer phpcs phpmd phpmnd phpstan lint validate-composer validate-mapping security test test-spec test-coverage
+ci: php-cs-fixer phpcs phpmd phpmnd phpstan lint validate-composer validate-mapping security test test-coverage test-spec
 
 ci.local: ## Run quality insurance checks from inside the php container
 ci.local: no-docker ci
