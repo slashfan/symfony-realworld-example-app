@@ -119,7 +119,7 @@ ci.local: no-docker ci
 
 lint: ## Run lint check
 lint:
-	$(SYMFONY) lint:yaml config/
+	$(SYMFONY) lint:yaml config/ --parse-tags
 	$(SYMFONY) lint:yaml fixtures/
 	$(SYMFONY) lint:yaml translations/
 
@@ -130,6 +130,10 @@ phpcs:
 php-cs-fixer: ## Run php-cs-fixer
 php-cs-fixer:
 	$(EXEC_PHP) vendor/bin/php-cs-fixer fix --verbose
+
+php-cs-fixer.dry-run: ## Run php-cs-fixer in dry-run mode
+php-cs-fixer.dry-run:
+	$(EXEC_PHP) vendor/bin/php-cs-fixer fix --verbose --diff --dry-run
 
 phpmd: ## Run PHPMD
 phpmd:
