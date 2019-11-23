@@ -154,6 +154,10 @@ rector.dry:
 rector: ## Run rector
 rector:
 	docker run --init -it --rm -v $$PWD:/project -v $$PWD/var/phpqa:/tmp -w /project jakzal/phpqa rector process src
+	
+psalm: ## Run rector
+psalm:
+	docker run --init -it --rm -v $$PWD:/project -v $$PWD/var/phpqa:/tmp -w /project jakzal/phpqa psalm
 
 security: ## Run security-checker
 security:
