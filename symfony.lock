@@ -221,6 +221,9 @@
     "phar-io/version": {
         "version": "1.0.1"
     },
+    "php": {
+        "version": "7.3"
+    },
     "php-cs-fixer/diff": {
         "version": "v1.3.0"
     },
@@ -520,12 +523,6 @@
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.7.0"
-    },
-    "symfony/polyfill-php72": {
-        "version": "v1.7.0"
-    },
-    "symfony/polyfill-php73": {
-        "version": "v1.11.0"
     },
     "symfony/process": {
         "version": "v4.0.6"
