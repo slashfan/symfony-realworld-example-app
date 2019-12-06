@@ -200,9 +200,6 @@
     "nette/utils": {
         "version": "v2.5.3"
     },
-    "nikic/php-parser": {
-        "version": "v4.0.0"
-    },
     "object-calisthenics/phpcs-calisthenics-rules": {
         "version": "v3.3.0"
     },

@@ -6619,16 +6619,16 @@
         },
         {
             "name": "nelmio/alice",
-            "version": "v3.5.7",
+            "version": "v3.5.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nelmio/alice.git",
-                "reference": "8bb64f0fe13f6675f0d07ca11ce5c3676f02a9ce"
+                "reference": "4a8d15ea1b70869a8b5eaaf3bf6d68b228322bc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nelmio/alice/zipball/8bb64f0fe13f6675f0d07ca11ce5c3676f02a9ce",
-                "reference": "8bb64f0fe13f6675f0d07ca11ce5c3676f02a9ce",
+                "url": "https://api.github.com/repos/nelmio/alice/zipball/4a8d15ea1b70869a8b5eaaf3bf6d68b228322bc4",
+                "reference": "4a8d15ea1b70869a8b5eaaf3bf6d68b228322bc4",
                 "shasum": ""
             },
             "require": {
@@ -6636,8 +6636,8 @@
                 "myclabs/deep-copy": "^1.5.2",
                 "php": "^7.1",
                 "sebastian/comparator": "^3.0",
-                "symfony/property-access": "^2.8 || ^3.4 || ^4.0",
-                "symfony/yaml": "^2.8 || ^3.4 || ^4.0"
+                "symfony/property-access": "^2.8 || ^3.4 || ^4.0 || ^5.0",
+                "symfony/yaml": "^2.8 || ^3.4 || ^4.0 || ^5.0"
             },
             "conflict": {
                 "symfony/framework-bundle": "<3.4"
@@ -6647,8 +6647,8 @@
                 "php-mock/php-mock": "^2.0",
                 "phpspec/prophecy": "^1.6",
                 "phpunit/phpunit": "^7.0",
-                "symfony/phpunit-bridge": "^3.4.5 || ^4.0.5",
-                "symfony/var-dumper": "^3.4 || ^4.0"
+                "symfony/phpunit-bridge": "^3.4.5 || ^4.0.5 || ^5.0",
+                "symfony/var-dumper": "^3.4 || ^4.0 || ^5.0"
             },
             "suggest": {
                 "theofidry/alice-data-fixtures": "Wrapper for Alice to provide a persistence layer."
@@ -6684,7 +6684,7 @@
                     "email": "shelburt02@gmail.com"
                 },
                 {
-                    "name": "Théo Fidry",
+                    "name": "Théo FIDRY",
                     "email": "theo.fidry@gmail.com"
                 }
             ],
@@ -6695,7 +6695,7 @@
                 "faker",
                 "test"
             ],
-            "time": "2019-05-05T08:51:28+00:00"
+            "time": "2019-12-04T08:34:42+00:00"
         },
         {
             "name": "nette/utils",
@@ -7836,16 +7836,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.4.3",
+            "version": "8.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "67f9e35bffc0dd52d55d565ddbe4230454fd6a4e"
+                "reference": "3ee1c1fd6fc264480c25b6fb8285edefe1702dab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/67f9e35bffc0dd52d55d565ddbe4230454fd6a4e",
-                "reference": "67f9e35bffc0dd52d55d565ddbe4230454fd6a4e",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3ee1c1fd6fc264480c25b6fb8285edefe1702dab",
+                "reference": "3ee1c1fd6fc264480c25b6fb8285edefe1702dab",
                 "shasum": ""
             },
             "require": {
@@ -7889,7 +7889,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "8.4-dev"
+                    "dev-master": "8.5-dev"
                 }
             },
             "autoload": {
@@ -7915,7 +7915,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-11-06T09:42:23+00:00"
+            "time": "2019-12-06T05:41:38+00:00"
         },
         {
             "name": "povils/phpmnd",
@@ -8785,16 +8785,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.5.2",
+            "version": "3.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "65b12cdeaaa6cd276d4c3033a95b9b88b12701e7"
+                "reference": "557a1fc7ac702c66b0bbfe16ab3d55839ef724cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/65b12cdeaaa6cd276d4c3033a95b9b88b12701e7",
-                "reference": "65b12cdeaaa6cd276d4c3033a95b9b88b12701e7",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/557a1fc7ac702c66b0bbfe16ab3d55839ef724cb",
+                "reference": "557a1fc7ac702c66b0bbfe16ab3d55839ef724cb",
                 "shasum": ""
             },
             "require": {
@@ -8832,7 +8832,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-10-28T04:36:32+00:00"
+            "time": "2019-12-04T04:46:47+00:00"
         },
         {
             "name": "symfony/browser-kit",
