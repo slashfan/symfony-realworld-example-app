@@ -21,10 +21,8 @@ class CreateCommentControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_UNAUTHORIZED, $response->getStatusCode());
     }
 
-    public function testAsAuthenticated(): void
+    public function testEmptyRequestAsAuthenticated(): void
     {
-        // empty request
-
         $client = $this->createAuthenticatedApiClient();
         $client->request('POST', '/api/articles/article-2/comments');
 
@@ -36,9 +34,10 @@ class CreateCommentControllerTest extends WebTestCase
             ],
             \json_decode($response->getContent(), true)
         );
+    }
 
-        // invalid request
-
+    public function testInvalidRequestAsAuthenticated(): void
+    {
         $client = $this->createAuthenticatedApiClient();
         $client->request('POST', '/api/articles/article-2/comments', [], [], [], \json_encode([
             'comment' => [
@@ -54,9 +53,10 @@ class CreateCommentControllerTest extends WebTestCase
             ],
             \json_decode($response->getContent(), true)
         );
+    }
 
-        // valid request
-
+    public function testValidRequestAsAuthenticated(): void
+    {
         $client = $this->createAuthenticatedApiClient();
         $client->request('POST', '/api/articles/article-2/comments', [], [], [], \json_encode([
             'comment' => [
