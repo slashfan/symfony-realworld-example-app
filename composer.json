@@ -4,7 +4,7 @@
     "description": "Exemplary real world application built with Symfony",
     "license": "MIT",
     "require": {
-        "php": "^7.3",
+        "php": "^7.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
@@ -82,7 +82,7 @@
     },
     "config": {
         "platform": {
-            "php": "7.3"
+            "php": "7.4"
         },
         "preferred-install": {
             "*": "dist"
