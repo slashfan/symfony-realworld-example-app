@@ -8,13 +8,12 @@ includes:
   - vendor/slam/phpstan-extensions/conf/slam-rules.neon
 
 parameters:
-  level: 7
+  level: 8
   paths:
     - src
     - tests
   excludes_analyse:
     - '%rootDir%/../../../src/Kernel.php'
-    - '%rootDir%/../../../src/Migrations'
   symfony:
     container_xml_path: '%currentWorkingDirectory%/var/cache/dev/srcApp_KernelDevDebugContainer.xml'
   ignoreErrors:
@@ -22,4 +21,7 @@ parameters:
       - '/Parameter #2 $plainPassword of method Symfony\Component\Security\Core\Encoder\\UserPasswordEncoderInterface::encodePassword() expects string, string|null given\./'
       - '/Call to method getStatusCode\(\) on an unknown class Symfony\\Component\\HttpKernel\\Response\./'
       - '/Call to method getContent\(\) on an unknown class Symfony\\Component\\HttpKernel\\Response\./'
+      - '/Cannot call method getId() on App\Entity\User|null\./'
   reportUnmatchedIgnoredErrors: false
+  checkMissingIterableValueType: false
+  checkGenericClassInNonGenericObjectType: false

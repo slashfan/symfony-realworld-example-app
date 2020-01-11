@@ -112,7 +112,7 @@ rsa-keys:
 ##
 
 ci: ## Run all quality insurance checks (tests, code styles, linting, security, static analysis...)
-ci: php-cs-fixer phpcs phpmd phpmnd phpstan lint validate-composer validate-mapping security test test-coverage test-spec
+ci: php-cs-fixer phpcs phpmd phpmnd phpstan rector.dry lint validate-composer validate-mapping security test test-coverage test-spec
 
 ci.local: ## Run quality insurance checks from inside the php container
 ci.local: no-docker ci
@@ -149,11 +149,11 @@ phpstan:
 	
 rector.dry: ## Dry-run rector
 rector.dry:
-	docker run --init -it --rm -v $$PWD:/project -v $$PWD/var/phpqa:/tmp -w /project jakzal/phpqa rector process src --dry-run
+	$(EXEC_PHP) vendor/bin/rector process src --dry-run
 	
 rector: ## Run rector
 rector:
-	docker run --init -it --rm -v $$PWD:/project -v $$PWD/var/phpqa:/tmp -w /project jakzal/phpqa rector process src
+	$(EXEC_PHP) vendor/bin/rector process src
 	
 psalm: ## Run rector
 psalm:

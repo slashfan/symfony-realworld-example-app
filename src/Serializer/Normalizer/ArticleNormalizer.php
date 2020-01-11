@@ -56,7 +56,7 @@ final class ArticleNormalizer implements NormalizerInterface, NormalizerAwareInt
         ];
 
         $token = $this->tokenStorage->getToken();
-        $user = $token ? $token->getUser() : null;
+        $user = $token !== null ? $token->getUser() : null;
 
         if ($user instanceof User) {
             $data['favorited'] = $user->hasFavorite($object);

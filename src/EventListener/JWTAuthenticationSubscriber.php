@@ -45,7 +45,7 @@ final class JWTAuthenticationSubscriber implements EventSubscriberInterface
     {
         $user = $event->getUser();
 
-        if ($user instanceof User === false) {
+        if (!$user instanceof User) {
             return;
         }
 

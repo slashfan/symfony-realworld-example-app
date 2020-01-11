@@ -34,7 +34,7 @@ final class UserResolver
     public function getCurrentUser(): User
     {
         $token = $this->tokenStorage->getToken();
-        $user = $token ? $token->getUser() : null;
+        $user = $token !== null ? $token->getUser() : null;
 
         if (!($user instanceof User)) {
             throw new NoCurrentUserException();

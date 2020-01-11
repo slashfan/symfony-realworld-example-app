@@ -213,7 +213,7 @@ class User implements UserInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return string[]
      */
     public function getRoles(): array
     {

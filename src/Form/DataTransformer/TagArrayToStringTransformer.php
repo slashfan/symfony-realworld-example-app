@@ -39,7 +39,7 @@ final class TagArrayToStringTransformer implements DataTransformerInterface
      */
     public function reverseTransform($string): array
     {
-        if (\is_array($string) === false) {
+        if (!\is_array($string)) {
             return [];
         }
 

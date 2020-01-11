@@ -18,7 +18,7 @@ final class FormErrorNormalizer extends FOSRestFormErrorNormalizer
     {
         $data = parent::normalize($object, $format, $context);
 
-        if (\is_array($data) === false) {
+        if (!\is_array($data)) {
             return $data;
         }
 
