@@ -6011,16 +6011,16 @@
         },
         {
             "name": "escapestudios/symfony2-coding-standard",
-            "version": "3.10.0",
+            "version": "3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/djoos/Symfony-coding-standard.git",
-                "reference": "3ddef0c310ba5899c934fa0b580b54031b6c6cf1"
+                "reference": "78e3b0b6832c88cf7c0240b4abcd61430030d8c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/djoos/Symfony-coding-standard/zipball/3ddef0c310ba5899c934fa0b580b54031b6c6cf1",
-                "reference": "3ddef0c310ba5899c934fa0b580b54031b6c6cf1",
+                "url": "https://api.github.com/repos/djoos/Symfony-coding-standard/zipball/78e3b0b6832c88cf7c0240b4abcd61430030d8c3",
+                "reference": "78e3b0b6832c88cf7c0240b4abcd61430030d8c3",
                 "shasum": ""
             },
             "require": {
@@ -6030,7 +6030,7 @@
                 "squizlabs/php_codesniffer": "<3 || >=4"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
+                "phpunit/phpunit": "^5.0 || ^6.0 || ^7.0"
             },
             "type": "phpcodesniffer-standard",
             "extra": {
@@ -6060,7 +6060,7 @@
                 "phpcs",
                 "symfony"
             ],
-            "time": "2019-11-29T12:49:11+00:00"
+            "time": "2020-01-22T10:27:47+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
@@ -7704,16 +7704,16 @@
         },
         {
             "name": "phpstan/phpstan-symfony",
-            "version": "0.12.3",
+            "version": "0.12.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-symfony.git",
-                "reference": "f793b68b4665f223620769e8c3ea4dbf40c53ce4"
+                "reference": "5e4b7ba02f2235271a069deeb88340a210d6c87c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-symfony/zipball/f793b68b4665f223620769e8c3ea4dbf40c53ce4",
-                "reference": "f793b68b4665f223620769e8c3ea4dbf40c53ce4",
+                "url": "https://api.github.com/repos/phpstan/phpstan-symfony/zipball/5e4b7ba02f2235271a069deeb88340a210d6c87c",
+                "reference": "5e4b7ba02f2235271a069deeb88340a210d6c87c",
                 "shasum": ""
             },
             "require": {
@@ -7770,7 +7770,7 @@
                 }
             ],
             "description": "Symfony Framework extensions and rules for PHPStan",
-            "time": "2020-01-11T14:52:23+00:00"
+            "time": "2020-01-22T10:19:41+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

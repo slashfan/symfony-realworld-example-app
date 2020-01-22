@@ -122,6 +122,7 @@ lint:
 	$(SYMFONY) lint:yaml config/ --parse-tags
 	$(SYMFONY) lint:yaml fixtures/
 	$(SYMFONY) lint:yaml translations/
+	$(SYMFONY) lint:container
 
 phpcs: ## Run phpcode_sniffer
 phpcs:
