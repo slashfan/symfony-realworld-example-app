@@ -1,7 +1,7 @@
 doctrine:
     dbal:
         driver: 'pdo_mysql'
-        server_version: '5.7'
+        server_version: '8.0'
         charset: utf8mb4
         default_table_options:
             charset: utf8mb4
