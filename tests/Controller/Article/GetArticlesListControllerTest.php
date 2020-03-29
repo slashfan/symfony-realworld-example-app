@@ -13,9 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 class GetArticlesListControllerTest extends WebTestCase
 {
     /**
-     * @param string $query
-     * @param int    $expectedCount
-     *
      * @dataProvider provideResponseCases
      */
     public function testResponse(string $query, int $expectedCount): void
@@ -32,9 +29,6 @@ class GetArticlesListControllerTest extends WebTestCase
         $this->assertSame($expectedCount, $data['articlesCount']);
     }
 
-    /**
-     * @return iterable
-     */
     public function provideResponseCases(): iterable
     {
         yield ['', 25];

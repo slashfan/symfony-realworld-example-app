@@ -13,14 +13,8 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
  */
 final class UserResolver
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    private $tokenStorage;
+    private TokenStorageInterface $tokenStorage;
 
-    /**
-     * @param TokenStorageInterface $tokenStorage
-     */
     public function __construct(TokenStorageInterface $tokenStorage)
     {
         $this->tokenStorage = $tokenStorage;
@@ -28,8 +22,6 @@ final class UserResolver
 
     /**
      * @throws NoCurrentUserException
-     *
-     * @return User
      */
     public function getCurrentUser(): User
     {

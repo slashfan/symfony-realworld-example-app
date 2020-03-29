@@ -15,22 +15,13 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 final class JWTAuthenticationSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var UserNormalizer
-     */
-    private $normalizer;
+    private UserNormalizer $normalizer;
 
-    /**
-     * @param UserNormalizer $normalizer
-     */
     public function __construct(UserNormalizer $normalizer)
     {
         $this->normalizer = $normalizer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getSubscribedEvents(): array
     {
         return [
@@ -38,9 +29,6 @@ final class JWTAuthenticationSubscriber implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @param AuthenticationSuccessEvent $event
-     */
     public function onAuthenticationSuccess(AuthenticationSuccessEvent $event): void
     {
         $user = $event->getUser();

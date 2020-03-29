@@ -13,14 +13,8 @@ use Symfony\Component\Form\DataTransformerInterface;
  */
 final class TagArrayToStringTransformer implements DataTransformerInterface
 {
-    /**
-     * @var TagRepository
-     */
-    private $tagRepository;
+    private TagRepository $tagRepository;
 
-    /**
-     * @param TagRepository $tags
-     */
     public function __construct(TagRepository $tags)
     {
         $this->tagRepository = $tags;

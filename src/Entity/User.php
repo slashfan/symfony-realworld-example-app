@@ -23,13 +23,11 @@ class User implements UserInterface
     use TimestampableEntity;
 
     /**
-     * @var int
-     *
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
      * @var string|null
@@ -39,7 +37,7 @@ class User implements UserInterface
      * @Assert\NotBlank(message="user.email.not_blank")
      * @Assert\Email(message="user.email.email")
      */
-    private $email;
+    private ?string $email = null;
 
     /**
      * @var string|null
@@ -49,7 +47,7 @@ class User implements UserInterface
      * @Assert\NotBlank(message="user.password.not_blank")
      * @Assert\Length(min="8", minMessage="user.password.length.min")
      */
-    private $password;
+    private ?string $password = null;
 
     /**
      * @var string|null
@@ -64,14 +62,14 @@ class User implements UserInterface
      *     maxMessage="user.username.length.max"
      * )
      */
-    private $username;
+    private ?string $username = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(type="text", nullable=true)
      */
-    private $bio;
+    private ?string $bio = null;
 
     /**
      * @var string|null
@@ -80,7 +78,7 @@ class User implements UserInterface
      *
      * @Assert\Url(message="user.image.url")
      */
-    private $image;
+    private ?string $image = null;
 
     /**
      * @var ArrayCollection|User[]
@@ -124,89 +122,56 @@ class User implements UserInterface
         return \sprintf('%s', $this->email);
     }
 
-    /**
-     * @return int|null
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return string|null
-     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    /**
-     * @param string|null $email
-     */
     public function setEmail(?string $email): void
     {
         $this->email = $email;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    /**
-     * @param string|null $password
-     */
     public function setPassword(?string $password): void
     {
         $this->password = $password;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUsername(): ?string
     {
         return $this->username;
     }
 
-    /**
-     * @param string|null $username
-     */
     public function setUsername(?string $username): void
     {
         $this->username = $username;
     }
 
-    /**
-     * @return string|null
-     */
     public function getBio(): ?string
     {
         return $this->bio;
     }
 
-    /**
-     * @param string|null $bio
-     */
     public function setBio(?string $bio): void
     {
         $this->bio = $bio;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage(): ?string
     {
         return $this->image;
     }
 
-    /**
-     * @param string|null $image
-     */
     public function setImage(?string $image): void
     {
         $this->image = $image;
@@ -235,19 +200,11 @@ class User implements UserInterface
     {
     }
 
-    /**
-     * @param User $user
-     *
-     * @return bool
-     */
     public function follows(User $user): bool
     {
         return $this->followed->contains($user);
     }
 
-    /**
-     * @param User $user
-     */
     public function follow(User $user): void
     {
         if ($user->getFollowers()->contains($this)) {
@@ -257,9 +214,6 @@ class User implements UserInterface
         $user->getFollowers()->add($this);
     }
 
-    /**
-     * @param User $user
-     */
     public function unfollow(User $user): void
     {
         if (!$user->getFollowers()->contains($this)) {
@@ -309,19 +263,11 @@ class User implements UserInterface
         $this->favorites = $favorites;
     }
 
-    /**
-     * @param Article $article
-     *
-     * @return bool
-     */
     public function hasFavorite(Article $article): bool
     {
         return $this->favorites->contains($article);
     }
 
-    /**
-     * @param Article $article
-     */
     public function addToFavorites(Article $article): void
     {
         if ($this->favorites->contains($article)) {
@@ -331,9 +277,6 @@ class User implements UserInterface
         $this->favorites->add($article);
     }
 
-    /**
-     * @param Article $article
-     */
     public function removeFromFavorites(Article $article): void
     {
         if (!$this->favorites->contains($article)) {

@@ -19,20 +19,10 @@ final class UserNormalizer implements NormalizerInterface, NormalizerAwareInterf
 {
     use NormalizerAwareTrait;
 
-    /**
-     * @var TokenStorageInterface
-     */
-    private $tokenStorage;
+    private TokenStorageInterface $tokenStorage;
 
-    /**
-     * @var JWTTokenManagerInterface
-     */
-    private $jwtManager;
+    private JWTTokenManagerInterface $jwtManager;
 
-    /**
-     * @param TokenStorageInterface    $tokenStorage
-     * @param JWTTokenManagerInterface $jwtManager
-     */
     public function __construct(TokenStorageInterface $tokenStorage, JWTTokenManagerInterface $jwtManager)
     {
         $this->tokenStorage = $tokenStorage;

@@ -17,14 +17,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 final class TagsInputType extends AbstractType
 {
-    /**
-     * @var TagRepository
-     */
-    private $tagRepository;
+    private TagRepository $tagRepository;
 
-    /**
-     * @param TagRepository $tags
-     */
     public function __construct(TagRepository $tags)
     {
         $this->tagRepository = $tags;

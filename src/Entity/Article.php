@@ -22,56 +22,40 @@ class Article
     use TimestampableEntity;
 
     /**
-     * @var int
-     *
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(type="string", length=255)
-     *
      * @Assert\NotBlank(message="article.title.not_blank")
      */
-    private $title;
+    private ?string $title = null;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(type="string", length=255, unique=true)
-     *
      * @Gedmo\Slug(fields={"title"}, updatable=true, unique=true)
      */
-    private $slug;
+    private ?string $slug = null;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(type="text")
-     *
      * @Assert\NotBlank(message="article.description.not_blank")
      */
-    private $description;
+    private ?string $description = null;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(type="text")
-     *
      * @Assert\NotBlank(message="article.body.not_blank")
      */
-    private $body;
+    private ?string $body = null;
 
     /**
-     * @var User|null
-     *
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      */
-    private $author;
+    private ?User $author = null;
 
     /**
      * @var ArrayCollection|Tag[]
@@ -105,89 +89,56 @@ class Article
         return \sprintf('%s', $this->title);
     }
 
-    /**
-     * @return int|null
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    /**
-     * @param string|null $title
-     */
     public function setTitle(?string $title): void
     {
         $this->title = $title;
     }
 
-    /**
-     * @return string|null
-     */
     public function getSlug(): ?string
     {
         return $this->slug;
     }
 
-    /**
-     * @param string|null $slug
-     */
     public function setSlug(?string $slug): void
     {
         $this->slug = $slug;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param string|null $description
-     */
     public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
 
-    /**
-     * @return string|null
-     */
     public function getBody(): ?string
     {
         return $this->body;
     }
 
-    /**
-     * @param string|null $body
-     */
     public function setBody(?string $body): void
     {
         $this->body = $body;
     }
 
-    /**
-     * @return User|null
-     */
     public function getAuthor(): ?User
     {
         return $this->author;
     }
 
-    /**
-     * @param User|null $author
-     */
     public function setAuthor(?User $author): void
     {
         $this->author = $author;
@@ -217,9 +168,6 @@ class Article
         return $this->favoritedBy;
     }
 
-    /**
-     * @return int
-     */
     public function getFavoritedByCount(): int
     {
         return $this->favoritedBy->count();

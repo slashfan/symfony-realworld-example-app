@@ -12,12 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class GetProfileController
 {
-    /**
-     * @param User $profile
-     *
-     * @return array
-     */
-    public function __invoke(User $profile)
+    public function __invoke(User $profile): array
     {
         return ['profile' => $profile];
     }

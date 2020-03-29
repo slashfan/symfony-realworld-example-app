@@ -12,9 +12,6 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
  */
 class WebTestCase extends BaseWebTestCase
 {
-    /**
-     * @return KernelBrowser
-     */
     protected function createAnonymousApiClient(): KernelBrowser
     {
         return static::createClient([], [
@@ -22,12 +19,6 @@ class WebTestCase extends BaseWebTestCase
         ]);
     }
 
-    /**
-     * @param string $user
-     * @param string $password
-     *
-     * @return KernelBrowser
-     */
     protected function createAuthenticatedApiClient(
         string $user = 'user1@conduit.tld',
         string $password = 'password'

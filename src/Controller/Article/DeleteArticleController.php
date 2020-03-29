@@ -16,22 +16,13 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class DeleteArticleController
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
 
-    /**
-     * @param EntityManagerInterface $manager
-     */
     public function __construct(EntityManagerInterface $manager)
     {
         $this->entityManager = $manager;
     }
 
-    /**
-     * @param Article $article
-     */
     public function __invoke(Article $article): void
     {
         $this->entityManager->remove($article);

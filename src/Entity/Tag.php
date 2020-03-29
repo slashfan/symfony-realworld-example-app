@@ -16,20 +16,16 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class Tag
 {
     /**
-     * @var int
-     *
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", length=255, unique=true)
      */
-    private $name;
+    private string $name;
 
     /**
      * @return string
@@ -39,25 +35,16 @@ class Tag
         return $this->name;
     }
 
-    /**
-     * @return int|null
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     */
     public function setName(string $name): void
     {
         $this->name = $name;

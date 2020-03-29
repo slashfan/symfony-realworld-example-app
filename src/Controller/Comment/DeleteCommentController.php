@@ -19,22 +19,13 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class DeleteCommentController
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
 
-    /**
-     * @param EntityManagerInterface $manager
-     */
     public function __construct(EntityManagerInterface $manager)
     {
         $this->entityManager = $manager;
     }
 
-    /**
-     * @param Comment $comment
-     */
     public function __invoke(Comment $comment): void
     {
         $this->entityManager->remove($comment);

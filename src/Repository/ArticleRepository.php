@@ -27,13 +27,6 @@ final class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
-    /**
-     * @param string|null $tag
-     * @param string|null $authorUsername
-     * @param string|null $favoritedByUsername
-     *
-     * @return int
-     */
     public function getArticlesListCount(?string $tag, ?string $authorUsername, ?string $favoritedByUsername): int
     {
         try {
@@ -49,11 +42,9 @@ final class ArticleRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param int         $offset
-     * @param int         $limit
-     * @param string|null $tag
-     * @param string|null $authorUsername
-     * @param string|null $favoritedByUsername
+     * @param ?string $tag
+     * @param ?string $authorUsername
+     * @param ?string $favoritedByUsername
      *
      * @return Article[]
      */
@@ -73,11 +64,6 @@ final class ArticleRepository extends ServiceEntityRepository
         ;
     }
 
-    /**
-     * @param User $user
-     *
-     * @return int
-     */
     public function getArticlesFeedCount(User $user): int
     {
         try {
@@ -93,10 +79,6 @@ final class ArticleRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param User $user
-     * @param int  $offset
-     * @param int  $limit
-     *
      * @return Article[]
      */
     public function getArticlesFeed(User $user, int $offset, int $limit): array
@@ -110,13 +92,6 @@ final class ArticleRepository extends ServiceEntityRepository
         ;
     }
 
-    /**
-     * @param string|null $tag
-     * @param string|null $authorUsername
-     * @param string|null $favoritedByUsername
-     *
-     * @return QueryBuilder
-     */
     private function getArticlesListQueryBuilder(
         ?string $tag,
         ?string $authorUsername,
@@ -148,11 +123,6 @@ final class ArticleRepository extends ServiceEntityRepository
         return $queryBuilder;
     }
 
-    /**
-     * @param User $user
-     *
-     * @return QueryBuilder
-     */
     private function getArticlesFeedQueryBuilder(User $user): QueryBuilder
     {
         return $this
