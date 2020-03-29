@@ -19,17 +19,13 @@ final class FormErrorNormalizer extends FOSRestFormErrorNormalizer
         $data = parent::normalize($object, $format, $context);
 
         if (!\is_array($data)) {
-            return $data;
+            throw new \RuntimeException('Normalized form data should be of type array.');
         }
 
         /** @var array $data */
         $data = $data['errors']['children'];
-        $data = \array_filter($data, function (array $child) {
-            return isset($child['errors']) && \count($child['errors']) > 0;
-        });
+        $data = \array_filter($data, fn (array $child) => isset($child['errors']) && \count($child['errors']) > 0);
 
-        return \array_map(function (array $child) {
-            return $child['errors'] ?? [];
-        }, $data);
+        return \array_map(fn (array $child) => $child['errors'] ?? [], $data);
     }
 }

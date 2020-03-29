@@ -145,9 +145,9 @@ class User implements UserInterface
         $this->password = $password;
     }
 
-    public function getUsername(): ?string
+    public function getUsername(): string
     {
-        return $this->username;
+        return $this->username ?? '';
     }
 
     public function setUsername(?string $username): void

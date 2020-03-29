@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace App\Serializer\Normalizer;
 
 use App\Entity\User;
+use App\Exception\NoCurrentUserException;
+use App\Security\UserResolver;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
@@ -19,13 +20,13 @@ final class UserNormalizer implements NormalizerInterface, NormalizerAwareInterf
 {
     use NormalizerAwareTrait;
 
-    private TokenStorageInterface $tokenStorage;
+    private UserResolver $userResolver;
 
     private JWTTokenManagerInterface $jwtManager;
 
-    public function __construct(TokenStorageInterface $tokenStorage, JWTTokenManagerInterface $jwtManager)
+    public function __construct(UserResolver $userResolver, JWTTokenManagerInterface $jwtManager)
     {
-        $this->tokenStorage = $tokenStorage;
+        $this->userResolver = $userResolver;
         $this->jwtManager = $jwtManager;
     }
 
@@ -46,8 +47,12 @@ final class UserNormalizer implements NormalizerInterface, NormalizerAwareInterf
             $data['email'] = $object->getEmail();
             $data['token'] = $this->jwtManager->create($object);
         } else {
-            $user = $this->tokenStorage->getToken() !== null ? $this->tokenStorage->getToken()->getUser() : null;
-            $data['following'] = $user instanceof User ? $user->follows($object) : false;
+            try {
+                $user = $this->userResolver->getCurrentUser();
+                $data['following'] = $user->follows($object);
+            } catch (NoCurrentUserException $exception) {
+                $data['following'] = false;
+            }
         }
 
         return $data;
