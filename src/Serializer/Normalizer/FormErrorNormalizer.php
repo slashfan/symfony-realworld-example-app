@@ -14,7 +14,7 @@ final class FormErrorNormalizer extends FOSRestFormErrorNormalizer
     /**
      * {@inheritdoc}
      */
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = []): array
     {
         $data = parent::normalize($object, $format, $context);
 

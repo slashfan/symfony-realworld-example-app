@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -58,33 +59,27 @@ class Article
     private ?User $author = null;
 
     /**
-     * @var ArrayCollection|Tag[]
+     * @var Collection|Tag[]
      *
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", cascade={"persist"})
      * @ORM\JoinTable(name="rw_article_tag")
      */
-    private $tags;
+    private Collection $tags;
 
     /**
-     * @var ArrayCollection|User[]
+     * @var Collection|User[]
      *
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="favorites", fetch="EXTRA_LAZY")
      */
-    private $favoritedBy;
+    private Collection $favoritedBy;
 
-    /**
-     * __construct.
-     */
     public function __construct()
     {
         $this->tags = new ArrayCollection();
         $this->favoritedBy = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return \sprintf('%s', $this->title);
     }
@@ -145,15 +140,15 @@ class Article
     }
 
     /**
-     * @return ArrayCollection|Tag[]
+     * @return Collection|Tag[]
      */
-    public function getTags()
+    public function getTags(): Collection
     {
         return $this->tags;
     }
 
     /**
-     * @param ArrayCollection|Tag[] $tags
+     * @param Collection|Tag[] $tags
      */
     public function setTags($tags): void
     {
@@ -161,9 +156,9 @@ class Article
     }
 
     /**
-     * @return ArrayCollection|User[]
+     * @return Collection|User[]
      */
-    public function getFavoritedBy()
+    public function getFavoritedBy(): Collection
     {
         return $this->favoritedBy;
     }

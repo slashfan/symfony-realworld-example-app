@@ -65,7 +65,9 @@
     <rule ref="SlevomatCodingStandard.PHP.OptimizedFunctionsWithoutUnpacking"/>
     <rule ref="SlevomatCodingStandard.PHP.UselessSemicolon"/>
     <rule ref="SlevomatCodingStandard.Variables.DuplicateAssignmentToVariable"/>
-    <rule ref="SlevomatCodingStandard.Variables.UnusedVariable"/>
+    <rule ref="SlevomatCodingStandard.Variables.UnusedVariable">
+        <exclude-pattern>src/Entity/*</exclude-pattern>
+    </rule>
     <rule ref="SlevomatCodingStandard.Variables.UselessVariable"/>
     <rule ref="SlevomatCodingStandard.Exceptions.DeadCatch"/>
 </ruleset>

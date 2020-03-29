@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -81,14 +82,14 @@ class User implements UserInterface
     private ?string $image = null;
 
     /**
-     * @var ArrayCollection|User[]
+     * @var Collection|User[]
      *
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="followers")
      */
-    private $followed;
+    private Collection $followed;
 
     /**
-     * @var ArrayCollection|User[]
+     * @var Collection|User[]
      *
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="followed")
      * @ORM\JoinTable(
@@ -97,15 +98,15 @@ class User implements UserInterface
      *   inverseJoinColumns={@ORM\JoinColumn(name="follower_id", referencedColumnName="id")}
      * )
      */
-    private $followers;
+    private Collection $followers;
 
     /**
-     * @var ArrayCollection|Article[]
+     * @var Collection|Article[]
      *
      * @ORM\ManyToMany(targetEntity="App\Entity\Article", inversedBy="favoritedBy")
      * @ORM\JoinTable(name="rw_user_favorite")
      */
-    private $favorites;
+    private Collection $favorites;
 
     public function __construct()
     {
@@ -114,10 +115,7 @@ class User implements UserInterface
         $this->favorites = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return \sprintf('%s', $this->email);
     }
@@ -224,15 +222,15 @@ class User implements UserInterface
     }
 
     /**
-     * @return ArrayCollection|User[]
+     * @return Collection|User[]
      */
-    public function getFollowers()
+    public function getFollowers(): Collection
     {
         return $this->followers;
     }
 
     /**
-     * @param ArrayCollection|User[] $followers
+     * @param Collection|User[] $followers
      */
     public function setFollowers($followers): void
     {
@@ -240,23 +238,23 @@ class User implements UserInterface
     }
 
     /**
-     * @return ArrayCollection|User[]
+     * @return Collection|User[]
      */
-    public function getFolloweds()
+    public function getFolloweds(): Collection
     {
         return $this->followed;
     }
 
     /**
-     * @return ArrayCollection|Article[]
+     * @return Collection|Article[]
      */
-    public function getFavorites()
+    public function getFavorites(): Collection
     {
         return $this->favorites;
     }
 
     /**
-     * @param ArrayCollection|Article[] $favorites
+     * @param Collection|Article[] $favorites
      */
     public function setFavorites($favorites): void
     {

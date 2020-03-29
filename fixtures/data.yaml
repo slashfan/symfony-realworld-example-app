@@ -11,8 +11,8 @@ App\Entity\User:
         password: 'password'
         image: 'https://randomuser.me/api/portraits/men/41.jpg'
         bio: '<text(60)>'
-        followers: ['@user_2']
-        favorites: ['@article_2']
+        followers: '<collection([@user_2])>'
+        favorites: '<collection([@article_2])>'
     user_2:
         username: 'user2'
         email: 'user2@conduit.tld'
@@ -21,7 +21,7 @@ App\Entity\User:
         username: 'user3'
         email: 'user3@conduit.tld'
         password: 'password'
-        followers: ['@user_1']
+        followers: '<collection([@user_1])>'
 
 App\Entity\Article:
     article_1:
@@ -29,7 +29,7 @@ App\Entity\Article:
         description: 'Description #1'
         body: 'Body #1'
         author: '@user_1'
-        tags: ['@tag_1', '@tag_2']
+        tags: '<collection([@tag_1, @tag_2])>'
     article_2:
         title: 'Article #2'
         description: 'Description #2'
@@ -40,7 +40,7 @@ App\Entity\Article:
         description: 'Description #<current()>'
         body: 'Body #<current()>'
         author: '@user_3'
-        tags: ['@tag_2']
+        tags: '<collection([@tag_2])>'
 
 App\Entity\Comment:
     comment_1:

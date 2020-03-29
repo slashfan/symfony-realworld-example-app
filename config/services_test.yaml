@@ -7,3 +7,6 @@ services:
     App\DataFixtures\Processor\UserProcessor:
         arguments: ['@security.password_encoder']
         tags: [{ name: fidry_alice_data_fixtures.processor }]
+
+    App\DataFixtures\Provider\CollectionProvider:
+        tags: [{ name: nelmio_alice.faker.provider }]
