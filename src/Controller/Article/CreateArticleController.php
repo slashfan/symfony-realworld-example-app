@@ -5,14 +5,12 @@ declare(strict_types=1);
 namespace App\Controller\Article;
 
 use App\Entity\Article;
-use App\Exception\NoCurrentUserException;
 use App\Form\ArticleType;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -25,26 +23,12 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class CreateArticleController
 {
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
+    private FormFactoryInterface $formFactory;
 
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
 
-    /**
-     * @var UserResolver
-     */
-    private $userResolver;
+    private UserResolver $userResolver;
 
-    /**
-     * @param FormFactoryInterface   $formFactory
-     * @param EntityManagerInterface $entityManager
-     * @param UserResolver           $userResolver
-     */
     public function __construct(
         FormFactoryInterface $formFactory,
         EntityManagerInterface $entityManager,
@@ -55,14 +39,7 @@ final class CreateArticleController
         $this->userResolver = $userResolver;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @throws NoCurrentUserException
-     *
-     * @return array|FormInterface
-     */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): array
     {
         $user = $this->userResolver->getCurrentUser();
 
@@ -79,6 +56,6 @@ final class CreateArticleController
             return ['article' => $article];
         }
 
-        return $form;
+        return ['form' => $form];
     }
 }

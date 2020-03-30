@@ -9,7 +9,6 @@ use App\Form\ArticleType;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -20,33 +19,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class UpdateArticleController
 {
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
+    private FormFactoryInterface $formFactory;
 
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
 
-    /**
-     * @param FormFactoryInterface   $factory
-     * @param EntityManagerInterface $manager
-     */
     public function __construct(FormFactoryInterface $factory, EntityManagerInterface $manager)
     {
         $this->formFactory = $factory;
         $this->entityManager = $manager;
     }
 
-    /**
-     * @param Request $request
-     * @param Article $article
-     *
-     * @return array|FormInterface
-     */
-    public function __invoke(Request $request, Article $article)
+    public function __invoke(Request $request, Article $article): array
     {
         $form = $this->formFactory->createNamed('article', ArticleType::class, $article);
         $form->submit($request->request->get('article'), false);
@@ -57,6 +40,6 @@ final class UpdateArticleController
             return ['article' => $article];
         }
 
-        return $form;
+        return ['form' => $form];
     }
 }

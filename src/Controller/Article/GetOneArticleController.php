@@ -12,12 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class GetOneArticleController
 {
-    /**
-     * @param Article $article
-     *
-     * @return array
-     */
-    public function __invoke(Article $article)
+    public function __invoke(Article $article): array
     {
         return ['article' => $article];
     }

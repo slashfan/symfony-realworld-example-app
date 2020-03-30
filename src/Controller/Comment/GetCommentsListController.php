@@ -13,26 +13,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class GetCommentsListController
 {
-    /**
-     * @var CommentRepository
-     */
-    private $commentRepository;
+    private CommentRepository $commentRepository;
 
-    /**
-     * @param CommentRepository $repository
-     */
     public function __construct(CommentRepository $repository)
     {
         $this->commentRepository = $repository;
     }
 
-    /**
-     * @param Article $article
-     *
-     * @return array
-     */
-    public function __invoke(Article $article)
+    public function __invoke(Article $article): array
     {
-        return ['comments' => $this->commentRepository->findBy(['article' => $article])];
+        return [
+            'comments' => $this->commentRepository->findBy(['article' => $article]),
+        ];
     }
 }

@@ -65,6 +65,7 @@
         "phpstan/phpstan-symfony": "^0.12",
         "phpunit/phpunit": "^8.4",
         "povils/phpmnd": "^2.1",
+        "psalm/plugin-symfony": "^1.1",
         "pyrech/composer-changelogs": "^1.7",
         "rector/rector-prefixed": "^0.6",
         "sensiolabs/security-checker": "^6.0",
@@ -79,7 +80,8 @@
         "symfony/test-pack": "1.0.*",
         "symfony/var-dumper": "4.4.*",
         "thecodingmachine/phpstan-strict-rules": "^0.12",
-        "theofidry/alice-data-fixtures": "^1.1"
+        "theofidry/alice-data-fixtures": "^1.1",
+        "vimeo/psalm": "^3.10"
     },
     "config": {
         "platform": {

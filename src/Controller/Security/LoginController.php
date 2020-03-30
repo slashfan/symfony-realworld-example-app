@@ -11,9 +11,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class LoginController
 {
-    /**
-     * @throws \RuntimeException
-     */
     public function __invoke(): void
     {
         throw new \RuntimeException('Should not be reached.');

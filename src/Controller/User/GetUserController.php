@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller\User;
 
-use App\Exception\NoCurrentUserException;
 use App\Security\UserResolver;
 use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -19,25 +18,14 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class GetUserController
 {
-    /**
-     * @var UserResolver
-     */
-    private $userResolver;
+    private UserResolver $userResolver;
 
-    /**
-     * @param UserResolver $userResolver
-     */
     public function __construct(UserResolver $userResolver)
     {
         $this->userResolver = $userResolver;
     }
 
-    /**
-     * @throws NoCurrentUserException
-     *
-     * @return array
-     */
-    public function __invoke()
+    public function __invoke(): array
     {
         return ['user' => $this->userResolver->getCurrentUser()];
     }

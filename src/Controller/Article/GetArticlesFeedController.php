@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller\Article;
 
-use App\Exception\NoCurrentUserException;
 use App\Repository\ArticleRepository;
 use App\Security\UserResolver;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
@@ -22,34 +21,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class GetArticlesFeedController
 {
-    /**
-     * @var ArticleRepository
-     */
-    private $articleRepository;
+    private ArticleRepository $articleRepository;
 
-    /**
-     * @var UserResolver
-     */
-    private $userResolver;
+    private UserResolver $userResolver;
 
-    /**
-     * @param ArticleRepository $repository
-     * @param UserResolver      $userResolver
-     */
     public function __construct(ArticleRepository $repository, UserResolver $userResolver)
     {
         $this->articleRepository = $repository;
         $this->userResolver = $userResolver;
     }
 
-    /**
-     * @param ParamFetcher $paramFetcher
-     *
-     * @throws NoCurrentUserException
-     *
-     * @return array
-     */
-    public function __invoke(ParamFetcher $paramFetcher)
+    public function __invoke(ParamFetcher $paramFetcher): array
     {
         $user = $this->userResolver->getCurrentUser();
         $offset = (int) $paramFetcher->get('offset');

@@ -17,96 +17,63 @@ class Comment
     use TimestampableEntity;
 
     /**
-     * @var int
-     *
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id = null;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(type="text")
-     *
      * @Assert\NotBlank(message="comment.body.not_blank")
      */
-    private $body;
+    private ?string $body = null;
 
     /**
-     * @var User|null
-     *
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      */
-    private $author;
+    private ?User $author = null;
 
     /**
-     * @var Article|null
-     *
      * @ORM\ManyToOne(targetEntity="App\Entity\Article")
      */
-    private $article;
+    private ?Article $article = null;
 
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return \sprintf('%s', $this->body);
     }
 
-    /**
-     * @return int|null
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return string|null
-     */
     public function getBody(): ?string
     {
         return $this->body;
     }
 
-    /**
-     * @param string|null $body
-     */
     public function setBody(?string $body): void
     {
         $this->body = $body;
     }
 
-    /**
-     * @return User|null
-     */
     public function getAuthor(): ?User
     {
         return $this->author;
     }
 
-    /**
-     * @param User|null $author
-     */
     public function setAuthor(?User $author): void
     {
         $this->author = $author;
     }
 
-    /**
-     * @return Article|null
-     */
     public function getArticle(): ?Article
     {
         return $this->article;
     }
 
-    /**
-     * @param Article|null $article
-     */
     public function setArticle(?Article $article): void
     {
         $this->article = $article;

@@ -12,23 +12,14 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class GetTagsListController
 {
-    /**
-     * @var TagRepository
-     */
-    private $tagRepository;
+    private TagRepository $tagRepository;
 
-    /**
-     * @param TagRepository $repository
-     */
     public function __construct(TagRepository $repository)
     {
         $this->tagRepository = $repository;
     }
 
-    /**
-     * @return array
-     */
-    public function __invoke()
+    public function __invoke(): array
     {
         return ['tags' => $this->tagRepository->findAll()];
     }

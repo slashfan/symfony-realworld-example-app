@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Controller\Article;
 
 use App\Entity\Article;
-use App\Exception\NoCurrentUserException;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
@@ -21,34 +20,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class UnfavoriteArticleController
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
 
-    /**
-     * @var UserResolver
-     */
-    private $userResolver;
+    private UserResolver $userResolver;
 
-    /**
-     * @param EntityManagerInterface $entityManager
-     * @param UserResolver           $userResolver
-     */
     public function __construct(EntityManagerInterface $entityManager, UserResolver $userResolver)
     {
         $this->entityManager = $entityManager;
         $this->userResolver = $userResolver;
     }
 
-    /**
-     * @param Article $article
-     *
-     * @throws NoCurrentUserException
-     *
-     * @return array
-     */
-    public function __invoke(Article $article)
+    public function __invoke(Article $article): array
     {
         $user = $this->userResolver->getCurrentUser();
         $user->removeFromFavorites($article);

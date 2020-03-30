@@ -6,14 +6,12 @@ namespace App\Controller\Comment;
 
 use App\Entity\Article;
 use App\Entity\Comment;
-use App\Exception\NoCurrentUserException;
 use App\Form\CommentType;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -26,26 +24,12 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class CreateCommentController
 {
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
+    private FormFactoryInterface $formFactory;
 
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
 
-    /**
-     * @var UserResolver
-     */
-    private $userResolver;
+    private UserResolver $userResolver;
 
-    /**
-     * @param FormFactoryInterface   $formFactory
-     * @param EntityManagerInterface $entityManager
-     * @param UserResolver           $userResolver
-     */
     public function __construct(
         FormFactoryInterface $formFactory,
         EntityManagerInterface $entityManager,
@@ -56,15 +40,7 @@ final class CreateCommentController
         $this->userResolver = $userResolver;
     }
 
-    /**
-     * @param Request $request
-     * @param Article $article
-     *
-     * @throws NoCurrentUserException
-     *
-     * @return array|FormInterface
-     */
-    public function __invoke(Request $request, Article $article)
+    public function __invoke(Request $request, Article $article): array
     {
         $user = $this->userResolver->getCurrentUser();
 
@@ -82,6 +58,6 @@ final class CreateCommentController
             return ['comment' => $comment];
         }
 
-        return $form;
+        return ['form' => $form];
     }
 }

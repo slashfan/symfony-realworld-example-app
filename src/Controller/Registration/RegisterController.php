@@ -9,7 +9,6 @@ use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -21,26 +20,12 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  */
 final class RegisterController
 {
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
+    private FormFactoryInterface $formFactory;
 
-    /**
-     * @var UserPasswordEncoderInterface
-     */
-    private $passwordEncoder;
+    private UserPasswordEncoderInterface $passwordEncoder;
 
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
 
-    /**
-     * @param FormFactoryInterface         $factory
-     * @param UserPasswordEncoderInterface $encoder
-     * @param EntityManagerInterface       $manager
-     */
     public function __construct(
         FormFactoryInterface $factory,
         UserPasswordEncoderInterface $encoder,
@@ -51,12 +36,7 @@ final class RegisterController
         $this->entityManager = $manager;
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return array|FormInterface
-     */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): array
     {
         $user = new User();
 
@@ -71,6 +51,6 @@ final class RegisterController
             return ['user' => $user];
         }
 
-        return $form;
+        return ['form' => $form];
     }
 }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Controller\Profile;
 
 use App\Entity\User;
-use App\Exception\NoCurrentUserException;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -18,34 +17,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class UnfollowProfileController
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
+    private \Doctrine\ORM\EntityManagerInterface $entityManager;
 
-    /**
-     * @var UserResolver
-     */
-    private $userResolver;
+    private \App\Security\UserResolver $userResolver;
 
-    /**
-     * @param EntityManagerInterface $entityManager
-     * @param UserResolver           $userResolver
-     */
     public function __construct(EntityManagerInterface $entityManager, UserResolver $userResolver)
     {
         $this->entityManager = $entityManager;
         $this->userResolver = $userResolver;
     }
 
-    /**
-     * @param User $profile
-     *
-     * @throws NoCurrentUserException
-     *
-     * @return array
-     */
-    public function __invoke(User $profile)
+    public function __invoke(User $profile): array
     {
         $user = $this->userResolver->getCurrentUser();
         $user->unfollow($profile);

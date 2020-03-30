@@ -13,14 +13,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  */
 final class UserProcessor implements ProcessorInterface
 {
-    /**
-     * @var UserPasswordEncoderInterface
-     */
-    private $encoder;
+    private \Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface $encoder;
 
-    /**
-     * @param UserPasswordEncoderInterface $encoder
-     */
     public function __construct(UserPasswordEncoderInterface $encoder)
     {
         $this->encoder = $encoder;

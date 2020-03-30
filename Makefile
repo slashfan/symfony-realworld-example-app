@@ -112,7 +112,7 @@ rsa-keys:
 ##
 
 ci: ## Run all quality insurance checks (tests, code styles, linting, security, static analysis...)
-ci: php-cs-fixer phpcs phpmd phpmnd phpstan lint validate-composer validate-mapping security test test-coverage test-spec
+ci: php-cs-fixer phpcs phpmd phpmnd phpstan psalm lint validate-composer validate-mapping security test test-coverage test-spec
 
 ci.local: ## Run quality insurance checks from inside the php container
 ci.local: no-docker ci
@@ -128,7 +128,7 @@ phpcs: ## Run phpcode_sniffer
 phpcs:
 	$(EXEC_PHP) vendor/bin/phpcs
 
-php-cs-fixer: ## Run php-cs-fixer
+php-cs-fixer: ## Run PHP-CS-FIXER
 php-cs-fixer:
 	$(EXEC_PHP) vendor/bin/php-cs-fixer fix --verbose
 
@@ -144,7 +144,7 @@ phpmnd: ## Run PHPMND
 phpmnd:
 	$(EXEC_PHP) vendor/bin/phpmnd src --extensions=default_parameter
 
-phpstan: ## Run phpstan
+phpstan: ## Run PHPSTAN
 phpstan:
 	$(EXEC_PHP) vendor/bin/phpstan analyse
 	
@@ -152,13 +152,13 @@ rector.dry: ## Dry-run rector
 rector.dry:
 	$(EXEC_PHP) vendor/bin/rector process src --dry-run
 	
-rector: ## Run rector
+rector: ## Run RECTOR
 rector:
 	$(EXEC_PHP) vendor/bin/rector process src
 	
-psalm: ## Run rector
+psalm: ## Run PSALM
 psalm:
-	docker run --init -it --rm -v $$PWD:/project -v $$PWD/var/phpqa:/tmp -w /project jakzal/phpqa psalm
+	$(EXEC_PHP) vendor/bin/psalm
 
 security: ## Run security-checker
 security:

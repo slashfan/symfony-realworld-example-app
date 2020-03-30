@@ -20,25 +20,14 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class GetArticlesListController
 {
-    /**
-     * @var ArticleRepository
-     */
-    private $articleRepository;
+    private ArticleRepository $articleRepository;
 
-    /**
-     * @param ArticleRepository $repository
-     */
     public function __construct(ArticleRepository $repository)
     {
         $this->articleRepository = $repository;
     }
 
-    /**
-     * @param ParamFetcher $paramFetcher
-     *
-     * @return array
-     */
-    public function __invoke(ParamFetcher $paramFetcher)
+    public function __invoke(ParamFetcher $paramFetcher): array
     {
         $articlesCount = $this->articleRepository->getArticlesListCount(
             $paramFetcher->get('tag'),

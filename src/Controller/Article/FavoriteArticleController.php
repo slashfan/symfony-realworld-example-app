@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Controller\Article;
 
 use App\Entity\Article;
-use App\Exception\NoCurrentUserException;
 use App\Security\UserResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -18,34 +17,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class FavoriteArticleController
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
 
-    /**
-     * @var UserResolver
-     */
-    private $userResolver;
+    private UserResolver $userResolver;
 
-    /**
-     * @param EntityManagerInterface $manager
-     * @param UserResolver           $userResolver
-     */
     public function __construct(EntityManagerInterface $manager, UserResolver $userResolver)
     {
         $this->entityManager = $manager;
         $this->userResolver = $userResolver;
     }
 
-    /**
-     * @param Article $article
-     *
-     * @throws NoCurrentUserException
-     *
-     * @return array
-     */
-    public function __invoke(Article $article)
+    public function __invoke(Article $article): array
     {
         $user = $this->userResolver->getCurrentUser();
         $user->addToFavorites($article);
