@@ -35,9 +35,6 @@ jobs:
                     update: true
 
             # —— Composer 🧙‍️ —————————————————————————————————————————————————————————
-            -   name: Validate composer.json and composer.lock
-                run: composer validate
-
             -   name: Get composer cache directory
                 id: composer-cache
                 run: echo "::set-output name=dir::$(composer config cache-files-dir)"
@@ -59,32 +56,32 @@ jobs:
             ## —— Composer ✨ ————————————————————————————————————————————————
             -   name: Composer checks
                 run: |
-                    php composer validate
-                    php composer normalize --dry-run
+                    composer validate
+                    composer normalize --dry-run
 
             ## —— Security ✨ ————————————————————————————————————————————————
             -   name: Security checks
                 run: |
-                    php vendor/bin/security-checker security:check
+                    vendor/bin/security-checker security:check
 
             ## —— Doctrine ✨ ————————————————————————————————————————————————
             -   name: Doctrine checks
                 run: |
-                    php bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
+                    bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
 
             ## —— Code ✨ ————————————————————————————————————————————————
             -   name: Code checks
                 run: |
-                    php vendor/bin/php-cs-fixer fix --verbose --dry-run
-                    php vendor/bin/phpcs
-                    php vendor/bin/phpmd src/,tests/ text phpmd.xml.dist
-                    php vendor/bin/phpmnd src --extensions=default_parameter
-                    php vendor/bin/phpstan analyse
-                    php vendor/bin/psalm
-                    php bin/console lint:yaml config/ --parse-tags
-                    php bin/console lint:yaml fixtures/
-                    php bin/console lint:yaml translations/
-                    php bin/console lint:container
+                    vendor/bin/php-cs-fixer fix --verbose --dry-run
+                    vendor/bin/phpcs
+                    vendor/bin/phpmd src/,tests/ text phpmd.xml.dist
+                    vendor/bin/phpmnd src --extensions=default_parameter
+                    vendor/bin/phpstan analyse
+                    vendor/bin/psalm
+                    bin/console lint:yaml config/ --parse-tags
+                    bin/console lint:yaml fixtures/
+                    bin/console lint:yaml translations/
+                    bin/console lint:container
 
             ## —— Tests ✅ ———————————————————————————————————————————————————————————
             -   name: Run functionnal and unit tests
