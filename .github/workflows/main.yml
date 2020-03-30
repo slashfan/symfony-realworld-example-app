@@ -47,14 +47,7 @@ jobs:
                     restore-keys: ${{ runner.os }}-composer-
 
             -   name: Install Composer dependencies
-                run: composer install -o
-
-            # —— Symfony 🎵 ——————————————————————————————————————————————————————————
-            -   name: Check the Symfony console
-                run: |
-                    bin/console -V
-                    bin/console cache:clear --env=dev
-                    bin/console cache:clear --env=test
+                run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
 
             ## —— Composer ✨ ————————————————————————————————————————————————
             -   name: Composer checks
@@ -67,13 +60,18 @@ jobs:
                 run: |
                     vendor/bin/security-checker security:check
 
-            ## —— Doctrine ✨ ————————————————————————————————————————————————
-            -   name: Doctrine checks
+            # —— Symfony ✨——————————————————————————————————————————————————————————
+            -   name: Check the Symfony console
                 run: |
+                    bin/console -V
                     bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
+                    bin/console lint:yaml config/ --parse-tags
+                    bin/console lint:yaml fixtures/
+                    bin/console lint:yaml translations/
+                    bin/console lint:container
 
-            ## —— Code ✨ ————————————————————————————————————————————————
-            -   name: Code checks
+            ## —— Static Code Analysis ✨ ————————————————————————————————————————————————
+            -   name: Code standards and quality checks
                 run: |
                     vendor/bin/php-cs-fixer fix --verbose --dry-run
                     vendor/bin/phpcs
@@ -81,12 +79,8 @@ jobs:
                     vendor/bin/phpmnd src --extensions=default_parameter
                     vendor/bin/phpstan analyse
                     vendor/bin/psalm
-                    bin/console lint:yaml config/ --parse-tags
-                    bin/console lint:yaml fixtures/
-                    bin/console lint:yaml translations/
-                    bin/console lint:container
 
             ## —— Tests ✅ ———————————————————————————————————————————————————————————
             -   name: Run functionnal and unit tests
                 run: |
-                    vendor/bin/phpunit
+                    vendor/bin/phpunit --coverage-text
