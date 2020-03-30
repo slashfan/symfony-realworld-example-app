@@ -61,17 +61,17 @@ jobs:
                     vendor/bin/security-checker security:check
 
             # —— Symfony ✨——————————————————————————————————————————————————————————
-            -   name: Check the Symfony console
+            -   name: Symfony checks
                 run: |
-                    bin/console -V
-                    bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
+                    bin/console cache:clear --env=dev
                     bin/console lint:yaml config/ --parse-tags
                     bin/console lint:yaml fixtures/
                     bin/console lint:yaml translations/
                     bin/console lint:container
+                    bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
 
             ## —— Static Code Analysis ✨ ————————————————————————————————————————————————
-            -   name: Code standards and quality checks
+            -   name: Static code analysis checks
                 run: |
                     vendor/bin/php-cs-fixer fix --verbose --dry-run
                     vendor/bin/phpcs
