@@ -232,7 +232,7 @@ class User implements UserInterface
     /**
      * @param Collection|User[] $followers
      */
-    public function setFollowers($followers): void
+    public function setFollowers(Collection $followers): void
     {
         $this->followers = $followers;
     }
@@ -256,7 +256,7 @@ class User implements UserInterface
     /**
      * @param Collection|Article[] $favorites
      */
-    public function setFavorites($favorites): void
+    public function setFavorites(Collection $favorites): void
     {
         $this->favorites = $favorites;
     }

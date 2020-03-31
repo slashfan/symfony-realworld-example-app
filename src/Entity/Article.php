@@ -150,7 +150,7 @@ class Article
     /**
      * @param Collection|Tag[] $tags
      */
-    public function setTags($tags): void
+    public function setTags(Collection $tags): void
     {
         $this->tags = $tags;
     }
