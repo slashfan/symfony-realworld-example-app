@@ -95,7 +95,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "5.0.*"
+            "require": "4.4.*"
         }
     },
     "autoload": {
