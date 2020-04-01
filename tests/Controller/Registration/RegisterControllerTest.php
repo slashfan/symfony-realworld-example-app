@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * UsersPostControllerTest.
  */
-class RegisterControllerTest extends WebTestCase
+final class RegisterControllerTest extends WebTestCase
 {
     public function testBadRequestResponse(): void
     {

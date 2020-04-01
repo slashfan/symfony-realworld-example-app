@@ -150,11 +150,11 @@ phpstan:
 	
 rector.dry: ## Dry-run rector
 rector.dry:
-	$(EXEC_PHP) vendor/bin/rector process src --dry-run
+	$(EXEC_PHP) vendor/bin/rector process --dry-run
 	
 rector: ## Run RECTOR
 rector:
-	$(EXEC_PHP) vendor/bin/rector process src
+	$(EXEC_PHP) vendor/bin/rector process
 	
 psalm: ## Run PSALM
 psalm:

@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * ArticlesPutControllerTest.
  */
-class UpdateArticleControllerTest extends WebTestCase
+final class UpdateArticleControllerTest extends WebTestCase
 {
     public function testAsAnonymous(): void
     {

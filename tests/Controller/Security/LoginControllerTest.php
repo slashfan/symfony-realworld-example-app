@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * UsersLoginControllerTest.
  */
-class LoginControllerTest extends WebTestCase
+final class LoginControllerTest extends WebTestCase
 {
     public function testBadRequestResponse(): void
     {

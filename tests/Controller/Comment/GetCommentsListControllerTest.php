@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * CommentsListControllerTest.
  */
-class GetCommentsListControllerTest extends WebTestCase
+final class GetCommentsListControllerTest extends WebTestCase
 {
     public function testResponse(): void
     {

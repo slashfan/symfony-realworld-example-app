@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * TagsListControllerTest.
  */
-class TagsListControllerTest extends WebTestCase
+final class TagsListControllerTest extends WebTestCase
 {
     public function testResponse(): void
     {

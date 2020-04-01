@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * ArticlesGetControllerTest.
  */
-class GetOneArticleControllerTest extends WebTestCase
+final class GetOneArticleControllerTest extends WebTestCase
 {
     public function testResponse(): void
     {

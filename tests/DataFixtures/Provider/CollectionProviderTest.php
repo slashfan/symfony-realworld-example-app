@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * CollectionProviderTest.
  */
-class CollectionProviderTest extends TestCase
+final class CollectionProviderTest extends TestCase
 {
     public function testCollection(): void
     {

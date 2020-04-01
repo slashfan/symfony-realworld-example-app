@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * UserResolverTest.
  */
-class UserResolverTest extends TestCase
+final class UserResolverTest extends TestCase
 {
     /**
      * @throws \Exception

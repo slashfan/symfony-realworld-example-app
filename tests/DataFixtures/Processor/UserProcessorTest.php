@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 /**
  * UserProcessorTest.
  */
-class UserProcessorTest extends TestCase
+final class UserProcessorTest extends TestCase
 {
     public function testPreProcessWithArticleObject(): void
     {

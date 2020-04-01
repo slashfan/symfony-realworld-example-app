@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * ArticlesFavoriteControllerTest.
  */
-class FavoriteArticleControllerTest extends WebTestCase
+final class FavoriteArticleControllerTest extends WebTestCase
 {
     public function testAsAnonymous(): void
     {

@@ -13,7 +13,7 @@ use Fidry\AliceDataFixtures\Loader\PurgerLoader;
  */
 final class AppFixtures extends Fixture
 {
-    private \Fidry\AliceDataFixtures\Loader\PurgerLoader $loader;
+    private PurgerLoader $loader;
 
     public function __construct(PurgerLoader $loader)
     {

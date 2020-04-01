@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * ProfilesUnfollowControllerTest.
  */
-class UnfollowProfileControllerTest extends WebTestCase
+final class UnfollowProfileControllerTest extends WebTestCase
 {
     public function testAsAnonymous(): void
     {

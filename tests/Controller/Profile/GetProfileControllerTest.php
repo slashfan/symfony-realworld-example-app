@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * ProfilesGetControllerTest.
  */
-class GetProfileControllerTest extends WebTestCase
+final class GetProfileControllerTest extends WebTestCase
 {
     public function testResponse(): void
     {

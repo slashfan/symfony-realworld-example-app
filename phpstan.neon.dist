@@ -19,8 +19,6 @@ parameters:
   ignoreErrors:
       - '/Parameter #6 $content of method Symfony\Component\BrowserKit\Client::request() expects string|null, string|false given\./'
       - '/Parameter #2 $plainPassword of method Symfony\Component\Security\Core\Encoder\\UserPasswordEncoderInterface::encodePassword() expects string, string|null given\./'
-      - '/Call to method getStatusCode\(\) on an unknown class Symfony\\Component\\HttpKernel\\Response\./'
-      - '/Call to method getContent\(\) on an unknown class Symfony\\Component\\HttpKernel\\Response\./'
       - '/Cannot call method getId() on App\Entity\User|null\./'
   reportUnmatchedIgnoredErrors: false
   checkMissingIterableValueType: false

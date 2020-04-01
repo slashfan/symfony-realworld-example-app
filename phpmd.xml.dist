@@ -37,6 +37,5 @@
     <!-- Controversial. -->
     <rule ref="rulesets/controversial.xml"/>
     <!-- Excluded files -->
-    <exclude-pattern>src/Migrations/*</exclude-pattern>
     <exclude-pattern>src/DataFixtures/*</exclude-pattern>
 </ruleset>
