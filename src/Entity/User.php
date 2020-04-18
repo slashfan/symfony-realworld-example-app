@@ -31,8 +31,6 @@ class User implements UserInterface
     private ?int $id = null;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(type="string", length=255, unique=true)
      *
      * @Assert\NotBlank(message="user.email.not_blank")
@@ -41,8 +39,6 @@ class User implements UserInterface
     private ?string $email = null;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(type="string", length=255)
      *
      * @Assert\NotBlank(message="user.password.not_blank")
@@ -51,8 +47,6 @@ class User implements UserInterface
     private ?string $password = null;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(type="string", length=255, unique=true)
      *
      * @Assert\NotBlank(message="user.username.not_blank")
@@ -66,15 +60,11 @@ class User implements UserInterface
     private ?string $username = null;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(type="text", nullable=true)
      */
     private ?string $bio = null;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(type="text", nullable=true)
      *
      * @Assert\Url(message="user.image.url")
