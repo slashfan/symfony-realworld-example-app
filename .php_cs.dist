@@ -50,7 +50,7 @@ return PhpCsFixer\Config::create()
         'php_unit_dedicate_assert' => true,
         'php_unit_strict' => true,
         'php_unit_set_up_tear_down_visibility' => true,
-        'phpdoc_add_missing_param_annotation' => ['only_untyped' => false],
+        'phpdoc_add_missing_param_annotation' => false,
         'phpdoc_order' => true,
         'phpdoc_trim_consecutive_blank_line_separation' => true,
         'phpdoc_types_order' => ['null_adjustment' => 'always_last', 'sort_algorithm' => 'none'],

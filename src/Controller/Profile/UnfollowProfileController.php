@@ -17,9 +17,9 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class UnfollowProfileController
 {
-    private \Doctrine\ORM\EntityManagerInterface $entityManager;
+    private EntityManagerInterface $entityManager;
 
-    private \App\Security\UserResolver $userResolver;
+    private UserResolver $userResolver;
 
     public function __construct(EntityManagerInterface $entityManager, UserResolver $userResolver)
     {

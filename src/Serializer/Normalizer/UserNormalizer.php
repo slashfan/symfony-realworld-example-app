@@ -66,9 +66,6 @@ final class UserNormalizer implements NormalizerInterface, NormalizerAwareInterf
         return $data instanceof User;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasCacheableSupportsMethod(): bool
     {
         return true;

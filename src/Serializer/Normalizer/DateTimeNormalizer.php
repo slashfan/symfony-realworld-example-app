@@ -29,9 +29,6 @@ final class DateTimeNormalizer implements NormalizerInterface, CacheableSupports
         return $data instanceof \DateTime;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasCacheableSupportsMethod(): bool
     {
         return true;

@@ -30,9 +30,6 @@ final class TagNormalizer implements NormalizerInterface, CacheableSupportsMetho
         return $data instanceof Tag;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasCacheableSupportsMethod(): bool
     {
         return true;

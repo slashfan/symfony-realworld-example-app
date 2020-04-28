@@ -41,9 +41,6 @@ final class CommentNormalizer implements NormalizerInterface, NormalizerAwareInt
         return $data instanceof Comment;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasCacheableSupportsMethod(): bool
     {
         return true;

@@ -65,9 +65,6 @@ final class ArticleNormalizer implements NormalizerInterface, NormalizerAwareInt
         return $data instanceof Article;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasCacheableSupportsMethod(): bool
     {
         return true;

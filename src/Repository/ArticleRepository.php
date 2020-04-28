@@ -9,6 +9,7 @@ use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
 
 /**
@@ -36,16 +37,12 @@ final class ArticleRepository extends ServiceEntityRepository
                 ->getQuery()
                 ->getSingleScalarResult()
             ;
-        } catch (NonUniqueResultException $e) {
+        } catch (NonUniqueResultException | NoResultException $exception) {
             return 0;
         }
     }
 
     /**
-     * @param ?string $tag
-     * @param ?string $authorUsername
-     * @param ?string $favoritedByUsername
-     *
      * @return Article[]
      */
     public function getArticlesList(
@@ -73,7 +70,7 @@ final class ArticleRepository extends ServiceEntityRepository
                 ->getQuery()
                 ->getSingleScalarResult()
             ;
-        } catch (NonUniqueResultException $e) {
+        } catch (NonUniqueResultException | NoResultException $exception) {
             return 0;
         }
     }
