@@ -98,14 +98,14 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
-    "easycorp/easy-log-handler": {
-        "version": "1.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "1.0",
-            "ref": "70062abc2cd58794d2a90274502f81b55cd9951b"
-        }
+    "ergebnis/composer-normalize": {
+        "version": "2.5.1"
+    },
+    "ergebnis/json-normalizer": {
+        "version": "0.12.0"
+    },
+    "ergebnis/json-printer": {
+        "version": "3.0.2"
     },
     "escapestudios/symfony2-coding-standard": {
         "version": "3.4.1"
@@ -179,20 +179,8 @@
             "ref": "a66e8a7b75a1825cf2414d5dd53c7ed38c8654d1"
         }
     },
-    "localheinz/composer-json-normalizer": {
-        "version": "1.0.2"
-    },
-    "localheinz/composer-normalize": {
-        "version": "1.3.0"
-    },
     "localheinz/diff": {
         "version": "1.0.0"
-    },
-    "localheinz/json-normalizer": {
-        "version": "0.9.0"
-    },
-    "localheinz/json-printer": {
-        "version": "2.0.1"
     },
     "monolog/monolog": {
         "version": "1.23.0"
