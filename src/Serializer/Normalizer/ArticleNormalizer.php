@@ -30,7 +30,7 @@ final class ArticleNormalizer implements NormalizerInterface, NormalizerAwareInt
     /**
      * {@inheritdoc}
      */
-    public function normalize($object, $format = null, array $context = []): array
+    public function normalize($object, string $format = null, array $context = []): array
     {
         /* @var Article $object */
 
@@ -60,7 +60,7 @@ final class ArticleNormalizer implements NormalizerInterface, NormalizerAwareInt
     /**
      * {@inheritdoc}
      */
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, string $format = null): bool
     {
         return $data instanceof Article;
     }

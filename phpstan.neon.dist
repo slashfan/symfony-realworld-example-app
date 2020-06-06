@@ -15,11 +15,13 @@ parameters:
   excludes_analyse:
     - '%rootDir%/../../../src/Kernel.php'
   symfony:
-    container_xml_path: '%currentWorkingDirectory%/var/cache/dev/srcApp_KernelDevDebugContainer.xml'
+    container_xml_path: '%currentWorkingDirectory%/var/cache/dev/App_KernelDevDebugContainer.xml'
   ignoreErrors:
       - '/Parameter #6 $content of method Symfony\Component\BrowserKit\Client::request() expects string|null, string|false given\./'
       - '/Parameter #2 $plainPassword of method Symfony\Component\Security\Core\Encoder\\UserPasswordEncoderInterface::encodePassword() expects string, string|null given\./'
       - '/Cannot call method getId() on App\Entity\User|null\./'
+      - '/Function file_exists is unsafe to use, rely on Symfony component Filesystem::exists instead\./'
+      - '/Call to an undefined method Symfony\\Component\\Form\\FormError\|Symfony\\Component\\Form\\FormErrorIterator::getMessage()./'
   reportUnmatchedIgnoredErrors: false
   checkMissingIterableValueType: false
   checkGenericClassInNonGenericObjectType: false

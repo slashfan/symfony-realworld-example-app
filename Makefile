@@ -19,7 +19,7 @@ kill:
 	$(DOCKER_COMPOSE) down --volumes --remove-orphans
 
 install: ## Install and start the project
-install: .env.local docker-compose.override.yml build start vendor rsa-keys db
+install: docker-compose.override.yml build start vendor rsa-keys db
 
 reset: ## Stop and start a fresh install of the project
 reset: kill install
@@ -32,7 +32,7 @@ stop: ## Stop the project
 
 clean: ## Stop the project and remove generated files
 clean: kill
-	rm -rf .env.local docker-compose.override.yml config/jwt/*.pem vendor
+	rm -rf docker-compose.override.yml config/jwt/*.pem vendor
 
 no-docker:
 	$(eval DOCKER_COMPOSE := \#)
@@ -47,10 +47,9 @@ no-docker:
 ##
 
 db: ## Reset the database and load fixtures
-db: .env.local vendor
-	@$(EXEC_PHP) php -r 'echo "Wait database...\n"; set_time_limit(15); require __DIR__."/vendor/autoload.php"; (new \Symfony\Component\Dotenv\Dotenv())->load(__DIR__."/.env"); $$u = parse_url(getenv("DATABASE_URL")); for(;;) { if(@fsockopen($$u["host"].":".($$u["port"] ?? 3306))) { break; }}'
-	-$(SYMFONY) doctrine:database:drop --if-exists --force
-	-$(SYMFONY) doctrine:database:create --if-not-exists
+db: vendor
+	$(SYMFONY) doctrine:database:drop --if-exists --force
+	$(SYMFONY) doctrine:database:create --if-not-exists
 	$(SYMFONY) doctrine:migrations:migrate --no-interaction --allow-no-migration
 	$(SYMFONY) doctrine:fixtures:load --no-interaction
 
@@ -59,7 +58,7 @@ migration: vendor
 	$(SYMFONY) doctrine:migrations:diff
 
 db-validate-schema: ## Validate the doctrine ORM mapping
-db-validate-schema: .env.local vendor
+db-validate-schema: vendor
 	$(SYMFONY) doctrine:schema:validate
 
 .PHONY: db migration watch
@@ -70,17 +69,6 @@ db-validate-schema: .env.local vendor
 
 vendor: composer.lock
 	$(COMPOSER) install
-
-.env.local: .env
-	@if [ -f .env.local ]; \
-	then\
-		echo '\033[1;41m/!\ The .env file has changed. Please check your .env.local file (this message will not be displayed again).\033[0m';\
-		touch .env.local;\
-		exit 1;\
-	else\
-		echo cp .env .env.local;\
-		cp .env .env.local;\
-	fi
 
 docker-compose.override.yml: docker-compose.override.yml.dist
 	@if [ -f docker-compose.override.yml ]; \
@@ -112,7 +100,8 @@ rsa-keys:
 ##
 
 ci: ## Run all quality insurance checks (tests, code styles, linting, security, static analysis...)
-ci: php-cs-fixer phpcs phpmd phpmnd phpstan psalm lint validate-composer validate-mapping security test test-coverage test-spec
+#ci: php-cs-fixer phpcs phpmd phpmnd phpstan psalm lint validate-composer validate-mapping security test test-coverage test-spec
+ci: php-cs-fixer phpcs phpmd phpstan psalm lint validate-composer validate-mapping security test test-coverage test-spec
 
 ci.local: ## Run quality insurance checks from inside the php container
 ci.local: no-docker ci
@@ -140,9 +129,9 @@ phpmd: ## Run PHPMD
 phpmd:
 	$(EXEC_PHP) vendor/bin/phpmd src/,tests/ text phpmd.xml.dist
 
-phpmnd: ## Run PHPMND
-phpmnd:
-	$(EXEC_PHP) vendor/bin/phpmnd src --extensions=default_parameter
+#phpmnd: ## Run PHPMND
+#phpmnd:
+#	$(EXEC_PHP) vendor/bin/phpmnd src --extensions=default_parameter
 
 phpstan: ## Run PHPSTAN
 phpstan:

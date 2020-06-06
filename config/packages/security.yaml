@@ -22,8 +22,8 @@ security:
                 check_path: api_users_login
                 username_path: user.email
                 password_path: user.password
-                success_handler: lexik_jwt_authentication.handler.authentication_success
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+                success_handler: Lexik\Bundle\JWTAuthenticationBundle\Security\Http\Authentication\AuthenticationSuccessHandler
+                failure_handler: Lexik\Bundle\JWTAuthenticationBundle\Security\Http\Authentication\AuthenticationFailureHandler
         api:
             pattern: ^/api
             stateless: true

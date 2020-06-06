@@ -16,7 +16,7 @@ final class TagNormalizer implements NormalizerInterface, CacheableSupportsMetho
     /**
      * {@inheritdoc}
      */
-    public function normalize($object, $format = null, array $context = []): string
+    public function normalize($object, string $format = null, array $context = []): string
     {
         /* @var Tag $object */
         return $object->getName();
@@ -25,7 +25,7 @@ final class TagNormalizer implements NormalizerInterface, CacheableSupportsMetho
     /**
      * {@inheritdoc}
      */
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, string $format = null): bool
     {
         return $data instanceof Tag;
     }

@@ -18,7 +18,7 @@ final class AuthorVoter extends Voter
     /**
      * {@inheritdoc}
      */
-    protected function supports($attribute, $subject): bool
+    protected function supports(string $attribute, $subject): bool
     {
         return $attribute === 'AUTHOR' && ($subject instanceof Article || $subject instanceof Comment);
     }
@@ -26,7 +26,7 @@ final class AuthorVoter extends Voter
     /**
      * {@inheritdoc}
      */
-    protected function voteOnAttribute($attribute, $subject, TokenInterface $token): bool
+    protected function voteOnAttribute(string $attribute, $subject, TokenInterface $token): bool
     {
         /** @var Article|Comment $subject */
         $user = $token->getUser();
