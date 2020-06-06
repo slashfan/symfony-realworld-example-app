@@ -15,7 +15,7 @@ parameters:
   excludes_analyse:
     - '%rootDir%/../../../src/Kernel.php'
   symfony:
-    container_xml_path: '%currentWorkingDirectory%/var/cache/dev/srcApp_KernelDevDebugContainer.xml'
+    container_xml_path: '%currentWorkingDirectory%/var/cache/dev/App_KernelDevDebugContainer.xml'
   ignoreErrors:
       - '/Parameter #6 $content of method Symfony\Component\BrowserKit\Client::request() expects string|null, string|false given\./'
       - '/Parameter #2 $plainPassword of method Symfony\Component\Security\Core\Encoder\\UserPasswordEncoderInterface::encodePassword() expects string, string|null given\./'
