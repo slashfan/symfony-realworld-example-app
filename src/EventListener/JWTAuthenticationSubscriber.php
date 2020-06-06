@@ -9,6 +9,7 @@ use App\Serializer\Normalizer\UserNormalizer;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
 use Lexik\Bundle\JWTAuthenticationBundle\Events as JWTEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
 
 /**
  * JWTAuthenticationSubscriber.
@@ -37,8 +38,12 @@ final class JWTAuthenticationSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $userData = $this->normalizer->normalize($user, null, ['groups' => ['me']]);
-        $eventData = $event->getData();
+        try {
+            $userData = $this->normalizer->normalize($user, null, ['groups' => ['me']]);
+            $eventData = $event->getData();
+        } catch (ExceptionInterface $exception) {
+            return;
+        }
 
         $event->setData(['user' => \array_merge($userData, $eventData)]);
     }
