@@ -1,7 +1,8 @@
 FROM php:7.4-fpm
 
 RUN apt-get update \
-    && apt-get install -y git curl wget unzip
+    && apt-get install -y git curl wget unzip \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set TIMEZONE
 RUN rm /etc/localtime \
@@ -12,9 +13,11 @@ RUN rm /etc/localtime \
 RUN docker-php-ext-install opcache
 
 # Install INTL extension
-RUN apt-get install -y libicu-dev \
+RUN apt-get update \
+    && apt-get install -y libicu-dev \
     && docker-php-ext-configure intl \
-    && docker-php-ext-install intl
+    && docker-php-ext-install intl \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install APCU extension
 RUN pecl install apcu \
@@ -24,8 +27,10 @@ RUN pecl install apcu \
 RUN docker-php-ext-install pdo_mysql
 
 # Install ZIP extension
-RUN apt-get install -y libzip-dev zip \
-  && docker-php-ext-install zip
+RUN apt-get update \
+    && apt-get install -y libzip-dev zip \
+    && docker-php-ext-install zip \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install COMPOSER
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
