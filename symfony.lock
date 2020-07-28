@@ -494,9 +494,6 @@
     "symfony/http-kernel": {
         "version": "v4.0.6"
     },
-    "symfony/inflector": {
-        "version": "v4.0.6"
-    },
     "symfony/intl": {
         "version": "v4.0.6"
     },
