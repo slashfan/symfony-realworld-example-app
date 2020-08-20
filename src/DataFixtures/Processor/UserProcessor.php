@@ -23,7 +23,7 @@ final class UserProcessor implements ProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function preProcess(string $fixtureId, $object): void
+    public function preProcess(string $id, $object): void
     {
         if (!$object instanceof User) {
             return;
@@ -35,7 +35,7 @@ final class UserProcessor implements ProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function postProcess(string $fixtureId, $object): void
+    public function postProcess(string $id, $object): void
     {
         // nothing to do
     }
