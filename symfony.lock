@@ -311,6 +311,9 @@
     "rector/rector-prefixed": {
         "version": "v0.6.9"
     },
+    "sebastian/cli-parser": {
+        "version": "1.0.0"
+    },
     "sebastian/code-unit": {
         "version": "1.0.2"
     },
