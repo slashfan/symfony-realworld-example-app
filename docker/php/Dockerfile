@@ -32,9 +32,6 @@ RUN apt-get update \
     && docker-php-ext-install zip \
     && rm -rf /var/lib/apt/lists/*
 
-# Install COMPOSER
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
 # Install PCOV extension
 RUN pecl install pcov \
     && docker-php-ext-enable pcov
@@ -42,6 +39,9 @@ RUN pecl install pcov \
 ## Install XDEBUG extension
 #RUN pecl install xdebug \
 #    && docker-php-ext-enable xdebug
+
+# Install COMPOSER
+COPY --from=composer:1 /usr/bin/composer /usr/local/bin/composer
 
 # Set PROJECT USER
 RUN useradd -ms /bin/bash project
