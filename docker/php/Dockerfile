@@ -41,7 +41,7 @@ RUN pecl install pcov \
 #    && docker-php-ext-enable xdebug
 
 # Install COMPOSER
-COPY --from=composer:1 /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
 # Set PROJECT USER
 RUN useradd -ms /bin/bash project

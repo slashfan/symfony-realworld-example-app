@@ -23,7 +23,7 @@ final class TagArrayToStringTransformer implements DataTransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function transform($tags): string
+    public function transform($value): string
     {
         return '';
     }
@@ -31,13 +31,13 @@ final class TagArrayToStringTransformer implements DataTransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function reverseTransform($string): array
+    public function reverseTransform($value): array
     {
-        if (!\is_array($string)) {
+        if (!\is_array($value)) {
             return [];
         }
 
-        $names = \array_filter(\array_unique(\array_map('trim', $string)));
+        $names = \array_filter(\array_unique(\array_map('trim', $value)));
         $tags = $this->tagRepository->findBy(['name' => $names]);
         $newNames = \array_diff($names, $tags);
 
