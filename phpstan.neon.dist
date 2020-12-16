@@ -23,6 +23,6 @@ parameters:
       - '/Cannot call method getId\(\) on App\\Entity\\User\|null\./'
       - '/Function file_exists is unsafe to use, rely on Symfony component Filesystem::exists instead\./'
       - '/Call to an undefined method Symfony\\Component\\Form\\FormError\|Symfony\\Component\\Form\\FormErrorIterator::getMessage\(\)./'
-  reportUnmatchedIgnoredErrors: false
+  reportUnmatchedIgnoredErrors: true
   checkMissingIterableValueType: false
   checkGenericClassInNonGenericObjectType: false
