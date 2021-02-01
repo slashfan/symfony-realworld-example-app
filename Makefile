@@ -46,8 +46,11 @@ no-docker:
 ## -----
 ##
 
+wait-for-db:
+	$(EXEC_PHP) php -r "set_time_limit(60);for(;;){if(@fsockopen('mysql',3306)){break;}echo \"Waiting for MySQL\n\";sleep(1);}"
+
 db: ## Reset the database and load fixtures
-db: vendor
+db: vendor wait-for-db
 	$(SYMFONY) doctrine:database:drop --if-exists --force
 	$(SYMFONY) doctrine:database:create --if-not-exists
 	$(SYMFONY) doctrine:migrations:migrate --no-interaction --allow-no-migration
