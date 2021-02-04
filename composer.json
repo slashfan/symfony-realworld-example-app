@@ -64,7 +64,6 @@
         "psalm/plugin-symfony": "^1.5",
         "pyrech/composer-changelogs": "^1.7",
         "rector/rector-prefixed": "^0.7",
-        "sensiolabs/security-checker": "^6.0",
         "slam/phpstan-extensions": "^4.0",
         "squizlabs/php_codesniffer": "^3.5",
         "symfony/browser-kit": "5.2.*",

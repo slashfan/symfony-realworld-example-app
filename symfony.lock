@@ -371,15 +371,6 @@
             "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
         }
     },
-    "sensiolabs/security-checker": {
-        "version": "4.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "4.0",
-            "ref": "e65a105bf4cd5b1b79012ba029954927f05922e8"
-        }
-    },
     "slam/phpstan-extensions": {
         "version": "v3.0.0"
     },
@@ -491,9 +482,6 @@
             "ref": "8a2f7fa50a528f0aad1d7a87ae3730c981b367ce"
         }
     },
-    "symfony/http-client": {
-        "version": "v4.4.0"
-    },
     "symfony/http-client-contracts": {
         "version": "v2.0.0"
     },
@@ -514,9 +502,6 @@
             "version": "1.0",
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
-    },
-    "symfony/mime": {
-        "version": "v4.3.0"
     },
     "symfony/monolog-bridge": {
         "version": "v4.0.6"
@@ -547,9 +532,6 @@
     },
     "symfony/polyfill-intl-icu": {
         "version": "v1.7.0"
-    },
-    "symfony/polyfill-intl-idn": {
-        "version": "v1.11.0"
     },
     "symfony/polyfill-intl-normalizer": {
         "version": "v1.17.0"

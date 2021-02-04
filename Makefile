@@ -154,7 +154,7 @@ psalm:
 
 security: ## Run security-checker
 security:
-	$(EXEC_PHP) vendor/bin/security-checker security:check
+	$(EXEC_PHP) bin/security-checker
 
 test: ## Run phpunit tests
 test:
