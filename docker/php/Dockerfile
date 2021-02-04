@@ -1,16 +1,21 @@
 FROM php:7.4-fpm
 
-RUN apt-get update \
-    && apt-get install -y git curl wget unzip \
-    && rm -rf /var/lib/apt/lists/*
-
 # Set TIMEZONE
 RUN rm /etc/localtime \
     && ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime \
     && "date"
 
+# Install TOOLS
+RUN apt-get update \
+    && apt-get install -y git curl wget unzip \
+    && rm -rf /var/lib/apt/lists/*
+
 # Install OPCACHE extension
 RUN docker-php-ext-install opcache
+
+# Install APCU extension
+RUN pecl install apcu \
+    && docker-php-ext-enable apcu
 
 # Install INTL extension
 RUN apt-get update \
@@ -19,26 +24,18 @@ RUN apt-get update \
     && docker-php-ext-install intl \
     && rm -rf /var/lib/apt/lists/*
 
-# Install APCU extension
-RUN pecl install apcu \
-    && docker-php-ext-enable apcu
-
-# Install PDO MYSQL extension
-RUN docker-php-ext-install pdo_mysql
-
 # Install ZIP extension
 RUN apt-get update \
     && apt-get install -y libzip-dev zip \
     && docker-php-ext-install zip \
     && rm -rf /var/lib/apt/lists/*
 
+# Install PDO MYSQL extension
+RUN docker-php-ext-install pdo_mysql
+
 # Install PCOV extension
 RUN pecl install pcov \
     && docker-php-ext-enable pcov
-
-## Install XDEBUG extension
-#RUN pecl install xdebug \
-#    && docker-php-ext-enable xdebug
 
 # Install COMPOSER
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
