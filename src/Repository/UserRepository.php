@@ -10,9 +10,6 @@ use Doctrine\Persistence\ManagerRegistry;
 
 final class UserRepository extends ServiceEntityRepository
 {
-    /**
-     * {@inheritdoc}
-     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);

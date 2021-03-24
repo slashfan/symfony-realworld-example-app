@@ -8,9 +8,6 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Fidry\AliceDataFixtures\Loader\PurgerLoader;
 
-/**
- * AppFixtures.
- */
 final class AppFixtures extends Fixture
 {
     private PurgerLoader $loader;

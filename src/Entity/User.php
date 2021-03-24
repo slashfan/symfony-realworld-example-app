@@ -173,17 +173,11 @@ class User implements UserInterface
         return ['ROLE_USER'];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSalt(): ?string
     {
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function eraseCredentials(): void
     {
     }

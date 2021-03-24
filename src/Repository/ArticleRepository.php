@@ -14,9 +14,6 @@ use Doctrine\Persistence\ManagerRegistry;
 
 final class ArticleRepository extends ServiceEntityRepository
 {
-    /**
-     * {@inheritdoc}
-     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Article::class);

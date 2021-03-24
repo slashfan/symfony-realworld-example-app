@@ -7,9 +7,6 @@ namespace App\Tests\Controller\Comment;
 use App\Tests\TestCase\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * CommentPostControllerTest.
- */
 final class CreateCommentControllerTest extends WebTestCase
 {
     public function testAsAnonymous(): void

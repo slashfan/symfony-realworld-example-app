@@ -7,9 +7,6 @@ namespace App\Tests\Controller\User;
 use App\Tests\TestCase\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * UserPutControllerTest.
- */
 final class UpdateUserControllerTest extends WebTestCase
 {
     public function testAsAnonymous(): void

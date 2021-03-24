@@ -63,7 +63,7 @@
         "phpunit/phpunit": "^9.4",
         "psalm/plugin-symfony": "^1.5",
         "pyrech/composer-changelogs": "^1.7",
-        "rector/rector-prefixed": "^0.7",
+        "rector/rector-prefixed": "^0.10.3",
         "slam/phpstan-extensions": "^4.0",
         "squizlabs/php_codesniffer": "^3.5",
         "symfony/browser-kit": "5.2.*",

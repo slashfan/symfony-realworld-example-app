@@ -11,9 +11,6 @@ use Lexik\Bundle\JWTAuthenticationBundle\Events as JWTEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
 
-/**
- * JWTAuthenticationSubscriber.
- */
 final class JWTAuthenticationSubscriber implements EventSubscriberInterface
 {
     private UserNormalizer $normalizer;

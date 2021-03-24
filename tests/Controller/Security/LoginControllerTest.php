@@ -7,9 +7,6 @@ namespace App\Tests\Controller\Security;
 use App\Tests\TestCase\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * UsersLoginControllerTest.
- */
 final class LoginControllerTest extends WebTestCase
 {
     public function testBadRequestResponse(): void

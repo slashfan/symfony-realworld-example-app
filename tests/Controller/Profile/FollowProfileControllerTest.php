@@ -7,9 +7,6 @@ namespace App\Tests\Controller\Profile;
 use App\Tests\TestCase\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * ProfilesFollowControllerTest.
- */
 final class FollowProfileControllerTest extends WebTestCase
 {
     public function testAsAnonymous(): void

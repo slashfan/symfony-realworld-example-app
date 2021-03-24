@@ -8,9 +8,6 @@ use App\Entity\User;
 use Fidry\AliceDataFixtures\ProcessorInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-/**
- * UserPasswordProcessor.
- */
 final class UserProcessor implements ProcessorInterface
 {
     private UserPasswordEncoderInterface $encoder;

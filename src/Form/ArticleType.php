@@ -10,9 +10,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-/**
- * ArticleType.
- */
 final class ArticleType extends AbstractType
 {
     /**

@@ -7,9 +7,6 @@ namespace App\Tests\Controller\Article;
 use App\Tests\TestCase\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * ArticlesFeedControllerTest.
- */
 final class GetArticlesFeedControllerTest extends WebTestCase
 {
     public function testAsAnonymous(): void

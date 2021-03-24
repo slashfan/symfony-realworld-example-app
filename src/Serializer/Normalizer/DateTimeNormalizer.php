@@ -8,9 +8,6 @@ use Carbon\Carbon;
 use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-/**
- * DateTimeNormalizer.
- */
 final class DateTimeNormalizer implements NormalizerInterface, CacheableSupportsMethodInterface
 {
     /**

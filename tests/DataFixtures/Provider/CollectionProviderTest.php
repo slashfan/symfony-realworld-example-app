@@ -7,9 +7,6 @@ namespace App\Tests\DataFixtures\Provider;
 use App\DataFixtures\Provider\CollectionProvider;
 use PHPUnit\Framework\TestCase;
 
-/**
- * CollectionProviderTest.
- */
 final class CollectionProviderTest extends TestCase
 {
     public function testCollection(): void

@@ -11,9 +11,6 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * UserResolverTest.
- */
 final class UserResolverTest extends TestCase
 {
     /**

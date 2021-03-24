@@ -7,9 +7,6 @@ namespace App\Tests\Controller\Article;
 use App\Tests\TestCase\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * ArticlesGetControllerTest.
- */
 final class GetOneArticleControllerTest extends WebTestCase
 {
     public function testResponse(): void

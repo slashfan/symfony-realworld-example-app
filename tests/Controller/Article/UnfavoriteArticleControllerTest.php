@@ -7,9 +7,6 @@ namespace App\Tests\Controller\Article;
 use App\Tests\TestCase\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * ArticlesUnfavoriteControllerTest.
- */
 final class UnfavoriteArticleControllerTest extends WebTestCase
 {
     public function testAsAnonymous(): void

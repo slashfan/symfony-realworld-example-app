@@ -10,9 +10,6 @@ use App\Entity\User;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-/**
- * UserProcessorTest.
- */
 final class UserProcessorTest extends TestCase
 {
     public function testPreProcessWithArticleObject(): void

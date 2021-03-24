@@ -8,9 +8,6 @@ use App\Entity\Tag;
 use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-/**
- * TagNormalizer.
- */
 final class TagNormalizer implements NormalizerInterface, CacheableSupportsMethodInterface
 {
     /**

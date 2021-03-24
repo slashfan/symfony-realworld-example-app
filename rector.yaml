@@ -1,6 +1,0 @@
-parameters:
-    paths:
-        - 'src'
-        - 'tests'
-    sets:
-        - 'code-quality'

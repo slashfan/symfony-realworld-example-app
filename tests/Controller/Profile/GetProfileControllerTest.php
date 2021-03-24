@@ -7,9 +7,6 @@ namespace App\Tests\Controller\Profile;
 use App\Tests\TestCase\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * ProfilesGetControllerTest.
- */
 final class GetProfileControllerTest extends WebTestCase
 {
     public function testResponse(): void

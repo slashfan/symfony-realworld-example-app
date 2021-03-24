@@ -7,9 +7,6 @@ namespace App\Tests\Controller\Comment;
 use App\Tests\TestCase\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * CommentsDeleteControllerTest.
- */
 final class DeleteCommentControllerTest extends WebTestCase
 {
     public function testAsAnonymous(): void

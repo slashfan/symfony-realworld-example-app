@@ -8,9 +8,6 @@ use App\Entity\User;
 use App\Exception\NoCurrentUserException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-/**
- * UserResolver.
- */
 final class UserResolver
 {
     private TokenStorageInterface $tokenStorage;

@@ -7,9 +7,6 @@ namespace App\Tests\Controller\Registration;
 use App\Tests\TestCase\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * UsersPostControllerTest.
- */
 final class RegisterControllerTest extends WebTestCase
 {
     public function testBadRequestResponse(): void

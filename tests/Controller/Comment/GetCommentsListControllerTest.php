@@ -7,9 +7,6 @@ namespace App\Tests\Controller\Comment;
 use App\Tests\TestCase\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * CommentsListControllerTest.
- */
 final class GetCommentsListControllerTest extends WebTestCase
 {
     public function testResponse(): void

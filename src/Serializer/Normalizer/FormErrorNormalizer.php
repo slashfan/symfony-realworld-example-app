@@ -8,8 +8,6 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
- * FormErrorNormalizer.
- *
  * @see \FOS\RestBundle\Serializer\Normalizer\FormErrorNormalizer
  */
 final class FormErrorNormalizer implements NormalizerInterface
@@ -46,13 +44,14 @@ final class FormErrorNormalizer implements NormalizerInterface
 
     private function convertFormToArray(FormInterface $data): array
     {
-        $form = $errors = [];
+        $errors = [];
+        $form = [];
 
         foreach ($data->getErrors() as $error) {
             $errors[] = $error->getMessage();
         }
 
-        if ($errors) {
+        if ($errors !== []) {
             $form['errors'] = $errors;
         }
 
@@ -63,7 +62,7 @@ final class FormErrorNormalizer implements NormalizerInterface
             }
         }
 
-        if ($children) {
+        if ($children !== []) {
             $form['children'] = $children;
         }
 
