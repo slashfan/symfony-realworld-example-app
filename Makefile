@@ -154,7 +154,7 @@ psalm:
 
 security: ## Run security-checker
 security:
-	$(EXEC_PHP) bin/security-checker
+	$(EXEC_PHP) symfony security:check --no-interaction
 
 test: ## Run phpunit tests
 test:

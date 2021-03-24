@@ -40,6 +40,10 @@ RUN pecl install pcov \
 # Install COMPOSER
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
+# Install SYMFONY BINARY
+RUN wget https://get.symfony.com/cli/installer -O - | bash \
+    && mv ~/.symfony/bin/symfony /usr/local/bin/symfony
+
 # Set PROJECT USER
 RUN useradd -ms /bin/bash project
 USER project
