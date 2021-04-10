@@ -10,7 +10,7 @@
         "ext-json": "*",
         "composer/package-versions-deprecated": "1.11.99.1",
         "doctrine/doctrine-bundle": "^2.2",
-        "doctrine/doctrine-migrations-bundle": "^3.0",
+        "doctrine/doctrine-migrations-bundle": "3.0.*",
         "doctrine/orm": "^2.7",
         "friendsofsymfony/rest-bundle": "^3.0",
         "lexik/jwt-authentication-bundle": "^2.10",
