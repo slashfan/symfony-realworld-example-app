@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
     ->exclude('bin')
@@ -12,7 +14,7 @@ $finder = PhpCsFixer\Finder::create()
     ->notPath('public/index.php')
 ;
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->registerCustomFixers(new PhpCsFixerCustomFixers\Fixers())
     ->setRules([
@@ -23,12 +25,13 @@ return PhpCsFixer\Config::create()
         'align_multiline_comment' => true,
         'array_indentation' => true,
         'array_syntax' => ['syntax' => 'short'],
-        'class_definition' => ['singleLine' => false],
+        'class_definition' => ['single_line' => false],
         'combine_consecutive_issets' => true,
         'combine_consecutive_unsets' => true,
         'compact_nullable_typehint' => true,
         'concat_space' => ['spacing' => 'one'],
         'declare_strict_types' => true,
+        'echo_tag_syntax' => ['format' => 'long'],
         'general_phpdoc_annotation_remove' => ['annotations' => ['author']],
         'linebreak_after_opening_tag' => true,
         'mb_str_functions' => true,
@@ -38,13 +41,13 @@ return PhpCsFixer\Config::create()
         'no_alternative_syntax' => true,
         'no_null_property_initialization' => true,
         'no_php4_constructor' => true,
-        'no_short_echo_tag' => true,
         'no_superfluous_elseif' => true,
         'no_superfluous_phpdoc_tags' => true,
         'no_unreachable_default_argument_value' => true,
         'no_unset_on_property' => true,
         'no_useless_else' => true,
         'no_useless_return' => true,
+        'no_useless_sprintf' => true,
         'ordered_class_elements' => true,
         'ordered_imports' => true,
         'php_unit_dedicate_assert' => true,
@@ -66,7 +69,11 @@ return PhpCsFixer\Config::create()
         'string_line_ending' => true,
         'ternary_to_null_coalescing' => true,
         'void_return' => true,
-        'yoda_style' => false,
+        'yoda_style' => [
+            'equal' => false,
+            'identical' => false,
+            'less_and_greater' => false,
+        ],
         PhpCsFixerCustomFixers\Fixer\CommentSurroundedBySpacesFixer::name() => true,
         PhpCsFixerCustomFixers\Fixer\DataProviderNameFixer::name() => true,
         PhpCsFixerCustomFixers\Fixer\DataProviderReturnTypeFixer::name() => true,
@@ -82,7 +89,6 @@ return PhpCsFixer\Config::create()
         PhpCsFixerCustomFixers\Fixer\NoSuperfluousConcatenationFixer::name() => true,
         PhpCsFixerCustomFixers\Fixer\NoUselessCommentFixer::name() => true,
         PhpCsFixerCustomFixers\Fixer\NoUselessDoctrineRepositoryCommentFixer::name() => true,
-        PhpCsFixerCustomFixers\Fixer\NoUselessSprintfFixer::name() => true,
         PhpCsFixerCustomFixers\Fixer\PhpdocNoSuperfluousParamFixer::name() => true,
         PhpCsFixerCustomFixers\Fixer\PhpdocParamOrderFixer::name() => true,
         PhpCsFixerCustomFixers\Fixer\PhpdocParamTypeFixer::name() => true,
