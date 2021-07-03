@@ -5,7 +5,7 @@ services:
         tags: [{ name: doctrine.fixture.orm }]
 
     App\DataFixtures\Processor\UserProcessor:
-        arguments: ['@security.password_encoder']
+        arguments: ['@Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface']
         tags: [{ name: fidry_alice_data_fixtures.processor }]
 
     App\DataFixtures\Provider\CollectionProvider:

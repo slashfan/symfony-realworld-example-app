@@ -31,3 +31,12 @@ security:
             guard:
                 authenticators:
                     - App\Security\Guard\JWTAuthenticator
+
+when@test:
+    security:
+        encoders:
+            App\Entity\User:
+                algorithm: plaintext
+        firewalls:
+            api:
+                http_basic: true

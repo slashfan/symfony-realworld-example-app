@@ -10,8 +10,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/api/users", methods={"POST"}, name="api_users_post")
@@ -22,17 +22,17 @@ final class RegisterController
 {
     private FormFactoryInterface $formFactory;
 
-    private UserPasswordEncoderInterface $passwordEncoder;
+    private UserPasswordHasherInterface $userPasswordHasher;
 
     private EntityManagerInterface $entityManager;
 
     public function __construct(
         FormFactoryInterface $factory,
-        UserPasswordEncoderInterface $encoder,
+        UserPasswordHasherInterface $userPasswordHasher,
         EntityManagerInterface $manager
     ) {
         $this->formFactory = $factory;
-        $this->passwordEncoder = $encoder;
+        $this->userPasswordHasher = $userPasswordHasher;
         $this->entityManager = $manager;
     }
 
@@ -44,7 +44,7 @@ final class RegisterController
         $form->submit($request->request->get('user'));
 
         if ($form->isValid()) {
-            $user->setPassword($this->passwordEncoder->encodePassword($user, $user->getPassword()));
+            $user->setPassword($this->userPasswordHasher->hashPassword($user, $user->getPassword()));
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 

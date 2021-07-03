@@ -7,14 +7,8 @@ namespace DoctrineMigrations;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-/**
- * Initial Migration.
- */
 final class Version20180326200407 extends AbstractMigration
 {
-    /**
-     * {@inheritdoc}
-     */
     public function up(Schema $schema): void
     {
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
@@ -37,9 +31,6 @@ final class Version20180326200407 extends AbstractMigration
         $this->addSql('ALTER TABLE rw_user_favorite ADD CONSTRAINT FK_DF835BA97294869C FOREIGN KEY (article_id) REFERENCES rw_article (id) ON DELETE CASCADE');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function down(Schema $schema): void
     {
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');

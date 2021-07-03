@@ -8,32 +8,30 @@ use App\DataFixtures\Processor\UserProcessor;
 use App\Entity\Article;
 use App\Entity\User;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
 
 final class UserProcessorTest extends TestCase
 {
     public function testPreProcessWithArticleObject(): void
     {
-        $encoder = $this->getMockBuilder(UserPasswordEncoderInterface::class)->getMock();
-        $encoder->expects($this->never())->method('encodePassword');
+        $userPasswordHasher = $this->getMockBuilder(UserPasswordHasher::class)->disableOriginalConstructor()->getMock();
+        $userPasswordHasher->expects($this->never())->method('hashPassword');
 
-        /** @var UserPasswordEncoderInterface $encoder */
-        $processor = new UserProcessor($encoder);
+        $processor = new UserProcessor($userPasswordHasher);
         $processor->preProcess('user', new Article());
     }
 
     public function testPreProcessWithUserObject(): void
     {
-        $encoder = $this->getMockBuilder(UserPasswordEncoderInterface::class)->getMock();
-        $encoder->expects($this->once())->method('encodePassword')->willReturn('encoded_password');
+        $userPasswordHasher = $this->getMockBuilder(UserPasswordHasher::class)->disableOriginalConstructor()->getMock();
+        $userPasswordHasher->expects($this->once())->method('hashPassword')->willReturn('hashed_password');
 
         $user = new User();
         $user->setPassword('password');
 
-        /** @var UserPasswordEncoderInterface $encoder */
-        $processor = new UserProcessor($encoder);
+        $processor = new UserProcessor($userPasswordHasher);
         $processor->preProcess('user', $user);
 
-        $this->assertSame('encoded_password', $user->getPassword());
+        $this->assertSame('hashed_password', $user->getPassword());
     }
 }

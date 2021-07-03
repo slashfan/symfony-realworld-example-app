@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -19,7 +20,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @UniqueEntity("email", message="user.email.unique")
  * @UniqueEntity("username", message="user.username.unique")
  */
-class User implements UserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use TimestampableEntity;
 
@@ -135,9 +136,14 @@ class User implements UserInterface
         $this->password = $password;
     }
 
-    public function getUsername(): string
+    public function getUserIdentifier(): string
     {
         return $this->username ?? '';
+    }
+
+    public function getUsername(): string
+    {
+        return $this->getUserIdentifier();
     }
 
     public function setUsername(?string $username): void
