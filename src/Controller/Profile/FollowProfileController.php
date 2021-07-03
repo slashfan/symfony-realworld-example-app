@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Profile;
 
+use App\Controller\AbstractController;
 use App\Entity\User;
-use App\Security\UserResolver;
-use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,23 +14,14 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @Security("is_granted('ROLE_USER')")
  */
-final class FollowProfileController
+final class FollowProfileController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
-
-    private UserResolver $userResolver;
-
-    public function __construct(EntityManagerInterface $entityManager, UserResolver $userResolver)
-    {
-        $this->entityManager = $entityManager;
-        $this->userResolver = $userResolver;
-    }
-
     public function __invoke(User $profile): array
     {
-        $user = $this->userResolver->getCurrentUser();
+        $user = $this->getCurrentUser();
         $user->follow($profile);
-        $this->entityManager->flush();
+
+        $this->getDoctrine()->getManager()->flush();
 
         return ['profile' => $profile];
     }

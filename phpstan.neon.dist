@@ -24,6 +24,7 @@ parameters:
       - '/Call to an undefined method Symfony\\Component\\Form\\FormError\|Symfony\\Component\\Form\\FormErrorIterator::getMessage\(\)./'
       - '/Parameter #1 \$submittedData of method Symfony\\Component\\Form\\FormInterface::submit\(\) expects array\|string\|null, bool\|float\|int\|string\|null given\./'
       - '/Parameter #2 \$plainPassword of method Symfony\\Component\\PasswordHasher\\Hasher\\UserPasswordHasherInterface::hashPassword\(\) expects string, string\|null given\./'
+      - '/Method App\\Controller\\AbstractController::createNamedForm\(\) has parameter \$data with no typehint specified\./'
   reportUnmatchedIgnoredErrors: true
   checkMissingIterableValueType: false
   checkGenericClassInNonGenericObjectType: false

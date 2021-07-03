@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\User;
 
-use App\Security\UserResolver;
+use App\Controller\AbstractController;
 use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,17 +16,10 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @Security("is_granted('ROLE_USER')")
  */
-final class GetUserController
+final class GetUserController extends AbstractController
 {
-    private UserResolver $userResolver;
-
-    public function __construct(UserResolver $userResolver)
-    {
-        $this->userResolver = $userResolver;
-    }
-
     public function __invoke(): array
     {
-        return ['user' => $this->userResolver->getCurrentUser()];
+        return ['user' => $this->getCurrentUser()];
     }
 }

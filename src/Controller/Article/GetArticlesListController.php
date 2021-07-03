@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Article;
 
+use App\Controller\AbstractController;
 use App\Repository\ArticleRepository;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Request\ParamFetcher;
@@ -18,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @QueryParam(name="limit", requirements="\d+", default="20")
  * @QueryParam(name="offset", requirements="\d+", default="0")
  */
-final class GetArticlesListController
+final class GetArticlesListController extends AbstractController
 {
     private ArticleRepository $articleRepository;
 

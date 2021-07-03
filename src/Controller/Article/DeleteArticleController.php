@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Article;
 
+use App\Controller\AbstractController;
 use App\Entity\Article;
-use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -14,18 +14,11 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @Security("is_granted('ROLE_USER') and is_granted('AUTHOR', article)")
  */
-final class DeleteArticleController
+final class DeleteArticleController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
-
-    public function __construct(EntityManagerInterface $manager)
-    {
-        $this->entityManager = $manager;
-    }
-
     public function __invoke(Article $article): void
     {
-        $this->entityManager->remove($article);
-        $this->entityManager->flush();
+        $this->getDoctrine()->getManager()->remove($article);
+        $this->getDoctrine()->getManager()->flush();
     }
 }

@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controller\Tag;
 
+use App\Controller\AbstractController;
 use App\Repository\TagRepository;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/api/tags", methods={"GET"}, name="api_tags_list")
  */
-final class GetTagsListController
+final class GetTagsListController extends AbstractController
 {
     private TagRepository $tagRepository;
 

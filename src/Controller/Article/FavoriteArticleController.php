@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Article;
 
+use App\Controller\AbstractController;
 use App\Entity\Article;
-use App\Security\UserResolver;
-use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,23 +14,14 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @Security("is_granted('ROLE_USER')")
  */
-final class FavoriteArticleController
+final class FavoriteArticleController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
-
-    private UserResolver $userResolver;
-
-    public function __construct(EntityManagerInterface $manager, UserResolver $userResolver)
-    {
-        $this->entityManager = $manager;
-        $this->userResolver = $userResolver;
-    }
-
     public function __invoke(Article $article): array
     {
-        $user = $this->userResolver->getCurrentUser();
+        $user = $this->getCurrentUser();
         $user->addToFavorites($article);
-        $this->entityManager->flush();
+
+        $this->getDoctrine()->getManager()->flush();
 
         return ['article' => $article];
     }
