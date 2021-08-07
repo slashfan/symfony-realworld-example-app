@@ -4,3 +4,8 @@ lexik_jwt_authentication:
     pass_phrase: '%env(JWT_PASSPHRASE)%'
     user_identity_field: 'email'
     token_ttl: 86400
+    token_extractors:
+        authorization_header:
+            enabled: true
+            prefix: Token
+            name: Authorization

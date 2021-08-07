@@ -1,6 +1,8 @@
 security:
 
-    encoders:
+    enable_authenticator_manager: true
+
+    password_hashers:
         App\Entity\User:
             algorithm: auto
 
@@ -17,7 +19,6 @@ security:
         api_login:
             pattern: ^/api/users/login
             stateless: true
-            anonymous: true
             json_login:
                 check_path: api_users_login
                 username_path: user.email
@@ -27,16 +28,13 @@ security:
         api:
             pattern: ^/api
             stateless: true
-            anonymous: true
-            guard:
-                authenticators:
-                    - App\Security\Guard\JWTAuthenticator
+            jwt: ~
 
 when@test:
     security:
-        encoders:
+        password_hashers:
             App\Entity\User:
-                algorithm: plaintext
-        firewalls:
-            api:
-                http_basic: true
+                algorithm: auto
+                cost: 4 # Lowest possible value for bcrypt
+                time_cost: 3 # Lowest possible value for argon
+                memory_cost: 10 # Lowest possible value for argon
