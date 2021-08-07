@@ -141,12 +141,17 @@ jobs:
                     vendor/bin/phpstan analyse
 
             -
+                name: Run Psalm
+                run: |
+                    vendor/bin/psalm
+
+            -
                 name: Run PHPMD
                 run: |
                     vendor/bin/phpmd src/,tests/ text phpmd.xml.dist
 
             -
-                name: Run RECTOR (dry-run)
+                name: Run Rector (dry-run)
                 run: |
                     vendor/bin/rector process --dry-run
 
