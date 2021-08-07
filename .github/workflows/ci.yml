@@ -126,6 +126,15 @@ jobs:
                     key: ${{ env.cache-name }}
 
             -
+                name: Cache Psalm
+                uses: actions/cache@v2
+                env:
+                    cache-name: cache-psalm
+                with:
+                    path: var/psalm
+                    key: ${{ env.cache-name }}
+
+            -
                 name: Run PHP-CS-FIXER (dry-run)
                 run: |
                     vendor/bin/php-cs-fixer fix --verbose --dry-run
