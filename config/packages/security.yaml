@@ -32,7 +32,7 @@ security:
 
 when@test:
     security:
-        encoders:
+        password_hashers:
             App\Entity\User:
                 algorithm: auto
                 cost: 4 # Lowest possible value for bcrypt
