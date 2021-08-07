@@ -67,13 +67,26 @@ jobs:
                 name: Install Composer dependencies
                 run: composer install --no-progress --ansi --prefer-dist --optimize-autoloader --no-interaction
 
-            ## —— Run SPECS ——————————————————————————————————————————————
+            ## —— Prepare Environment ——————————————————————————————————————————————
+
+            -
+                name: Generate RSA keys needed for authentication
+                run: |
+                    openssl genrsa -out config/jwt/private.pem -aes256 -passout pass:passphrase 4096
+                    openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem -passin pass:passphrase
 
             -
                 name: Prepare database
                 run: |
                     bin/console doctrine:database:create
                     bin/console doctrine:schema:create
+
+            -
+                name: Symfony warmup
+                run: |
+                    bin/console cache:clear --env=dev
+
+            ## —— Run SPECS ——————————————————————————————————————————————
 
             -
                 name: Launch PHP server
