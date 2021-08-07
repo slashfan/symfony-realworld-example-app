@@ -140,6 +140,11 @@ jobs:
                 run: |
                     vendor/bin/phpstan analyse
 
+            -
+                name: Run PHPMD
+                run: |
+                    vendor/bin/phpmd src/,tests/ text phpmd.xml.dist
+
             ## —— Tests ———————————————————————————————————————————————————————————
 
             -
