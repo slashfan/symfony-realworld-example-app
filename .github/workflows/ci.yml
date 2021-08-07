@@ -20,13 +20,15 @@ jobs:
             # —— Setup GitHub actions —————————————————————————————————————————————
 
             # https://github.com/actions/checkout (official)
-            -   name: Checkout
+            -
+                name: Checkout
                 uses: actions/checkout@v2
 
             # —— Setup Environment —————————————————————————————————————————————
 
             # https://github.com/shivammathur/setup-php (community)
-            -   name: Setup PHP, extensions and composer with shivammathur/setup-php
+            -
+                name: Setup PHP, extensions and composer with shivammathur/setup-php
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: '7.4'
@@ -39,42 +41,49 @@ jobs:
 
             # —— Composer ‍—————————————————————————————————————————————————————————
 
-            -   name: Get composer cache directory
+            -
+                name: Get composer cache directory
                 id: composer-cache
                 run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
-            -   name: Cache composer dependencies
+            -
+                name: Cache composer dependencies
                 uses: actions/cache@v2
                 with:
                     path: ${{ steps.composer-cache.outputs.dir }}
                     key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
                     restore-keys: ${{ runner.os }}-composer-
 
-            -   name: Install Composer dependencies
+            -
+                name: Install Composer dependencies
                 run: composer install --no-progress --ansi --prefer-dist --optimize-autoloader --no-interaction
+
+            ## —— Security checks ————————————————————————————————————————————————
+
+            -
+                name: Security checks
+                run: |
+                    symfony security:check --no-interaction
 
             ## —— Composer checks ————————————————————————————————————————————————
 
-            -   name: Composer checks
+            -
+                name: Composer checks
                 run: |
                     composer validate
                     composer normalize --dry-run
 
-            ## —— Security checks ————————————————————————————————————————————————
-
-            -   name: Security checks
-                run: |
-                    symfony security:check --no-interaction
-
             # —— Symfony checks ——————————————————————————————————————————————————————————
 
-            -   name: Symfony warmup
+            -
+                name: Symfony warmup
                 run: |
                     bin/console cache:clear --env=test
                     bin/console cache:clear --env=dev
                     bin/console cache:clear --env=prod
 
-            -   name: Symfony checks
+            -
+                name: Symfony checks
                 run: |
                     bin/console lint:yaml config/ --parse-tags --env=dev
                     bin/console lint:yaml fixtures/ --env=dev
@@ -82,13 +91,15 @@ jobs:
                     bin/console lint:container --env=dev
                     bin/console lint:container --env=prod
 
-            -   name: Doctrine checks
+            -
+                name: Doctrine checks
                 run: |
                     bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction --env=dev
 
             ## —— Static Code Analysis checks ————————————————————————————————————————————————
 
-            -   name: Cache PHP-CS-FIXER
+            -
+                name: Cache PHP-CS-FIXER
                 uses: actions/cache@v2
                 env:
                     cache-name: cache-php-cs-fixer
@@ -96,17 +107,42 @@ jobs:
                     path: var/.php_cs.cache
                     key: ${{ env.cache-name }}
 
-            -   name: Coding standards checks
+            -
+                name: Cache PHP_CodeSniffer
+                uses: actions/cache@v2
+                env:
+                    cache-name: cache-php-cs
+                with:
+                    path: var/.phpcs-cache
+                    key: ${{ env.cache-name }}
+
+            -
+                name: Cache PHPStan
+                uses: actions/cache@v2
+                env:
+                    cache-name: cache-phpstan
+                with:
+                    path: var/resultCache.php
+                    key: ${{ env.cache-name }}
+
+            -
+                name: Run PHP-CS-FIXER
                 run: |
                     vendor/bin/php-cs-fixer fix --verbose --dry-run
+
+            -
+                name: Run PHP_CodeSniffer
+                run: |
                     vendor/bin/phpcs -p
 
-            -   name: Code quality checks
+            -
+                name: Run PHPStan
                 run: |
                     vendor/bin/phpstan analyse
 
             ## —— Tests ———————————————————————————————————————————————————————————
 
-            -   name: Run functionnal and unit tests
+            -
+                name: Run functionnal and unit tests
                 run: |
                     vendor/bin/phpunit
