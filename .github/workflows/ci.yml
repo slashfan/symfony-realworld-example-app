@@ -126,7 +126,7 @@ jobs:
                     key: ${{ env.cache-name }}
 
             -
-                name: Run PHP-CS-FIXER
+                name: Run PHP-CS-FIXER (dry-run)
                 run: |
                     vendor/bin/php-cs-fixer fix --verbose --dry-run
 
@@ -144,6 +144,11 @@ jobs:
                 name: Run PHPMD
                 run: |
                     vendor/bin/phpmd src/,tests/ text phpmd.xml.dist
+
+            -
+                name: Run RECTOR (dry-run)
+                run: |
+                    vendor/bin/rector process --dry-run
 
             ## —— Tests ———————————————————————————————————————————————————————————
 
