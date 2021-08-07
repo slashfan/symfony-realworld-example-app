@@ -6,7 +6,7 @@ USERNAME=${USERNAME:-u$(date +%s)}
 EMAIL=${EMAIL:-$USERNAME@mail.com}
 PASSWORD=${PASSWORD:-password}
 
-npx --yes newman run spec/conduit.postman_collection.json \
+npx newman run spec/conduit.postman_collection.json \
   --delay-request 50 \
   --global-var "APIURL=$APIURL" \
   --global-var "USERNAME=$USERNAME" \
