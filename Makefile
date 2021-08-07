@@ -103,8 +103,8 @@ rsa-keys:
 ##
 
 ci: ## Run all quality insurance checks (tests, code styles, linting, security, static analysis...)
-#ci: php-cs-fixer phpcs phpmd phpmnd phpstan psalm lint validate-composer validate-mapping security test test-coverage test-spec
-ci: php-cs-fixer phpcs phpmd phpstan rector.dry psalm lint validate-composer validate-mapping security test test-coverage test-spec
+#ci: php-cs-fixer phpcs phpmd phpmnd phpstan psalm lint validate-composer validate-mapping security test test-coverage
+ci: php-cs-fixer phpcs phpmd phpstan rector.dry psalm lint validate-composer validate-mapping security test test-coverage
 
 ci.local: ## Run quality insurance checks from inside the php container
 ci.local: no-docker ci
@@ -180,9 +180,15 @@ test-coverage-xdebug-filter:
 	$(EXEC_PHP) vendor/bin/phpunit --dump-xdebug-filter var/xdebug-filter.php
 	$(EXEC_PHP) vendor/bin/phpunit --prepend var/xdebug-filter.php --coverage-html=var/coverage
 
-test-spec: ## Run postman collection tests
-test-spec:
-	$(EXEC_NODE) bash ./spec/api-spec-test-runner.sh
+specs: ## Run postman collection tests
+specs:
+	$(EXEC_NODE) ./spec/api-spec-test-runner.sh
+
+specs.local: ## Run postman collection tests
+specs.local:
+	symfony local:server:start --no-tls -d 
+	APIURL=http://127.0.0.1:8000/api ./spec/api-spec-test-runner.sh
+	symfony local:server:stop 
 
 validate-composer: ## Validate composer.json and composer.lock
 validate-composer:
