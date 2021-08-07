@@ -126,6 +126,15 @@ jobs:
                     key: ${{ env.cache-name }}
 
             -
+                name: Cache Rector
+                uses: actions/cache@v2
+                env:
+                    cache-name: cache-rector
+                with:
+                    path: var/rector
+                    key: ${{ env.cache-name }}
+
+            -
                 name: Cache Psalm
                 uses: actions/cache@v2
                 env:
