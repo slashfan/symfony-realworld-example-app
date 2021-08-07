@@ -84,7 +84,7 @@ docker-compose.override.yml: docker-compose.override.yml.dist
 		cp docker-compose.override.yml.dist docker-compose.override.yml;\
 	fi
 
-rsa-keys: ## Generate RSA keys need for JWT encoding / decoding
+rsa-keys: ## Generate RSA keys needed for JWT encoding / decoding
 rsa-keys:
 	@if [ -f config/jwt/private.pem ]; \
 	then\

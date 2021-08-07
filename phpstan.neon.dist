@@ -28,3 +28,4 @@ parameters:
   reportUnmatchedIgnoredErrors: true
   checkMissingIterableValueType: false
   checkGenericClassInNonGenericObjectType: false
+  tmpDir: var

@@ -1,0 +1,181 @@
+name: CI
+
+on:
+    push:
+        branches: [ master ]
+    pull_request:
+        branches: [ master ]
+
+env:
+    SYMFONY_ENV: 'test'
+
+jobs:
+
+    build:
+
+        runs-on: ubuntu-latest
+
+        steps:
+
+            # —— Setup GitHub actions —————————————————————————————————————————————
+
+            # https://github.com/actions/checkout (official)
+            -
+                name: Checkout
+                uses: actions/checkout@v2
+
+            # —— Setup Environment —————————————————————————————————————————————
+
+            # https://github.com/shivammathur/setup-php (community)
+            -
+                name: Setup PHP, extensions and composer with shivammathur/setup-php
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '7.4'
+                    extensions: mbstring, intl, sqlite, json, simplexml
+                    tools: composer:v2, symfony
+                    ini-values: date.timezone=Europe/Paris
+                    coverage: none
+                env:
+                    update: true
+
+            # —— Composer ‍—————————————————————————————————————————————————————————
+
+            -
+                name: Get composer cache directory
+                id: composer-cache
+                run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+            -
+                name: Cache composer dependencies
+                uses: actions/cache@v2
+                with:
+                    path: ${{ steps.composer-cache.outputs.dir }}
+                    key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
+                    restore-keys: ${{ runner.os }}-composer-
+
+            -
+                name: Install Composer dependencies
+                run: composer install --no-progress --ansi --prefer-dist --optimize-autoloader --no-interaction
+
+            ## —— Security checks ————————————————————————————————————————————————
+
+            -
+                name: Security checks
+                run: |
+                    symfony security:check --no-interaction
+
+            ## —— Composer checks ————————————————————————————————————————————————
+
+            -
+                name: Composer checks
+                run: |
+                    composer validate
+                    composer normalize --dry-run
+
+            # —— Symfony checks ——————————————————————————————————————————————————————————
+
+            -
+                name: Symfony warmup
+                run: |
+                    bin/console cache:clear --env=test
+                    bin/console cache:clear --env=dev
+                    bin/console cache:clear --env=prod
+
+            -
+                name: Symfony checks
+                run: |
+                    bin/console lint:yaml config/ --parse-tags --env=dev
+                    bin/console lint:yaml fixtures/ --env=dev
+                    bin/console lint:yaml translations/ --env=dev
+                    bin/console lint:container --env=dev
+                    bin/console lint:container --env=prod
+
+            -
+                name: Doctrine checks
+                run: |
+                    bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction --env=dev
+
+            ## —— Static Code Analysis checks ————————————————————————————————————————————————
+
+            -
+                name: Cache PHP-CS-FIXER
+                uses: actions/cache@v2
+                env:
+                    cache-name: cache-php-cs-fixer
+                with:
+                    path: var/.php_cs.cache
+                    key: ${{ env.cache-name }}
+
+            -
+                name: Cache PHP_CodeSniffer
+                uses: actions/cache@v2
+                env:
+                    cache-name: cache-php-cs
+                with:
+                    path: var/.phpcs-cache
+                    key: ${{ env.cache-name }}
+
+            -
+                name: Cache PHPStan
+                uses: actions/cache@v2
+                env:
+                    cache-name: cache-phpstan
+                with:
+                    path: var/resultCache.php
+                    key: ${{ env.cache-name }}
+
+            -
+                name: Cache Rector
+                uses: actions/cache@v2
+                env:
+                    cache-name: cache-rector
+                with:
+                    path: var/rector
+                    key: ${{ env.cache-name }}
+
+            -
+                name: Cache Psalm
+                uses: actions/cache@v2
+                env:
+                    cache-name: cache-psalm
+                with:
+                    path: var/psalm
+                    key: ${{ env.cache-name }}
+
+            -
+                name: Run PHP-CS-FIXER (dry-run)
+                run: |
+                    vendor/bin/php-cs-fixer fix --verbose --dry-run
+
+            -
+                name: Run PHP_CodeSniffer
+                run: |
+                    vendor/bin/phpcs -p
+
+            -
+                name: Run PHPStan
+                run: |
+                    vendor/bin/phpstan analyse
+
+            -
+                name: Run Psalm
+                run: |
+                    vendor/bin/psalm
+
+            -
+                name: Run PHPMD
+                run: |
+                    vendor/bin/phpmd src/,tests/ text phpmd.xml.dist
+
+            -
+                name: Run Rector (dry-run)
+                run: |
+                    vendor/bin/rector process --dry-run
+
+            ## —— Tests ———————————————————————————————————————————————————————————
+
+            -
+                name: Run functionnal and unit tests
+                run: |
+                    vendor/bin/phpunit
