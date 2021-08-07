@@ -16,7 +16,7 @@ class AbstractController extends BaseAbstractController
 {
     public static function getSubscribedServices(): array
     {
-        return \array_merge(parent::getSubscribedServices(), [
+        return array_merge(parent::getSubscribedServices(), [
             // injecting the service here allows it to be used in the self::getCurrentUser() method
             // without having to inject it in every child controller __construct() method
             UserResolver::class,

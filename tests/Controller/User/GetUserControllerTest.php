@@ -26,7 +26,7 @@ final class GetUserControllerTest extends WebTestCase
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
-        $data = \json_decode($response->getContent(), true);
+        $data = json_decode($response->getContent(), true);
         $this->assertArrayHasKey('user', $data);
         $this->assertArrayHasKey('email', $data['user']);
         $this->assertSame('user1@conduit.tld', $data['user']['email']);

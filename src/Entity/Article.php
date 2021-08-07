@@ -81,7 +81,7 @@ class Article
 
     public function __toString(): string
     {
-        return \sprintf('%s', $this->title);
+        return sprintf('%s', $this->title);
     }
 
     public function getId(): ?int

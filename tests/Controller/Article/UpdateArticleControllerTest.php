@@ -30,7 +30,7 @@ final class UpdateArticleControllerTest extends WebTestCase
     public function testBadRequestAsOwner(): void
     {
         $client = $this->createAuthenticatedApiClient();
-        $client->request('PUT', '/api/articles/article-1', [], [], [], \json_encode([
+        $client->request('PUT', '/api/articles/article-1', [], [], [], json_encode([
             'article' => [
                 'title' => '',
             ],
@@ -41,14 +41,14 @@ final class UpdateArticleControllerTest extends WebTestCase
             [
                 'title' => ['can\'t be blank'],
             ],
-            \json_decode($client->getResponse()->getContent(), true)
+            json_decode($client->getResponse()->getContent(), true)
         );
     }
 
     public function testAsOwner(): void
     {
         $client = $this->createAuthenticatedApiClient();
-        $client->request('PUT', '/api/articles/article-1', [], [], [], \json_encode([
+        $client->request('PUT', '/api/articles/article-1', [], [], [], json_encode([
             'article' => [
                 'title' => 'Article #1B',
                 'description' => 'Description #1B',
@@ -58,7 +58,7 @@ final class UpdateArticleControllerTest extends WebTestCase
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
-        $data = \json_decode($response->getContent(), true);
+        $data = json_decode($response->getContent(), true);
         $this->assertArrayHasKey('article', $data);
         $this->assertArrayHasKey('title', $data['article']);
         $this->assertSame('Article #1B', $data['article']['title']);

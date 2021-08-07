@@ -29,9 +29,9 @@ final class FormErrorNormalizer implements NormalizerInterface
 
         /** @var array $data */
         $data = $data['errors']['children'];
-        $data = \array_filter($data, fn (array $child) => isset($child['errors']) && \count($child['errors']) > 0);
+        $data = array_filter($data, fn (array $child) => isset($child['errors']) && \count($child['errors']) > 0);
 
-        return \array_map(fn (array $child) => $child['errors'] ?? [], $data);
+        return array_map(fn (array $child) => $child['errors'] ?? [], $data);
     }
 
     /**

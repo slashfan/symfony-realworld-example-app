@@ -42,6 +42,6 @@ final class JWTAuthenticationSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $event->setData(['user' => \array_merge($userData, $eventData)]);
+        $event->setData(['user' => array_merge($userData, $eventData)]);
     }
 }

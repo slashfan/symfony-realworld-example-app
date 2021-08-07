@@ -41,7 +41,7 @@ class Comment
 
     public function __toString(): string
     {
-        return \sprintf('%s', $this->body);
+        return sprintf('%s', $this->body);
     }
 
     public function getId(): ?int

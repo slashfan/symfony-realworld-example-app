@@ -34,9 +34,9 @@ final class TagArrayToStringTransformer implements DataTransformerInterface
             return [];
         }
 
-        $names = \array_filter(\array_unique(\array_map('trim', $value)));
+        $names = array_filter(array_unique(array_map('trim', $value)));
         $tags = $this->tagRepository->findBy(['name' => $names]);
-        $newNames = \array_diff($names, $tags);
+        $newNames = array_diff($names, $tags);
 
         foreach ($newNames as $name) {
             $tag = new Tag();

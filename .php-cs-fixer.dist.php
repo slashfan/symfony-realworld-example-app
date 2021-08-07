@@ -37,7 +37,6 @@ return (new PhpCsFixer\Config())
         'mb_str_functions' => true,
         'multiline_comment_opening_closing' => true,
         'multiline_whitespace_before_semicolons' => ['strategy' => 'new_line_for_chained_calls'],
-        'native_function_invocation' => true,
         'no_alternative_syntax' => true,
         'no_null_property_initialization' => true,
         'no_php4_constructor' => true,

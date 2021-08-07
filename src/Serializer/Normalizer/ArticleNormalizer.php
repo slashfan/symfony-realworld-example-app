@@ -36,7 +36,7 @@ final class ArticleNormalizer implements NormalizerInterface, NormalizerAwareInt
             'title' => $object->getTitle(),
             'description' => $object->getDescription(),
             'body' => $object->getBody(),
-            'tagList' => \array_map(fn (Tag $tag) => $this->normalizer->normalize($tag), $object->getTags()->toArray()),
+            'tagList' => array_map(fn (Tag $tag) => $this->normalizer->normalize($tag), $object->getTags()->toArray()),
             'createdAt' => $this->normalizer->normalize($object->getCreatedAt()),
             'updatedAt' => $this->normalizer->normalize($object->getCreatedAt()),
             'favorited' => false,

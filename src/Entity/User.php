@@ -108,7 +108,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __toString(): string
     {
-        return \sprintf('%s', $this->email);
+        return sprintf('%s', $this->email);
     }
 
     public function getId(): ?int

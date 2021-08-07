@@ -30,7 +30,7 @@ final class UpdateUserControllerTest extends WebTestCase
     public function testBadRequestAsAuthenticated(): void
     {
         $client = $this->createAuthenticatedApiClient();
-        $client->request('PUT', '/api/user', [], [], [], \json_encode([
+        $client->request('PUT', '/api/user', [], [], [], json_encode([
             'user' => [
                 'email' => '',
             ],
@@ -42,14 +42,14 @@ final class UpdateUserControllerTest extends WebTestCase
             [
                 'email' => ['can\'t be blank'],
             ],
-            \json_decode($response->getContent(), true)
+            json_decode($response->getContent(), true)
         );
     }
 
     public function testAsAuthenticated(): void
     {
         $client = $this->createAuthenticatedApiClient();
-        $client->request('PUT', '/api/user', [], [], [], \json_encode([
+        $client->request('PUT', '/api/user', [], [], [], json_encode([
             'user' => [
                 'email' => 'user1001@conduit.tld',
                 'username' => 'user1001',
@@ -62,7 +62,7 @@ final class UpdateUserControllerTest extends WebTestCase
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
-        $data = \json_decode($response->getContent(), true);
+        $data = json_decode($response->getContent(), true);
         $this->assertArrayHasKey('user', $data);
         $this->assertSame('user1001@conduit.tld', $data['user']['email']);
         $this->assertSame('user1001', $data['user']['username']);

@@ -29,7 +29,7 @@ final class GetArticlesFeedControllerTest extends WebTestCase
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
-        $data = \json_decode($response->getContent(), true);
+        $data = json_decode($response->getContent(), true);
         $this->assertArrayHasKey('articles', $data);
         $this->assertArrayHasKey('articlesCount', $data);
         $this->assertSame($expectedCount, $data['articlesCount']);

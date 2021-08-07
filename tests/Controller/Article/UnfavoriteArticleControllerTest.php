@@ -26,7 +26,7 @@ final class UnfavoriteArticleControllerTest extends WebTestCase
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
 
-        $data = \json_decode($response->getContent(), true);
+        $data = json_decode($response->getContent(), true);
         $this->assertArrayHasKey('article', $data);
     }
 }
