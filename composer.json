@@ -73,9 +73,9 @@
         "symfony/debug-bundle": "5.3.*",
         "symfony/maker-bundle": "^1.33",
         "symfony/phpunit-bridge": "5.3.*",
-        "symfony/profiler-pack": "1.0.*",
-        "symfony/test-pack": "1.0.*",
+        "symfony/stopwatch": "^5.3",
         "symfony/var-dumper": "5.3.*",
+        "symfony/web-profiler-bundle": "^5.3",
         "thecodingmachine/phpstan-strict-rules": "^0.12",
         "theofidry/alice-data-fixtures": "^1.4",
         "vimeo/psalm": "^4.9"

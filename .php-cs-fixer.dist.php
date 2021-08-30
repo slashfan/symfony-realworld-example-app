@@ -67,6 +67,7 @@ return (new PhpCsFixer\Config())
         'strict_param' => true,
         'string_line_ending' => true,
         'ternary_to_null_coalescing' => true,
+        'types_spaces' => false,
         'void_return' => true,
         'yoda_style' => [
             'equal' => false,
