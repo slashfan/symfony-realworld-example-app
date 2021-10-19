@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53d320f5b39c81270fbf7d3646c64e1c",
+    "content-hash": "8cc4a3376b62219ec853883495ddf8f9",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -11409,32 +11409,31 @@
         },
         {
             "name": "slam/phpstan-extensions",
-            "version": "v4.0.0",
+            "version": "v5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Slamdunk/phpstan-extensions.git",
-                "reference": "c854acc4b759dee3b72e6ad025e672633387e092"
+                "reference": "e7584a986366f247503fc9730a343969034aff13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Slamdunk/phpstan-extensions/zipball/c854acc4b759dee3b72e6ad025e672633387e092",
-                "reference": "c854acc4b759dee3b72e6ad025e672633387e092",
+                "url": "https://api.github.com/repos/Slamdunk/phpstan-extensions/zipball/e7584a986366f247503fc9730a343969034aff13",
+                "reference": "e7584a986366f247503fc9730a343969034aff13",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1",
-                "phpstan/phpstan": "^0.12.0",
-                "thecodingmachine/phpstan-strict-rules": "^0.12.0"
+                "nikic/php-parser": "^4.10.0",
+                "php": "^7.4 || ^8.0",
+                "phpstan/phpstan": "^0.12.0"
             },
             "require-dev": {
                 "nette/di": "^3.0",
-                "nette/neon": "^3.0",
-                "phpstan/phpstan-php-parser": "^0.12.0",
-                "phpstan/phpstan-phpunit": "^0.12.0",
-                "phpunit/phpunit": "^7.5 || ^8.5",
-                "roave/security-advisories": "dev-master",
-                "slam/php-cs-fixer-extensions": "^1.18",
-                "slam/php-debug-r": "^1.4"
+                "nette/neon": "^3.2",
+                "phpstan/phpstan-php-parser": "^0.12.2",
+                "phpstan/phpstan-phpunit": "^0.12.16",
+                "phpunit/phpunit": "^9.4",
+                "slam/php-cs-fixer-extensions": "^2.0",
+                "slam/php-debug-r": "^1.6"
             },
             "type": "phpstan-extension",
             "extra": {
@@ -11463,9 +11462,19 @@
             "description": "Slam extension of phpstan",
             "support": {
                 "issues": "https://github.com/Slamdunk/phpstan-extensions/issues",
-                "source": "https://github.com/Slamdunk/phpstan-extensions/tree/v4.0.0"
+                "source": "https://github.com/Slamdunk/phpstan-extensions/tree/v5.1.0"
             },
-            "time": "2019-12-08T13:14:11+00:00"
+            "funding": [
+                {
+                    "url": "https://paypal.me/filippotessarotto",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/Slamdunk",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-06T07:16:26+00:00"
         },
         {
             "name": "slevomat/coding-standard",
