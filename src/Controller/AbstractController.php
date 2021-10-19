@@ -12,7 +12,7 @@ use Symfony\Component\Form\FormInterface;
 /**
  * Intermediate controller allowing to provide additional shorthand methods to every child controller.
  */
-class AbstractController extends BaseAbstractController
+abstract class AbstractController extends BaseAbstractController
 {
     public static function getSubscribedServices(): array
     {

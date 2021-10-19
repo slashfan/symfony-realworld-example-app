@@ -6,6 +6,9 @@ includes:
   - vendor/phpstan/phpstan-phpunit/rules.neon
   - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
   - vendor/slam/phpstan-extensions/conf/slam-rules.neon
+  - vendor/symplify/phpstan-rules/config/services/services.neon
+  - vendor/symplify/phpstan-rules/config/symfony-rules.neon
+  - vendor/symplify/phpstan-rules/config/test-rules.neon
 
 parameters:
   level: 8
