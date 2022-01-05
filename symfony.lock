@@ -8,6 +8,9 @@
     "behat/transliterator": {
         "version": "v1.2.0"
     },
+    "composer/pcre": {
+        "version": "1.0.0"
+    },
     "composer/semver": {
         "version": "1.4.2"
     },
@@ -115,6 +118,9 @@
     },
     "ergebnis/json-printer": {
         "version": "3.0.2"
+    },
+    "ergebnis/json-schema-validator": {
+        "version": "2.0.0"
     },
     "fakerphp/faker": {
         "version": "v1.14.1"
