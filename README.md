@@ -37,4 +37,5 @@ $ make start
 
 ```bash
 $ make ci
+$ make specs
 ```

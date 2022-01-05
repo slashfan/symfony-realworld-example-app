@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controller\Article;
 
-use App\Controller\AbstractController;
 use App\Entity\Article;
 use App\Form\ArticleType;
+use App\Security\UserResolver;
+use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -21,19 +24,33 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class CreateArticleController extends AbstractController
 {
+    private UserResolver $userResolver;
+    private FormFactoryInterface $formFactory;
+    private EntityManagerInterface $entityManager;
+
+    public function __construct(
+        UserResolver $userResolver,
+        EntityManagerInterface $entityManager,
+        FormFactoryInterface $formFactory
+    ) {
+        $this->userResolver = $userResolver;
+        $this->formFactory = $formFactory;
+        $this->entityManager = $entityManager;
+    }
+
     public function __invoke(Request $request): array
     {
-        $user = $this->getCurrentUser();
+        $user = $this->userResolver->getCurrentUser();
 
         $article = new Article();
         $article->setAuthor($user);
 
-        $form = $this->createNamedForm('article', ArticleType::class, $article);
+        $form = $this->formFactory->createNamed('article', ArticleType::class, $article);
         $form->submit($request->request->get('article'));
 
         if ($form->isValid()) {
-            $this->getDoctrine()->getManager()->persist($article);
-            $this->getDoctrine()->getManager()->flush();
+            $this->entityManager->persist($article);
+            $this->entityManager->flush();
 
             return ['article' => $article];
         }

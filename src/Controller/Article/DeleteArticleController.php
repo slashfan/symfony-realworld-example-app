@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller\Article;
 
-use App\Controller\AbstractController;
 use App\Entity\Article;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -16,9 +17,16 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class DeleteArticleController extends AbstractController
 {
+    private EntityManagerInterface $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     public function __invoke(Article $article): void
     {
-        $this->getDoctrine()->getManager()->remove($article);
-        $this->getDoctrine()->getManager()->flush();
+        $this->entityManager->remove($article);
+        $this->entityManager->flush();
     }
 }

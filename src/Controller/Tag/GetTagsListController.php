@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Tag;
 
-use App\Controller\AbstractController;
 use App\Repository\TagRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**

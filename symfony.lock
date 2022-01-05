@@ -485,9 +485,6 @@
             "ref": "8a2f7fa50a528f0aad1d7a87ae3730c981b367ce"
         }
     },
-    "symfony/http-client-contracts": {
-        "version": "v2.0.0"
-    },
     "symfony/http-foundation": {
         "version": "v4.0.6"
     },

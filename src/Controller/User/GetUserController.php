@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller\User;
 
-use App\Controller\AbstractController;
+use App\Security\UserResolver;
 use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -18,8 +19,15 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class GetUserController extends AbstractController
 {
+    private UserResolver $userResolver;
+
+    public function __construct(UserResolver $userResolver)
+    {
+        $this->userResolver = $userResolver;
+    }
+
     public function __invoke(): array
     {
-        return ['user' => $this->getCurrentUser()];
+        return ['user' => $this->userResolver->getCurrentUser()];
     }
 }

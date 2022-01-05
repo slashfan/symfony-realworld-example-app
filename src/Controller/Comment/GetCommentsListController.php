@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller\Comment;
 
-use App\Controller\AbstractController;
 use App\Entity\Article;
 use App\Repository\CommentRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**

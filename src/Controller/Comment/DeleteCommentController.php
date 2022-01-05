@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller\Comment;
 
-use App\Controller\AbstractController;
 use App\Entity\Comment;
+use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -19,9 +20,16 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class DeleteCommentController extends AbstractController
 {
+    private EntityManagerInterface $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     public function __invoke(Comment $comment): void
     {
-        $this->getDoctrine()->getManager()->remove($comment);
-        $this->getDoctrine()->getManager()->flush();
+        $this->entityManager->remove($comment);
+        $this->entityManager->flush();
     }
 }

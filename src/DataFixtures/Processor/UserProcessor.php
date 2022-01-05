@@ -20,7 +20,7 @@ final class UserProcessor implements ProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function preProcess(string $id, $object): void
+    public function preProcess(string $id, object $object): void
     {
         if (!$object instanceof User) {
             return;
@@ -32,7 +32,7 @@ final class UserProcessor implements ProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function postProcess(string $id, $object): void
+    public function postProcess(string $id, object $object): void
     {
         // nothing to do
     }

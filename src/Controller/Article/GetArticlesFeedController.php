@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\Controller\Article;
 
-use App\Controller\AbstractController;
 use App\Repository\ArticleRepository;
+use App\Security\UserResolver;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Request\ParamFetcher;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -21,16 +22,19 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class GetArticlesFeedController extends AbstractController
 {
+    private UserResolver $userResolver;
     private ArticleRepository $articleRepository;
 
-    public function __construct(ArticleRepository $repository)
+    public function __construct(UserResolver $userResolver, ArticleRepository $repository)
     {
+        $this->userResolver = $userResolver;
         $this->articleRepository = $repository;
     }
 
     public function __invoke(ParamFetcher $paramFetcher): array
     {
-        $user = $this->getCurrentUser();
+        $user = $this->userResolver->getCurrentUser();
+
         $offset = (int) $paramFetcher->get('offset');
         $limit = (int) $paramFetcher->get('limit');
 

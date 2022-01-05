@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller\Article;
 
-use App\Controller\AbstractController;
 use App\Repository\ArticleRepository;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Request\ParamFetcher;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
