@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:16
 
 # Update npm to latest version
 RUN npm install -g npm
