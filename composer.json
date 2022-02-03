@@ -43,7 +43,7 @@
         "ergebnis/composer-normalize": "^2.15",
         "fakerphp/faker": "^1.15",
         "friendsofphp/php-cs-fixer": "^3.0",
-        "kubawerlos/php-cs-fixer-custom-fixers": "^2.5",
+        "kubawerlos/php-cs-fixer-custom-fixers": "^3.7",
         "nelmio/alice": "^3.8",
         "phpmd/phpmd": "2.6.*",
         "phpstan/phpstan": "^0.12",
