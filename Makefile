@@ -180,15 +180,20 @@ test-coverage-xdebug-filter:
 	$(EXEC_PHP) vendor/bin/phpunit --dump-xdebug-filter var/xdebug-filter.php
 	$(EXEC_PHP) vendor/bin/phpunit --prepend var/xdebug-filter.php --coverage-html=var/coverage
 
+test-deprecations-log: ## Run phpunit default test suite with deprecations logging to external file
+test-deprecations-log:
+	$(EXEC) php rm -f var/deprecations.log
+	$(EXEC) --env SYMFONY_DEPRECATIONS_HELPER='logFile=var/deprecations.log' php vendor/bin/phpunit
+
 specs: ## Run postman collection tests
 specs:
 	$(EXEC_NODE) ./spec/api-spec-test-runner.sh
 
 specs.local: ## Run postman collection tests
 specs.local:
-	symfony local:server:start --no-tls -d 
+	symfony local:server:start --no-tls -d
 	APIURL=http://127.0.0.1:8000/api ./spec/api-spec-test-runner.sh
-	symfony local:server:stop 
+	symfony local:server:stop
 
 validate-composer: ## Validate composer.json and composer.lock
 validate-composer:
