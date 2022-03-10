@@ -8,6 +8,9 @@
     "behat/transliterator": {
         "version": "v1.2.0"
     },
+    "composer/package-versions-deprecated": {
+        "version": "1.11.99.2"
+    },
     "composer/pcre": {
         "version": "1.0.0"
     },
@@ -218,9 +221,6 @@
     "nikic/php-parser": {
         "version": "v4.3.0"
     },
-    "ocramius/package-versions": {
-        "version": "1.3.0"
-    },
     "openlss/lib-array2xml": {
         "version": "1.0.0"
     },
@@ -232,9 +232,6 @@
     },
     "phar-io/version": {
         "version": "1.0.1"
-    },
-    "php": {
-        "version": "7.4"
     },
     "php-cs-fixer/diff": {
         "version": "v1.3.0"
@@ -491,9 +488,6 @@
     "symfony/http-kernel": {
         "version": "v4.0.6"
     },
-    "symfony/intl": {
-        "version": "v4.0.6"
-    },
     "symfony/maker-bundle": {
         "version": "1.0",
         "recipe": {
@@ -517,6 +511,9 @@
     },
     "symfony/options-resolver": {
         "version": "v4.0.6"
+    },
+    "symfony/password-hasher": {
+        "version": "v5.4.3"
     },
     "symfony/phpunit-bridge": {
         "version": "3.3",
@@ -589,9 +586,6 @@
     },
     "symfony/serializer": {
         "version": "v4.0.6"
-    },
-    "symfony/serializer-pack": {
-        "version": "v1.0.1"
     },
     "symfony/service-contracts": {
         "version": "v1.1.2"
@@ -703,11 +697,5 @@
     },
     "willdurand/negotiation": {
         "version": "v2.3.1"
-    },
-    "zendframework/zend-code": {
-        "version": "3.3.0"
-    },
-    "zendframework/zend-eventmanager": {
-        "version": "3.2.0"
     }
 }
