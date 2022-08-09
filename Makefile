@@ -1,4 +1,4 @@
-DOCKER_COMPOSE = docker-compose
+DOCKER_COMPOSE = docker compose
 EXEC = $(DOCKER_COMPOSE) exec
 EXEC_PHP = $(DOCKER_COMPOSE) exec php
 EXEC_NODE = $(DOCKER_COMPOSE) exec node
