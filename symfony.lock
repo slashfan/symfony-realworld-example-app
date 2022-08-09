@@ -29,9 +29,6 @@
             "ref": "56eaa387b5e48ebcc7c95a893b47dfa1ad51449c"
         }
     },
-    "danielstjules/stringy": {
-        "version": "3.1.0"
-    },
     "dnoegel/php-xdg-base-dir": {
         "version": "v0.1.1"
     },
@@ -211,9 +208,6 @@
     },
     "netresearch/jsonmapper": {
         "version": "v1.6.0"
-    },
-    "nette/neon": {
-        "version": "v3.2.2"
     },
     "nette/utils": {
         "version": "v3.2.5"
@@ -641,35 +635,8 @@
     "symfony/yaml": {
         "version": "v4.0.6"
     },
-    "symplify/astral": {
-        "version": "v9.3.0"
-    },
-    "symplify/autowire-array-parameter": {
-        "version": "v9.3.26"
-    },
-    "symplify/composer-json-manipulator": {
-        "version": "v9.3.26"
-    },
-    "symplify/console-package-builder": {
-        "version": "v9.3.26"
-    },
-    "symplify/easy-testing": {
-        "version": "v9.3.26"
-    },
-    "symplify/package-builder": {
-        "version": "v9.3.26"
-    },
     "symplify/phpstan-rules": {
         "version": "v9.3.0"
-    },
-    "symplify/rule-doc-generator-contracts": {
-        "version": "v9.3.26"
-    },
-    "symplify/smart-file-system": {
-        "version": "v9.3.26"
-    },
-    "symplify/symplify-kernel": {
-        "version": "v9.3.26"
     },
     "thecodingmachine/phpstan-strict-rules": {
         "version": "v0.11.0"

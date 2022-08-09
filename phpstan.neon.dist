@@ -1,29 +1,36 @@
 includes:
-  - vendor/phpstan/phpstan-deprecation-rules/rules.neon
-  - vendor/phpstan/phpstan-doctrine/extension.neon
   - vendor/phpstan/phpstan-symfony/extension.neon
+  - vendor/phpstan/phpstan-doctrine/extension.neon
   - vendor/phpstan/phpstan-phpunit/extension.neon
   - vendor/phpstan/phpstan-phpunit/rules.neon
-  - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
-  - vendor/slam/phpstan-extensions/conf/slam-rules.neon
-  - vendor/symplify/phpstan-rules/config/services/services.neon
-  - vendor/symplify/phpstan-rules/config/symfony-rules.neon
-  - vendor/symplify/phpstan-rules/config/test-rules.neon
+  - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+  #- vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
+  #- vendor/slam/phpstan-extensions/conf/slam-rules.neon
+  #- vendor/symplify/phpstan-rules/config/static-rules.neon
+  #- vendor/symplify/phpstan-rules/config/array-rules.neon
+  #- vendor/symplify/phpstan-rules/config/code-complexity-rules.neon
+  #- vendor/symplify/phpstan-rules/config/doctrine-rules.neon
+  #- vendor/symplify/phpstan-rules/config/naming-rules.neon
+  #- vendor/symplify/phpstan-rules/config/regex-rules.neon
+  #- vendor/symplify/phpstan-rules/config/forbidden-static-rules.neon
+  #- vendor/symplify/phpstan-rules/config/test-rules.neon
 
 parameters:
   level: 8
   paths:
     - src
     - tests
-  excludes_analyse:
+  excludePaths:
     - '%rootDir%/../../../src/Kernel.php'
   symfony:
     container_xml_path: '%currentWorkingDirectory%/var/cache/dev/App_KernelDevDebugContainer.xml'
+  doctrine:
+    objectManagerLoader: tests/phpstan.doctrine.php
   ignoreErrors:
       - '/Parameter #1 \$json of function json_decode expects string, string\|false given\./'
       - '/Parameter #6 \$content of method Symfony\\Component\\BrowserKit\\AbstractBrowser::request\(\) expects string\|null, string\|false given\./'
       - '/Cannot call method getId\(\) on App\\Entity\\User\|null\./'
-      - '/Call to an undefined method Symfony\\Component\\Form\\FormError\|Symfony\\Component\\Form\\FormErrorIterator::getMessage\(\)./'
+      #- '/Call to an undefined method Symfony\\Component\\Form\\FormError\|Symfony\\Component\\Form\\FormErrorIterator::getMessage\(\)./'
       - '/Parameter #1 \$submittedData of method Symfony\\Component\\Form\\FormInterface::submit\(\) expects array\|string\|null, bool\|float\|int\|string\|null given\./'
       - '/Parameter #2 \$plainPassword of method Symfony\\Component\\PasswordHasher\\Hasher\\UserPasswordHasherInterface::hashPassword\(\) expects string, string\|null given\./'
   reportUnmatchedIgnoredErrors: true
